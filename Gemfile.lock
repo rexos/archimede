@@ -28,8 +28,12 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
+    bcrypt-ruby (3.1.1)
     builder (3.0.4)
+    cancan (1.6.10)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -40,6 +44,9 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    gumby-framework (0.0.1)
+      jquery-rails
+      modernizr-rails
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -51,6 +58,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
+    modernizr-rails (2.6.2.3)
     multi_json (1.7.7)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -103,8 +111,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
+  bcrypt-ruby
+  cancan
   coffee-rails (~> 3.2.1)
+  gumby-framework
   jquery-rails
+  modernizr-rails
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3
