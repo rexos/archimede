@@ -10,7 +10,7 @@ gem 'cancan'
 gem 'bcrypt-ruby'
 gem 'annotate'
 gem 'modernizr-rails'
-gem 'gumby-framework'
+gem 'gumby', '0.0.5'
 
 # Gems used only for assets and not required
 # in production environments by default.
