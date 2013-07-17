@@ -12,6 +12,9 @@
     <%= f.email_field :email, :placeholder => "Type a Valid Email", :class => "text input" %>
   </li>
   <li class="field">
+    <%= f.text_field :address, :placeholder => "Type Your Address Here", :class => "text input" %>
+  </li>
+  <li class="field">
     <%= f.password_field :password, :placeholder => "Pick Up a Password", :class => "text input" %>
   </li>
   <li class="field">
@@ -35,8 +38,25 @@
       <span></span> Do You Need a Bill ?
     </label>
   </li>
+  <li class="field">
   <button class="medium primary btn">
     <a>Sign Up</a>
   </button>
+  </li>
+  <li class="field">
+    <% if @teacher and @teacher.errors.any? %>
+    <div id="error_explanation" class="alert danger">
+      <h3><%= pluralize(@teacher.errors.count, "error") %> prohibited
+	this user from being saved:</h3>
+      <ul>
+	<% @teacher.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+	<% end %>
+      </ul>
+    </div>
+    <% end %>
+  </li>
 </ul>
 <% end %>
+
+
