@@ -15,7 +15,15 @@
 
 
 /* fix checkbox and radio position when checked */
-.field .radio.checked i, .field .checkbox.checked i {
+.field .radio.checked i, 
+.field .checkbox.checked i {
 	line-height: 25px;
 	top: 1px;
+}
+
+input:focus,
+textarea:focus { 
+    outline: none;
+    border-color: #3085d6;
+    box-shadow: 0 0 5px #3085d6;
 }
