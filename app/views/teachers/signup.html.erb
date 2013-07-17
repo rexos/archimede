@@ -1,0 +1,42 @@
+<h2>Sign Up to Archimede</h2>
+
+<%= form_for :teacher, :url => { :controller => :teachers, :action => :create } do |f| %>
+<ul class="seven columns">
+  <li class="field">
+    <%= f.text_field :name, :placeholder => "Your Name", :class => "text input" %>
+  </li>
+  <li class="field">
+    <%= f.text_field :last_name, :placeholder => "Your Last Name", :class => "text input" %>
+  </li>
+  <li class="field">
+    <%= f.email_field :email, :placeholder => "Type a Valid Email", :class => "text input" %>
+  </li>
+  <li class="field">
+    <%= f.password_field :password, :placeholder => "Pick Up a Password", :class => "text input" %>
+  </li>
+  <li class="field">
+    <%= f.password_field :password_confirmation, :placeholder => "Confirm Your Password", :class => "text input" %>
+  </li>
+  <li class="field">
+    <label class="checkbox checked" for="check1">
+      <%= f.check_box :time_bank_bool %>
+      <span></span> Time Bank
+    </label>
+  </li>
+  <li class="field">
+    <label class="checkbox checked" for="check1">
+      <%= f.check_box :rating_bool %>
+      <span></span> Allow Rating
+    </label>
+  </li>
+  <li class="field">
+    <label class="checkbox checked" for="check1">
+      <%= f.check_box :bill_bool %>
+      <span></span> Do You Need a Bill ?
+    </label>
+  </li>
+  <button class="medium primary btn">
+    <a>Sign Up</a>
+  </button>
+</ul>
+<% end %>
