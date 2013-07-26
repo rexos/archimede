@@ -26,4 +26,5 @@ textarea:focus {
     outline: none;
     border-color: #3085d6;
     box-shadow: 0 0 5px #3085d6;
+    background: #000;
 }
