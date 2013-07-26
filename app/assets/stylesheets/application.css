@@ -24,6 +24,23 @@
 	padding: 20px;
 }
 
+
+.center {
+	text-align: center;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -50px;
+}
+
+.footer, .push {
+	height: 50px;
+}
+
+
 /* fix checkbox and radio position when checked */
 .field .radio.checked i, 
 .field .checkbox.checked i {
