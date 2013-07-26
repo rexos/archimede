@@ -14,6 +14,10 @@
  */
 
 
+.center {
+	text-align: center;
+}
+
 .row-full {
 	width: 100%;
 	min-height: 60px;
@@ -24,22 +28,24 @@
 	padding: 20px;
 }
 
-
-.center {
-	text-align: center;
+.go_top {
+	position: fixed;
+	bottom: 2%;
+	right: 3%;
 }
+
+/* --------- STICKY FOOTER --------- */
 
 .wrapper {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -50px;
+	margin: 0 auto -60px;
 }
 
 .footer, .push {
 	height: 50px;
 }
-
 
 /* fix checkbox and radio position when checked */
 .field .radio.checked i, 
