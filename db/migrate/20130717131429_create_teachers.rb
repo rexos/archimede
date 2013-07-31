@@ -8,7 +8,6 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :skype
       t.boolean :skype_bool, :default => false
       t.string :cost
-      t.string :address
       t.integer :range
       t.string :availability_days
       t.string :info

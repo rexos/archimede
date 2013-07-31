@@ -10,7 +10,6 @@
 #  skype             :string(255)
 #  skype_bool        :boolean
 #  cost              :string(255)
-#  address           :string(255)
 #  range             :integer
 #  availability_days :string(255)
 #  info              :string(255)
@@ -27,13 +26,12 @@
 
 class Teacher < ActiveRecord::Base
   has_secure_password
-  attr_accessible :active, :address, :availability_days, :bill_bool, :cost, :deadline, :email, :info, :last_name, :name, :phone, :range, :rating, :rating_bool, :skype, :skype_bool, :time_bank_bool, :password, :password_confirmation
+  attr_accessible :active, :availability_days, :bill_bool, :cost, :deadline, :email, :info, :last_name, :name, :phone, :range, :rating, :rating_bool, :skype, :skype_bool, :time_bank_bool, :password, :password_confirmation
 
   EMAIL_REGEX = /\b[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i
 
   validates :name, :presence => true
   validates :last_name, :presence => true
-  validates :address, :presence => true
   validates_inclusion_of :time_bank_bool, :in => [ true, false ]
   validates_inclusion_of :bill_bool, :in => [ true, false ]
   validates_inclusion_of :rating_bool, :in => [ true, false ]
