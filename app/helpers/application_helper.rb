@@ -9,4 +9,21 @@ module ApplicationHelper
     params[hash].delete( :province )
   end
 
+  def sanitize_from_bill
+    params[:teacher].delete( :business_name )
+    params[:teacher].delete( :cf )
+    params[:teacher].delete( :iva )
+    params[:teacher].delete( :bill_name )
+    params[:teacher].delete( :bill_last_name )
+  end
+
+  def sanitize_from_bill_address
+    params[:teacher].delete( :bill_street )
+    params[:teacher].delete( :bill_cap )
+    params[:teacher].delete( :bill_country )
+    params[:teacher].delete( :bill_number )
+    params[:teacher].delete( :bill_city )
+    params[:teacher].delete( :bill_province )
+  end
+
 end

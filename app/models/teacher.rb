@@ -27,9 +27,9 @@
 class Teacher < ActiveRecord::Base
   has_secure_password
   attr_accessible :active, :availability_days, :bill_bool, :cost, :deadline, :email, :info, :last_name, :name, :phone, :range, :rating, :rating_bool, :skype, :skype_bool, :time_bank_bool, :password, :password_confirmation
-  has_one :address
-  
-  has_many :skills
+  has_one :address, :dependent => :destroy
+  has_many :bills, :dependent => :destroy
+  has_many :skills, :dependent => :destroy
   has_many :subjects, through: :skills
 
   EMAIL_REGEX = /\b[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i

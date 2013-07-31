@@ -9,8 +9,21 @@ class TeachersController < ApplicationController
     @address.city = params[:teacher][:city]
     @address.province = params[:teacher][:province]
     sanitize_params :teacher
+    @bill = nil
+    @bill_address = nil
+    if params[:teacher][:bill_bool]
+      @bill = generate_bill
+      @bill_address = generate_bill_address
+    end
+    sanitize_from_bill
+    sanitize_from_bill_address
     @teacher = Teacher.new( params[:teacher] )
     if @teacher.save
+      @teacher.address = @address
+      if @bill
+        @teacher.bills.push( @bill )
+        @bill.address = @bill_address
+      end
       render :text => "User correctly created"
     else
       render :text => "User not correctly created"
@@ -34,6 +47,25 @@ class TeachersController < ApplicationController
     else
       render :text => "Teacher Not Destroyed"
     end
+  end
+
+  private
+
+  def generate_bill_address
+    @bill_address = Address.new( :street => params[:teacher][:bill_street], :cap => params[:teacher][:bill_cap], :country => params[:teacher][:bill_country], :number => params[:teacher][:bill_number] )
+    @bill_address.city = params[:teacher][:bill_city]
+    @bill_address.province = params[:teacher][:bill_province]
+    @bill_address
+  end
+
+  def generate_bill
+    @bill = Bill.new
+    @bill.iva = params[:teacher][:iva]
+    @bill.cf = params[:teacher][:cf]
+    @bill.business_name = params[:teacher][:business_name]
+    @bill.name = params[:teacher][:bill_name]
+    @bill.last_name = params[:teacher][:bill_last_name]
+    @bill
   end
 
 end
