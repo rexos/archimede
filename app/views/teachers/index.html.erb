@@ -1,21 +1,41 @@
-<ul>
+<div class="row"><h2>Lista docenti</h2></div>
+<div class="row">
+<table class="striped rounded">
+  <thead><tr>
+  <th>Nome</th>
+  <th>Cognome</th>
+  <th>Stato</th>
+  <th>&nbsp;</th>
+  <th>&nbsp;</th>
+</tr>
+</thead>
   <% @teachers.each do |t| %>
-  <li>
-    <%= t.name %><br />
-    <%= t.last_name %><br />
-    <% if t.active %>
+  <tr>
+    <td><%= t.name %></td>
+    <td><%= t.last_name %></td>
+    <td><% if t.active %></td>
     ATTIVO
     <% else %>
     NON ATTIVO
     <% end %>
-    <br />
-    <div class="btn medium danger">
-      <%= link_to :Cancella, :controller => :teachers, :action => :destroy, :teacher_id => t.id %>
-    </div>
+  </td>
+  <td>
     <div class="btn primary medium">
-      <%= link_to :Attiva, :controller => :teachers, :action => :activate, :teacher_id => t.id %>
+      <%= link_to ({:controller => :teachers, :action => :activate, :teacher_id => t.id}) do %>
+        <i class="icon-check"></i>Attiva
+        <% end %>
     </div>
-  </li>
-  <hr>
+  </td>
+    <td>
+    <div class="btn medium danger">
+      
+      <%= link_to ({:controller => :teachers, :action => :destroy, :teacher_id => t.id}) do %>
+        <i class="icon-cancel"></i>Cancella
+      <% end %>
+    </div>
+    </td>
+      
+  </tr>
   <% end %>
-</ul>
+</table>
+</div>

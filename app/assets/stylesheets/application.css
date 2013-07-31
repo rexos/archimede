@@ -35,7 +35,11 @@
 }
 
 
-/* --------- STICKY FOOTER --------- */
+/* --------- OVERRIDE --------- */
+
+.btn {
+	cursor: pointer;
+}
 
 .drawer {
 	background-color: white;
@@ -43,7 +47,6 @@
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
-
 
 /* --------- STICKY FOOTER --------- */
 
