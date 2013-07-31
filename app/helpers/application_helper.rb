@@ -13,17 +13,17 @@ module ApplicationHelper
     params[:teacher].delete( :business_name )
     params[:teacher].delete( :cf )
     params[:teacher].delete( :iva )
-    params[:teacher].delete( :name )
-    params[:teacher].delete( :last_name )
+    params[:teacher].delete( :bill_name )
+    params[:teacher].delete( :bill_last_name )
   end
 
   def sanitize_from_bill_address
-    params[hash].delete( :bill_street )
-    params[hash].delete( :bill_cap )
-    params[hash].delete( :bill_country )
-    params[hash].delete( :bill_number )
-    params[hash].delete( :bill_city )
-    params[hash].delete( :bill_province )
+    params[:teacher].delete( :bill_street )
+    params[:teacher].delete( :bill_cap )
+    params[:teacher].delete( :bill_country )
+    params[:teacher].delete( :bill_number )
+    params[:teacher].delete( :bill_city )
+    params[:teacher].delete( :bill_province )
   end
 
 end

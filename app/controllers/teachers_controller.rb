@@ -14,11 +14,12 @@ class TeachersController < ApplicationController
     if params[:teacher][:bill_bool]
       @bill = generate_bill
       @bill_address = generate_bill_address
-      sanitize_from_bill
-      sanitize_from_bill_address
     end
+    sanitize_from_bill
+    sanitize_from_bill_address
     @teacher = Teacher.new( params[:teacher] )
     if @teacher.save
+      @teacher.address = @address
       if @bill
         @teacher.bills.push( @bill )
         @bill.address = @bill_address
@@ -51,7 +52,6 @@ class TeachersController < ApplicationController
   private
 
   def generate_bill_address
-    @bill_address = Address.new
     @bill_address = Address.new( :street => params[:teacher][:bill_street], :cap => params[:teacher][:bill_cap], :country => params[:teacher][:bill_country], :number => params[:teacher][:bill_number] )
     @bill_address.city = params[:teacher][:bill_city]
     @bill_address.province = params[:teacher][:bill_province]
