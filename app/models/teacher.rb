@@ -28,7 +28,7 @@ class Teacher < ActiveRecord::Base
   has_secure_password
   attr_accessible :active, :availability_days, :bill_bool, :cost, :deadline, :email, :info, :last_name, :name, :phone, :range, :rating, :rating_bool, :skype, :skype_bool, :time_bank_bool, :password, :password_confirmation
   has_one :address
-  
+  has_many :bills
   has_many :skills
   has_many :subjects, through: :skills
 

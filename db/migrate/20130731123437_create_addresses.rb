@@ -9,6 +9,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :country
       t.integer :student_id
       t.integer :teacher_id
+      t.integer :bill_id
 
       t.timestamps
     end
