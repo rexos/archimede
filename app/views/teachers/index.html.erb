@@ -1,0 +1,21 @@
+<ul>
+  <% @teachers.each do |t| %>
+  <li>
+    <%= t.name %><br />
+    <%= t.last_name %><br />
+    <% if t.active %>
+    ATTIVO
+    <% else %>
+    NON ATTIVO
+    <% end %>
+    <br />
+    <div class="btn medium danger">
+      <%= link_to :Cancella, :controller => :teachers, :action => :destroy, :teacher_id => t.id %>
+    </div>
+    <div class="btn primary medium">
+      <%= link_to :Attiva, :controller => :teachers, :action => :activate, :teacher_id => t.id %>
+    </div>
+  </li>
+  <hr>
+  <% end %>
+</ul>

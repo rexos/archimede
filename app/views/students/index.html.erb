@@ -1,0 +1,10 @@
+<ul>
+  <% @students.each do |s| %>
+  <li>
+    <%= s.name %><br />
+    <%= s.last_name %><br />
+    <%= link_to :Cancella, :controller => :students, :action => :destroy, :student_id => s.id %>
+  </li>
+  <hr>
+  <% end %>
+</ul>
