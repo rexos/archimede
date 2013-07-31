@@ -13,7 +13,7 @@
       </ul>
       <div class="tab-content active">
 
-                    <div class="row">
+        <div class="row">
             <div class="six columns">
               <h2>&nbsp;</h2>
               <%= form_for :teacher, :url => { :controller => :teachers, :action => :create } do |f| %>
@@ -90,7 +90,7 @@
       
       </div>
       <div class="tab-content">
-        <p>Form studente...</p>
+        <%= render :partial => "/students/students_signup" %>
       </div>
     </section>
   </div>
