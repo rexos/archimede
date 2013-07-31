@@ -6,6 +6,9 @@ Archimede::Application.routes.draw do
   get "signup" => "teachers#signup"
   post "create" => "teachers#create"
 
+  #students' routes
+  post "students/create" => "students#create"
+
   #static_pages
   get "static_pages/privacy"
 end

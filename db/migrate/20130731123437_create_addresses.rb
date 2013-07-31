@@ -6,7 +6,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.integer :cap
       t.string :city
       t.string :province
-      t.string :contry
+      t.string :country
       t.integer :student_id
       t.integer :teacher_id
 
