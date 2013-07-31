@@ -1,1 +1,69 @@
-Form studente....
+
+<div class="row">
+          <div class="six columns">
+            <h2>&nbsp;</h2>
+            <%= form_for :student, :url => { :controller => :students, :action => :create } do |f| %>
+            <ul class="seven columns">
+              <li class="field">
+		<%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
+              </li>
+              <li class="field">
+		<%= f.text_field :last_name, :placeholder => "Cognome", :class => "text input" %>
+              </li>
+              <li class="field">
+		<%= f.email_field :email, :placeholder => "Email", :class => "text input" %>
+              </li>
+              <li class="field">
+		<%= f.password_field :password, :placeholder => "Password", :class => "text input" %>
+              </li>
+              <li class="field">
+		<%= f.password_field :password_confirmation, :placeholder => "Conferma password", :class => "text input" %>
+              </li>
+              <li class="field">
+    <%= f.text_field :street, :placeholder => "Via", :class => "wide text input" %>
+    <%= f.text_field :number, :placeholder => "N.", :class => "narrow text input" %>
+        </li>
+        <li class="field">
+    <%= f.text_field :cap, :placeholder => "CAP", :class => "narrow text input" %>
+    <%= f.text_field :city, :placeholder => "Città", :class => "wide text input" %>
+        </li>
+        <li class="field">
+          <%= f.text_field :province, :placeholder => "Prov.", :class => "narrow text input" %>
+          <%= f.text_field :country, :placeholder => "Nazione", :class => "wide text input" %>
+        </li>
+	      
+              <li class="field">
+		<button class="medium primary btn">
+		  <a>Registrati</a>
+		</button>
+              </li>
+	      
+            </ul>
+            <% end %>
+          </div>
+          
+          <div class="six columns">
+            <h2>Registrati come studente</h2>
+            <p>
+              Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby.
+            </p>
+            <p>
+              Il portale Archimede tratta tutti i dati personali degli utenti/visitatori dei servizi offerti, nel pieno rispetto di quanto previsto dalla normativa nazionale italiana in materia di privacy e del D. Lgs. 196/2003. Per ulteriori informazioni leggi la <a href="static_pages/privacy">normativa sulla privacy</a>.
+            </p>  
+            <p>
+              <% if @student and @student.errors.any? %>
+              <div id="error_explanation" class="alert danger">
+		<h3><%= pluralize(@student.errors.count, "error") %> prohibited
+		  this user from being saved:</h3>
+		<ul>
+		  <% @student.errors.full_messages.each do |msg| %>
+		  <li><%= msg %></li>
+		  <% end %>
+		</ul>
+              </div>
+              <% end %>
+            </p>
+          </div>
+        </div>
+	
+      </div>

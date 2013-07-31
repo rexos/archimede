@@ -2,8 +2,6 @@
   <h1>Archimede</h1>
 </div>
 
-
-
 <div class="row">
   <div class="twelve columns">
     <section class="tabs">
@@ -12,79 +10,97 @@
         <li><a href="#">Studente</a></li>
       </ul>
       <div class="tab-content active">
-
+	
         <div class="row">
-            <div class="six columns">
-              <h2>&nbsp;</h2>
-              <%= form_for :teacher, :url => { :controller => :teachers, :action => :create } do |f| %>
-              <ul class="seven columns">
-                <li class="field">
-            <%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
-                </li>
-                <li class="field">
-            <%= f.text_field :last_name, :placeholder => "Cognome", :class => "text input" %>
-                </li>
-                <li class="field">
-            <%= f.email_field :email, :placeholder => "Email", :class => "text input" %>
-                </li>
-                <li class="field">
-            <%= f.password_field :password, :placeholder => "Password", :class => "text input" %>
-                </li>
-                <li class="field">
-            <%= f.password_field :password_confirmation, :placeholder => "Conferma password", :class => "text input" %>
-                </li>
-                <li class="field">
-            <label class="checkbox checked" for="check1">
-              <%= f.check_box :time_bank_bool %>
-              <span></span> Banca del tempo
-            </label>
-                </li>
-                <li class="field">
-            <label class="checkbox checked" for="check1">
-              <%= f.check_box :rating_bool %>
-              <span></span> Consenti il rating
-            </label>
-                </li>
-                <li class="field">
-            <label class="checkbox checked" for="check1">
-              <%= f.check_box :bill_bool %>
-              <span></span> Do You Need a Bill ?
-            </label>
-                </li>
-                <li class="field">
-            <button class="medium primary btn">
-              <a>Registrati</a>
-            </button>
-                </li>
-
-              </ul>
-              <% end %>
-            </div>
-            
-            <div class="six columns">
-              <h2>Registrati</h2>
-              <p>
-                Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby.
-              </p>
-              <p>
-                Il portale Archimede tratta tutti i dati personali degli utenti/visitatori dei servizi offerti, nel pieno rispetto di quanto previsto dalla normativa nazionale italiana in materia di privacy e del D. Lgs. 196/2003. Per ulteriori informazioni leggi la <a href="static_pages/privacy">normativa sulla privacy</a>.
-              </p>  
-              <p>
-                <% if @teacher and @teacher.errors.any? %>
-                <div id="error_explanation" class="alert danger">
-            <h3><%= pluralize(@teacher.errors.count, "error") %> prohibited
-              this user from being saved:</h3>
-            <ul>
-              <% @teacher.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-              <% end %>
+          <div class="six columns">
+            <h2>&nbsp;</h2>
+            <%= form_for :teacher, :url => { :controller => :teachers, :action => :create } do |f| %>
+            <ul class="seven columns">
+              <li class="field">
+		<%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
+              </li>
+              <li class="field">
+		<%= f.text_field :last_name, :placeholder => "Cognome", :class => "text input" %>
+              </li>
+              <li class="field">
+		<%= f.email_field :email, :placeholder => "Email", :class => "text input" %>
+              </li>
+              <li class="field">
+		<%= f.password_field :password, :placeholder => "Password", :class => "text input" %>
+              </li>
+              <li class="field">
+		<%= f.password_field :password_confirmation, :placeholder => "Conferma password", :class => "text input" %>
+              </li>
+	      
+	      <li class="field">
+		<%= f.text_field :street, :placeholder => "Via", :class => "wide text input" %>
+		<%= f.text_field :number, :placeholder => "N.", :class => "narrow text input" %>
+	      </li>
+	      <li class="field">
+		<%= f.text_field :cap, :placeholder => "CAP", :class => "narrow text input" %>
+		<%= f.text_field :city, :placeholder => "Città", :class => "wide text input" %>
+	      </li>
+	      <li class="field">
+    <%= f.text_field :province, :placeholder => "Prov.", :class => "narrow text input" %>
+		<%= f.text_field :country, :placeholder => "Nazione", :class => "wide text input" %>
+	      </li>
+	      
+              <li class="field">
+		<label class="checkbox checked" for="check1">
+		  <%= f.check_box :time_bank_bool %>
+		  <span></span> Banca del tempo
+		</label>
+              </li>
+              <li class="field">
+		<label class="checkbox checked" for="check1">
+		  <%= f.check_box :rating_bool %>
+		  <span></span> Consenti il rating
+		</label>
+              </li>
+              <li class="field">
+		<label class="checkbox checked" for="check1">
+		  <%= f.check_box :bill_bool %>
+		  <span></span> Fattura
+		</label>
+              </li>
+              <li class="field">
+		<button class="medium primary btn">
+		  <a>Registrati</a>
+		</button>
+              </li>
+	      
             </ul>
-                </div>
-                <% end %>
-              </p>
-            </div>
+            <% end %>
           </div>
-      
+          
+          <div class="six columns">
+            <h2>Registrati come docente</h2>
+            <h4>Banca del tempo</h4>
+              ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao ciao   
+            <h4>Rating</h4>
+            Se vuoLe consentire il rating da parte degli studenti ai quali ha dato lezioni, segni l'apposito checkbox.
+            <h4>Fattura</h4>
+            Se necessita la fattura, segni l'apppostito checkbox.
+            
+            <p>
+              Il portale Archimede tratta tutti i dati personali degli utenti/visitatori dei servizi offerti, nel pieno rispetto di quanto previsto dalla normativa nazionale italiana in materia di privacy e del D. Lgs. 196/2003. Per ulteriori informazioni leggi la <a href="static_pages/privacy">normativa sulla privacy</a>.
+            </p>  
+            <p>
+              <% if @teacher and @teacher.errors.any? %>
+              <div id="error_explanation" class="alert danger">
+		<h3><%= pluralize(@teacher.errors.count, "error") %> prohibited
+		  this user from being saved:</h3>
+		<ul>
+		  <% @teacher.errors.full_messages.each do |msg| %>
+		  <li><%= msg %></li>
+		  <% end %>
+		</ul>
+              </div>
+              <% end %>
+            </p>
+          </div>
+        </div>
+	
       </div>
       <div class="tab-content">
         <%= render :partial => "/students/students_signup" %>

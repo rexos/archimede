@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20130731123437) do
     t.integer  "cap"
     t.string   "city"
     t.string   "province"
-    t.string   "contry"
+    t.string   "country"
     t.integer  "student_id"
     t.integer  "teacher_id"
     t.datetime "created_at", :null => false
