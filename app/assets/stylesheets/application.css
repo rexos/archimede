@@ -34,6 +34,17 @@
 	right: 3%;
 }
 
+
+/* --------- STICKY FOOTER --------- */
+
+.drawer {
+	background-color: white;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+
 /* --------- STICKY FOOTER --------- */
 
 .wrapper {

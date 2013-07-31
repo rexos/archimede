@@ -15,7 +15,7 @@
           <div class="six columns">
             <h2>&nbsp;</h2>
             <%= form_for :teacher, :url => { :controller => :teachers, :action => :create } do |f| %>
-            <ul class="seven columns">
+            <ul class="eight columns">
               <li class="field">
 		<%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
               </li>
@@ -41,8 +41,8 @@
 		<%= f.text_field :city, :placeholder => "Città", :class => "wide text input" %>
 	      </li>
 	      <li class="field">
-    <%= f.text_field :province, :placeholder => "Prov.", :class => "narrow text input" %>
-		<%= f.text_field :country, :placeholder => "Nazione", :class => "wide text input" %>
+    <%= f.text_field :province, :placeholder => "Prov.", :value => "TN", :class => "narrow text input" %>
+		<%= f.text_field :country, :placeholder => "Nazione", :value => "Italia", :class => "wide text input" %>
 	      </li>
 	      
               <li class="field">
@@ -58,10 +58,43 @@
 		</label>
               </li>
               <li class="field">
-		<label class="checkbox checked" for="check1">
+		<label class="checkbox toggle" for="check1" gumby-trigger="#drawer2" >
 		  <%= f.check_box :bill_bool %>
 		  <span></span> Fattura
 		</label>
+
+    <div class="drawer" id="drawer2"> 
+         <ul>
+         <li class="field">
+    <%= f.text_field :business_name, :placeholder => "Ragione sociale", :class => "text input" %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_name, :placeholder => "Nome", :class => "text input" %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_last_name, :placeholder => "Cognome", :class => "text input" %>
+        </li>
+        <li class="field">
+    <%= f.text_field :iva, :placeholder => "Partita IVA", :class => "text input" %>
+        </li>
+        <li class="field">
+    <%= f.text_field :cf, :placeholder => "Codice Fiscale", :class => "text input" %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_street, :placeholder => "Via", :class => "wide text input" %>
+    <%= f.text_field :bill_number, :placeholder => "N.", :class => "narrow text input" %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_cap, :placeholder => "CAP", :class => "narrow text input" %>
+    <%= f.text_field :bill_city, :placeholder => "Città", :class => "wide text input" %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_province, :placeholder => "Prov.", :value => "TN", :class => "narrow text input" %>
+    <%= f.text_field :bill_country, :placeholder => "Nazione", :value => "Italia", :class => "wide text input" %>
+        </li>
+      </ul>
+    </div>
+
               </li>
               <li class="field">
 		<button class="medium primary btn">
@@ -70,6 +103,7 @@
               </li>
 	      
             </ul>
+
             <% end %>
           </div>
           
