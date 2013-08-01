@@ -6,7 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Delete all
 Teacher.delete_all
+Student.delete_all
+Subject.delete_all
+
+# Add a teacher
 Teacher.create(
 :name => "Giovanni",
 :last_name => "Pedrotti",
@@ -24,7 +29,7 @@ Teacher.create(
 :time_bank_bool => true,
 :bill_bool => true)
 
-Subject.delete_all
+# Add subjects
 Subject.create(name: 'Italiano')
 Subject.create(name: 'Storia')
 Subject.create(name: 'Latino')

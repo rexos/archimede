@@ -25,6 +25,23 @@
         <li class="field">
             <%= f.text_area :info, :placeholder => "Informazioni aggiuntive", :class => "textarea input", :rows => 3 %>
         </li>
+
+        <li class="field">
+                    <div class="picker">
+                      <%= f.select :sub1, options_for_select(Subject.all.map { |s| [s.name, s.id] }) %>
+                    </div>
+        </li>
+        <li class="field">
+                    <div class="picker">
+                      <%= f.select :sub2, options_for_select(Subject.all.map { |s| [s.name, s.id] }.insert(0, "")) %>
+                    </div>
+        </li>
+        <li class="field">
+                    <div class="picker">
+                      <%= f.select :sub3, options_for_select(Subject.all.map { |s| [s.name, s.id] }.insert(0, "")) %>
+                    </div>
+        </li>
+
         <li class="field">
           <button class="medium primary btn">
             <a>Completa</a>
@@ -36,6 +53,13 @@
   </div>
   <div class="six columns">
     <h3>Informazioni</h3>
+    <ul style="list-style-type: decimal">
+              <li>Inserimento dati del docente</li>
+              <li><strong>Informazioni per lo studente</strong></li>
+              <li>Pagamento e attivazione account</li>
+            </ul>
+    <h4>Attivazione account</h4>        
     <p>Per completare la registrazione, compila il form. I dati che inseriti serviranno agli studenti che ti vorranno contattare.</p>
+    Una volta completata l'iscrizione l'account sarà attivato appena l'ammistratore riceverà la notifica di pagamento avvenuto.
   </div>
 </div>

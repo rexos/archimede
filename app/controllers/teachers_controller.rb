@@ -9,8 +9,15 @@ class TeachersController < ApplicationController
 
   def complete
     @teacher = Teacher.find_by_token(cookies[:token])
+    
+    @teacher.subjects.push(Subject.find(params[:teacher][:sub1])) if params[:teacher][:sub1] != 0
+    @teacher.subjects.push(Subject.find(params[:teacher][:sub2])) if params[:teacher][:sub2] != 0
+    @teacher.subjects.push(Subject.find(params[:teacher][:sub3])) if params[:teacher][:sub3] != 0
+
+    sanitize_from_subjects
     @teacher.update_attributes(params[:teacher])
-    render :text => @teacher.phone + " " + @teacher.skype
+
+    render :text => @teacher.subjects.all.map { |s| [s.id, s.name] }
   end
 
   def create

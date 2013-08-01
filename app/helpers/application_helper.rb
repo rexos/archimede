@@ -26,4 +26,10 @@ module ApplicationHelper
     params[:teacher].delete( :bill_province )
   end
 
+  def sanitize_from_subjects
+    params[:teacher].delete( :sub1 )
+    params[:teacher].delete( :sub2 )
+    params[:teacher].delete( :sub3 )
+  end
+
 end
