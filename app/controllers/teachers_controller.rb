@@ -8,6 +8,9 @@ class TeachersController < ApplicationController
   end
 
   def complete
+    @teacher = Teacher.find_by_token(cookies[:token])
+    @teacher.update_attributes(params[:teacher])
+    render :text => @teacher.phone + " " + @teacher.skype
   end
 
   def create
@@ -30,7 +33,7 @@ class TeachersController < ApplicationController
         @teacher.bills.push( @bill )
         @bill.address = @bill_address
       end
-      #render :text => "User correctly created"
+      cookies.permanent[:token] = @teacher.token
       redirect_to controller: :teachers, action: :complete_signup
     else
       render :text => "User not correctly created"
