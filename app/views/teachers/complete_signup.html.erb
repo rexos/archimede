@@ -1,0 +1,36 @@
+<div class="row">
+  <h2>Completa la registrazione</h2>
+</div>
+
+<div class="row">
+  <div class="six columns">
+    <h3>&nbsp;</h3>
+    <%= form_for :teacher, :url => { :controller => :teachers, :action => :complete } do |f| %>
+    <ul class="eight columns">
+        <li class="field">
+            <%= f.text_field :phone, :placeholder => "Telefono", :class => "text input" %>
+        </li>
+        <li class="field">
+            <%= f.text_field :skype, :placeholder => "Nome skype", :class => "text input" %>
+        </li>
+        <li class="field">
+            <%= f.text_field :cost, :placeholder => "Prezzo", :class => "text input" %>
+        </li>
+        <li class="field">
+            <%= f.text_field :range, :placeholder => "Range", :class => "text input" %>
+        </li>
+        <li class="field">
+            <%= f.text_area :availability_days, :placeholder => "Giorni disponibili", :class => "textarea input" %>
+        </li>
+        <li class="field">
+            <%= f.text_area :info, :placeholder => "Informazioni aggiuntive", :class => "textarea input" %>
+        </li>
+    </ul>         
+    <% end %>
+
+  </div>
+  <div class="six columns">
+    <h3>Informazioni</h3>
+    <p>Per completare la registrazione, compila il form. I dati che inseriti serviranno agli studenti che ti vorranno contattare.</p>
+  </div>
+</div>

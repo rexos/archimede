@@ -4,7 +4,9 @@ Archimede::Application.routes.draw do
 
   #teachers' routes
   get "signup" => "teachers#signup"
+  get "complete_signup" => "teachers#complete_signup"
   post "create" => "teachers#create"
+  post "complete" => "teachers#complete"
   get "teachers/index" => "teachers#index"
   get "teachers/destroy" => "teachers#destroy"
   get "teachers/activate" => "teachers#activate"

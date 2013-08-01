@@ -4,6 +4,12 @@ class TeachersController < ApplicationController
   def signup
   end
 
+  def complete_signup
+  end
+
+  def complete
+  end
+
   def create
     @address = Address.new( :street => params[:teacher][:street], :cap => params[:teacher][:cap], :country => params[:teacher][:country], :number => params[:teacher][:number] )
     @address.city = params[:teacher][:city]
@@ -24,7 +30,8 @@ class TeachersController < ApplicationController
         @teacher.bills.push( @bill )
         @bill.address = @bill_address
       end
-      render :text => "User correctly created"
+      #render :text => "User correctly created"
+      redirect_to controller: :teachers, action: :complete_signup
     else
       render :text => "User not correctly created"
     end
