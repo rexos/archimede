@@ -23,3 +23,6 @@
     <%= csrf_meta_tags %>
   <body>
     <div class="wrapper">
+      <% if current_user %>
+      Logged as <%= current_user.name.capitalize %> | <%= link_to :Logout, :controller => :sessions, :action => :destroy %>
+      <% end %>

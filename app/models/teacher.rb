@@ -35,6 +35,7 @@ class Teacher < ActiveRecord::Base
   has_many :subjects, through: :skills
 
   before_create :generate_token
+  after_create :update_id
 
   #regular expressions
   EMAIL_REGEX = /\b[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i
@@ -54,6 +55,15 @@ class Teacher < ActiveRecord::Base
 
   def generate_token
     self.token = SecureRandom.urlsafe_base64
+  end
+
+  def update_id
+    if self.id != 1
+      old = self.id
+      new = old + 1
+      sql = "update teachers set id=#{new} where id=#{old}"
+      ActiveRecord::Base.connection.execute(sql)
+    end
   end
 
 end

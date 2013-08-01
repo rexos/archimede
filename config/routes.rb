@@ -19,6 +19,7 @@ Archimede::Application.routes.draw do
   #sessions' routes
   get "login" => "sessions#login"
   post "sessions/create" => "sessions#create"
+  get "logout" => "sessions#destroy"
 
   #static_pages
   get "static_pages/privacy"
