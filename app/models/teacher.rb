@@ -26,14 +26,20 @@
 
 class Teacher < ActiveRecord::Base
   has_secure_password
-  attr_accessible :active, :availability_days, :bill_bool, :cost, :deadline, :email, :info, :last_name, :name, :phone, :range, :rating, :rating_bool, :skype, :skype_bool, :time_bank_bool, :password, :password_confirmation
+  attr_accessible :active, :availability_days, :bill_bool, :cost, :deadline, :email, :info, :last_name, :name, :phone, :range, :rating, :rating_bool, :skype, :skype_bool, :time_bank_bool, :password, :password_confirmation, :token
+
+  #relationships
   has_one :address, :dependent => :destroy
   has_many :bills, :dependent => :destroy
   has_many :skills, :dependent => :destroy
   has_many :subjects, through: :skills
 
+  before_create :generate_token
+
+  #regular expressions
   EMAIL_REGEX = /\b[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i
 
+  #validations
   validates :name, :presence => true
   validates :last_name, :presence => true
   validates_inclusion_of :time_bank_bool, :in => [ true, false ]
@@ -42,5 +48,12 @@ class Teacher < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true
   validates :password, :presence => true, :length => { :minimum => 6 }, :on => :create
   validates :password_confirmation, :presence => true, :on => :create
+
+  #private methods
+  private
+
+  def generate_token
+    self.token = SecureRandom.urlsafe_base64
+  end
 
 end
