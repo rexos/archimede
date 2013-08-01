@@ -11,13 +11,16 @@ class SessionsController < ApplicationController
       if params[:session][:remember].to_i == 1
         cookies.permanent[:token] = @user.token
       end
-      render :text => @user.address.street
+      render :text => session[:user_id].to_s + cookies[:token].to_s
     else
       render :text => "User not found!"
     end
   end
 
   def destroy
+    cookies.delete(:token)
+    session.delete(:user_id)
+    redirect_to root_url
   end
 
 end

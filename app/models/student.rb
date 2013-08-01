@@ -6,6 +6,7 @@ class Student < ActiveRecord::Base
   has_one :address
 
   before_create :generate_token
+  after_create :update_id
 
   #validations
   validates :name, :presence => true
@@ -18,6 +19,13 @@ class Student < ActiveRecord::Base
 
   def generate_token
     self.token = SecureRandom.urlsafe_base64
+  end
+
+  def update_id
+    old = self.id
+    new = old + 1
+    sql = "update students set id=#{new} where id=#{old}"
+    ActiveRecord::Base.connection.execute(sql)
   end
 
 end
