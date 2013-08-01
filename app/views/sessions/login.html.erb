@@ -1,0 +1,7 @@
+<h2>Login</h2>
+<%= form_for :session, url: { :controller => :sessions, :action => :create } do |f| %>
+<%= f.email_field :email, :placeholder => "Email" %><br />
+<%= f.password_field :password, :placeholder => "Password" %><br />
+<%= f.check_box :remember %><br />
+<%= f.submit :Login %>
+<% end %>

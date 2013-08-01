@@ -18,6 +18,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.date :deadline
       t.boolean :active, :default => false
       t.string :password_digest
+      t.string :token
 
       t.timestamps
     end

@@ -6,6 +6,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :email
       t.string :phone
       t.string :password_digest
+      t.string :token
 
       t.timestamps
     end

@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130731162457) do
     t.string   "email"
     t.string   "phone"
     t.string   "password_digest"
+    t.string   "token"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130731162457) do
     t.date     "deadline"
     t.boolean  "active",            :default => false
     t.string   "password_digest"
+    t.string   "token"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
   end
