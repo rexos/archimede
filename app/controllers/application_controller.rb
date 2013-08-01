@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:user_id]
-      @current_user = Teacher.find( session[:user_id] )
-      @current_user = Student.find( session[:user_id] ) if @current_user.nil?
+      @current_user = Teacher.find( session[:user_id] ) if session[:user_id].to_i.odd?
+      @current_user = Student.find( session[:user_id] ) if session[:user_id].to_i.even?
       @current_user
     else
       if cookies[:token]
