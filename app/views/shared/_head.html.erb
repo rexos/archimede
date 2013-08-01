@@ -23,6 +23,9 @@
     <%= csrf_meta_tags %>
   <body>
     <div class="wrapper">
+
+      <div class="row" style="text-align: right">
       <% if current_user %>
-      Logged as <%= current_user.name.capitalize %> | <%= link_to :Logout, :controller => :sessions, :action => :destroy %>
+      Benvenuto, <%= current_user.name.capitalize %> | <%= link_to :Esci, :controller => :sessions, :action => :destroy %>
       <% end %>
+      </div>
