@@ -39,3 +39,8 @@ Subject.create(name: 'Fisica')
 Subject.create(name: 'Scienze naturali, chimica e geografia')
 Subject.create(name: 'Filosofia')
 Subject.create(name: 'Storia dell\'Arte')
+Subject.create(name: 'Lingua Inglese')
+Subject.create(name: 'Lingua Tedesca')
+Subject.create(name: 'Lingua Spagnola')
+Subject.create(name: 'Lingua Francese')
+

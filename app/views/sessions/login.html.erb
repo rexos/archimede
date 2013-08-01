@@ -1,7 +1,25 @@
-<h2>Login</h2>
-<%= form_for :session, url: { :controller => :sessions, :action => :create } do |f| %>
-<%= f.email_field :email, :placeholder => "Email" %><br />
-<%= f.password_field :password, :placeholder => "Password" %><br />
-<%= f.check_box :remember %><br />
-<%= f.submit :Login %>
-<% end %>
+<div class="row">
+	<div class="six columns">
+	<h2>Login</h2>
+	<%= form_for :session, url: { :controller => :sessions, :action => :create } do |f| %>
+		<ul>
+		<li class="field">
+		<%= f.email_field :email, :placeholder => "Email", :class => "text input"%>
+		</li>
+		<li class="field">
+		<%= f.password_field :password, :placeholder => "Password", :class => "text input" %>
+		</li>
+		<li class="field">
+		<label class="checkbox" for="check1">
+		<%= f.check_box :remember %>
+		</label>
+		</li>
+		<button class="large primary btn">
+		  <a>Entra</a>
+		</button>
+		</ul>
+	<% end %>
+	</div>
+	<div class="six columns">
+	</div>	
+</div>
