@@ -46,7 +46,7 @@ class Teacher < ActiveRecord::Base
   validates_inclusion_of :time_bank_bool, :in => [ true, false ]
   validates_inclusion_of :bill_bool, :in => [ true, false ]
   validates_inclusion_of :rating_bool, :in => [ true, false ]
-  validates :email, :presence => true, :uniqueness => true
+  validates :email, :presence => true, :uniqueness => true, :format => { :with => EMAIL_REGEX  }
   validates :password, :presence => true, :length => { :minimum => 6 }, :on => :create
   validates :password_confirmation, :presence => true, :on => :create
 
