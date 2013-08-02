@@ -17,6 +17,7 @@ Archimede::Application.routes.draw do
   get "students/index" => "students#index"
   get "students/destroy" => "students#destroy"
   get "students/show" => "students#show"
+  post "students/search_teacher" => "students#search_teacher"
 
   #sessions' routes
   get "login" => "sessions#login"

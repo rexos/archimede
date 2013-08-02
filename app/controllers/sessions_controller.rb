@@ -11,9 +11,13 @@ class SessionsController < ApplicationController
       if params[:session][:remember].to_i == 1
         cookies.permanent[:token] = @user.token
       end
-      render :text => session[:user_id].to_s + cookies[:token].to_s
+      if @user.is_a? Student
+        redirect_to :controller => :students, :action => :show
+      else
+        render :text => @user.name.capitalize
+      end
     else
-      render :text => "User not found!"
+      render :action => :login
     end
   end
 
