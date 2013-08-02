@@ -1,28 +1,26 @@
-<div class="row">
-	<div class="six columns">
-	<h2>Login</h2>
 	<%= form_for :session, url: { :controller => :sessions, :action => :create } do |f| %>
-		<ul>
-		<li class="field">
-		<%= f.email_field :email, :placeholder => "Email", :class => "text input"%>
-		</li>
-		<li class="field">
-		<%= f.password_field :password, :placeholder => "Password", :class => "text input" %>
-		</li>
-		
-		<li class="field">
-		    <label class="checkbox" for="check1">
-		      <%= f.check_box :remember %>
-		      <span></span> Ricordami
-		    </label>
-         </li>
-
-		<button class="large primary btn">
-		  <a>Entra</a>
-		</button>
-		</ul>
+	<div class="row">
+		<fieldset class="six columns">
+			<legend><h2>Login</h2></legend>
+			<ul>
+				<li class="field">
+					<%= f.email_field :email, :placeholder => "Email", :class => "wide text input", :id => "email" %>
+				</li>
+				<li class="field">
+					<%= f.password_field :password, :placeholder => "Password", :class => "wide text input", :id => "psw" %>
+				</li> 
+				<li class="field">
+					<label class="checkbox" for="check1">
+						<%= f.check_box :remember %>
+						<span></span> Ricordami
+					</label>
+				</li>
+				<li>
+				<button class="medium primary btn">
+					<a>Entra</a>
+				</button>
+				</li>
+			</ul> 
+		</fieldset> 
+	</div> 
 	<% end %>
-	</div>
-	<div class="six columns">
-	</div>	
-</div>
