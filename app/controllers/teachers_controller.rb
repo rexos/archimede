@@ -7,6 +7,9 @@ class TeachersController < ApplicationController
   def complete_signup
   end
 
+  def payment
+  end
+
   def complete    
     @sub1 = Subject.find(params[:teacher][:sub1])
     @sub2 = Subject.find(params[:teacher][:sub2])
@@ -20,7 +23,8 @@ class TeachersController < ApplicationController
     sanitize_from_subjects
     @teacher.update_attributes(params[:teacher])
 
-    render :text => @teacher.subjects.all.map { |s| [s.id, s.name] }
+    #render :text => @teacher.subjects.all.map { |s| [s.id, s.name] }
+    redirect_to controller: :teachers, action: :payment
   end
 
   def create

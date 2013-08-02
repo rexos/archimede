@@ -7,6 +7,7 @@ Archimede::Application.routes.draw do
   get "complete_signup" => "teachers#complete_signup"
   post "create" => "teachers#create"
   post "complete" => "teachers#complete"
+  get "payment" => "teachers#payment"
   get "teachers/index" => "teachers#index"
   get "teachers/destroy" => "teachers#destroy"
   get "teachers/activate" => "teachers#activate"
