@@ -7,12 +7,16 @@ class TeachersController < ApplicationController
   def complete_signup
   end
 
-  def complete
+  def complete    
+    @sub1 = Subject.find(params[:teacher][:sub1])
+    @sub2 = Subject.find(params[:teacher][:sub2])
+    @sub3 = Subject.find(params[:teacher][:sub3])
+
     @teacher = Teacher.find_by_token(cookies[:token])
-    
-    @teacher.subjects.push(Subject.find(params[:teacher][:sub1])) if params[:teacher][:sub1] != ""
-    @teacher.subjects.push(Subject.find(params[:teacher][:sub2])) if params[:teacher][:sub2] != ""
-    @teacher.subjects.push(Subject.find(params[:teacher][:sub3])) if params[:teacher][:sub3] != ""
+
+    @teacher.subjects.push(@sub1) if params[:teacher][:sub1] != "" and not(@teacher.subjects.include?(@sub1))
+    @teacher.subjects.push(@sub2) if params[:teacher][:sub2] != "" and not(@teacher.subjects.include?(@sub2))
+    @teacher.subjects.push(@sub3) if params[:teacher][:sub3] != "" and not(@teacher.subjects.include?(@sub3))
     sanitize_from_subjects
     @teacher.update_attributes(params[:teacher])
 
