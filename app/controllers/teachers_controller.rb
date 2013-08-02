@@ -38,7 +38,7 @@ class TeachersController < ApplicationController
     sanitize_params :teacher
     @bill = nil
     @bill_address = nil
-    if params[:teacher][:bill_bool]
+    if params[:teacher][:bill_bool] == 1
       @bill = generate_bill
       @bill_address = generate_bill_address
     end
@@ -46,6 +46,7 @@ class TeachersController < ApplicationController
     sanitize_from_bill_address
     @teacher = Teacher.new( params[:teacher] )
     if @teacher.save
+      @teacher = Teacher.find_by_email( @teacher.email )
       @teacher.address = @address
       if @bill
         @teacher.bills.push( @bill )
