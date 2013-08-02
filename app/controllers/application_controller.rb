@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
+  before_filter :logged_in?, :only => :show
 
   helper_method :current_user
 
@@ -18,6 +19,10 @@ class ApplicationController < ActionController::Base
         @current_user
       end
     end
+  end
+
+  def logged_in?
+    redirect_to root_url unless current_user
   end
 
 end

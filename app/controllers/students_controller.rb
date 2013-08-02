@@ -18,6 +18,9 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
+  def show
+  end
+
   def destroy
     @student = Student.find( params[:student_id] )
     if @student.destroy
