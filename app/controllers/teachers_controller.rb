@@ -11,20 +11,24 @@ class TeachersController < ApplicationController
   end
 
   def complete    
-    @sub1 = Subject.find(params[:teacher][:sub1])
-    @sub2 = Subject.find(params[:teacher][:sub2])
-    @sub3 = Subject.find(params[:teacher][:sub3])
+    @sub1 = nil
+    @sub2 = nil
+    @sub3 = nil
+
+    @sub1 = Subject.find(params[:teacher][:sub1]) if params[:teacher][:sub1] != ""
+    @sub2 = Subject.find(params[:teacher][:sub2]) if params[:teacher][:sub2] != ""
+    @sub3 = Subject.find(params[:teacher][:sub3]) if params[:teacher][:sub3] != ""
 
     @teacher = Teacher.find_by_token(cookies[:token])
 
-    @teacher.subjects.push(@sub1) if params[:teacher][:sub1] != "" and not(@teacher.subjects.include?(@sub1))
-    @teacher.subjects.push(@sub2) if params[:teacher][:sub2] != "" and not(@teacher.subjects.include?(@sub2))
-    @teacher.subjects.push(@sub3) if params[:teacher][:sub3] != "" and not(@teacher.subjects.include?(@sub3))
+    @teacher.subjects.push(@sub1) if @sub1 != nil and not(@teacher.subjects.include?(@sub1))
+    @teacher.subjects.push(@sub2) if @sub2 != nil and not(@teacher.subjects.include?(@sub2))
+    @teacher.subjects.push(@sub3) if @sub3 != nil and not(@teacher.subjects.include?(@sub3))
     sanitize_from_subjects
     @teacher.update_attributes(params[:teacher])
 
-    #render :text => @teacher.subjects.all.map { |s| [s.id, s.name] }
-    redirect_to controller: :teachers, action: :payment
+    render :text => @teacher.subjects.all.map { |s| [s.id, s.name] }
+    #redirect_to controller: :teachers, action: :payment
   end
 
   def create
