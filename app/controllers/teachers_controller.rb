@@ -46,6 +46,7 @@ class TeachersController < ApplicationController
     sanitize_from_bill_address
     @teacher = Teacher.new( params[:teacher] )
     if @teacher.save
+      @teacher = Teacher.find_by_email( @teacher.email )
       @teacher.address = @address
       if @bill
         @teacher.bills.push( @bill )

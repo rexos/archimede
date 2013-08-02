@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
     sanitize_params :student
     @student = Student.new( params[:student] )
     if @student.save
+      @student = Student.find_by_email( @student.email )
       @student.address = @address
       render :text => "Ok Student correctly saved"
     else
