@@ -1,0 +1,19 @@
+<div class="row">
+  <h2>Profilo Docente : <%= current_user.name.capitalize %></h2>
+</div>
+
+<div class="row">
+  <div class="five columns">
+  </div>
+  <div class="seven columns">
+
+    <% current_user.attributes.each do |a| %> <br />
+      <strong><%= a[0] %></strong>: <%= a[1] %>
+    <% end %>
+
+
+  </div>
+</div>
+
+
+

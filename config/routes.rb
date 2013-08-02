@@ -10,6 +10,7 @@ Archimede::Application.routes.draw do
   get "payment" => "teachers#payment"
   get "teachers/index" => "teachers#index"
   get "teachers/destroy" => "teachers#destroy"
+  get "teachers/show" => "teachers#show"
   get "teachers/activate" => "teachers#activate"
 
   #students' routes
