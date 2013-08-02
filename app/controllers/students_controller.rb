@@ -21,6 +21,22 @@ class StudentsController < ApplicationController
   def show
   end
 
+  def search_teacher
+    words = params[:search][:text].split(' ')
+    @matching = []
+    for w in words
+      @teachers = Teacher.find( :all, :conditions => ["name LIKE ?", "%#{w}%"] )
+      if @teachers
+        @teachers.each do |t|
+          @matching << t unless @matching.include? t
+        end
+      end
+    end
+    respond_to do |format|
+      format.js { render :action => :matching_teachers }
+    end
+  end
+
   def destroy
     @student = Student.find( params[:student_id] )
     if @student.destroy
