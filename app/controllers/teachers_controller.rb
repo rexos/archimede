@@ -10,7 +10,7 @@ class TeachersController < ApplicationController
   def payment
   end
 
-  def complete    
+  def complete 
     @sub1 = Subject.find(params[:teacher][:sub1])
     @sub2 = Subject.find(params[:teacher][:sub2])
     @sub3 = Subject.find(params[:teacher][:sub3])

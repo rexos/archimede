@@ -3,7 +3,7 @@ class Student < ActiveRecord::Base
   attr_accessible :email, :last_name, :name, :password_digest, :phone, :password, :password_confirmation, :token
 
   #relationships
-  has_one :address
+  has_one :address, :dependent => :destroy
 
   before_create :generate_token
   after_create :update_id

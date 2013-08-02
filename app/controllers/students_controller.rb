@@ -21,11 +21,18 @@ class StudentsController < ApplicationController
   def show
   end
 
+  #search teacher method
   def search_teacher
     words = params[:search][:text].split(' ')
-    @matching = []
+    @matching = @teachers = []
     for w in words
       @teachers = Teacher.find( :all, :conditions => ["name LIKE ?", "%#{w}%"] )
+      Teacher.find( :all, :conditions => ["last_name LIKE ?", "%#{w}%"] ).each do |t|
+        @teachers << t unless @teachers.include? t
+      end
+      Address.find( :all, :conditions => ["city LIKE ?", "%#{w}%"] ).each do |a|
+        @teachers << a.teacher unless @teachers.include? a.teacher
+      end
       if @teachers
         @teachers.each do |t|
           @matching << t unless @matching.include? t
@@ -36,6 +43,7 @@ class StudentsController < ApplicationController
       format.js { render :action => :matching_teachers }
     end
   end
+  #end search method
 
   def destroy
     @student = Student.find( params[:student_id] )

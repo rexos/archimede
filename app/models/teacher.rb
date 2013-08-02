@@ -63,6 +63,8 @@ class Teacher < ActiveRecord::Base
       new = old + 1
       sql = "update teachers set id=#{new} where id=#{old}"
       ActiveRecord::Base.connection.execute(sql)
+      sql = "update addresses set teacher_id=#{new} where teacher_id=#{old}"
+      ActiveRecord::Base.connection.execute(sql)
     end
   end
 
