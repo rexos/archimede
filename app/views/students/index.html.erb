@@ -8,15 +8,15 @@
   <th>&nbsp;</th>
 </tr>
 </thead>
-  <% @students.each do |t| %>
+  <% @students.each do |s| %>
   <tr>
-    <td><%= t.name %></td>
-    <td><%= t.last_name %></td>
+    <td><%= s.name %></td>
+    <td><%= s.last_name %></td>
     
     <td>
     <div class="btn medium danger">
       
-      <%= link_to ({:controller => :teachers, :action => :destroy, :student_id => t.id}) do %>
+      <%= link_to ({:controller => :students, :action => :destroy, :student_id => s.id}) do %>
         <i class="icon-cancel"></i>Cancella
       <% end %>
     </div>

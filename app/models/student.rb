@@ -25,10 +25,12 @@ class Student < ActiveRecord::Base
   end
 
   def update_id
-    old = self.id
-    new = old + 1
-    sql = "update students set id=#{new} where id=#{old}"
-    ActiveRecord::Base.connection.execute(sql)
+    if self.id.odd?
+      old = self.id
+      new = old + 1
+      sql = "update students set id=#{new} where id=#{old}"
+      ActiveRecord::Base.connection.execute(sql)
+    end
   end
 
 end
