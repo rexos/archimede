@@ -1,0 +1,11 @@
+<ul>
+  <% @matching.each do |t| %>
+  <li>
+    Nome : <%= t.name.capitalize %><br />
+    Cognome : <%= t.last_name.capitalize %><br />
+    Materie : <%= t.subjects.to_s %><br />
+    Luogo : <%= t.address.city %><br />
+    Email : <%= t.email %>
+  </li>
+  <% end %>
+</ul>
