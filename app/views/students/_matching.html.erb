@@ -3,7 +3,12 @@
   <li>
     Nome : <%= t.name.capitalize %><br />
     Cognome : <%= t.last_name.capitalize %><br />
-    Materie : <%= t.subjects.to_s %><br />
+    Materie : 
+    <ul>
+      <% t.subjects.each do |s| %>
+      <li><%= s.name %></li>
+      <% end %>
+    </ul>
     Luogo : <%= t.address.city %><br />
     Email : <%= t.email %>
   </li>
