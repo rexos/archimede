@@ -65,4 +65,9 @@ class StudentsController < ApplicationController
     end
   end
 
+  def update
+    current_user.update_attributes( params[:student] )
+    redirect_to :action => :show
+  end
+
 end

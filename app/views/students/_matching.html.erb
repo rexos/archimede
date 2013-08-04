@@ -1,16 +1,28 @@
-<ul>
+<% unless @matching.empty? %>
+<table class="striped rounded">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Luogo</th>
+      <th>Email</th>
+      <th>Materie</th>
+    </tr>
+  </thead>
   <% @matching.each do |t| %>
-  <li>
-    Nome : <%= t.name.capitalize %><br />
-    Cognome : <%= t.last_name.capitalize %><br />
-    Materie : 
-    <ul>
-      <% t.subjects.each do |s| %>
-      <li><%= s.name %></li>
-      <% end %>
-    </ul>
-    Luogo : <%= t.address.city %><br />
-    Email : <%= t.email %>
-  </li>
+  <tr>
+    <td><%= t.name.capitalize %></td>
+    <td><%= t.last_name.capitalize %></td>
+    <td><%= t.address.city %></td>
+    <td><%= t.email %></td>
+    <td>
+      <ul>
+	<% t.subjects.each do |s| %>
+	<li><%= s.name %></li>
+	<% end %>
+      </ul>
+    </td>
+  </tr>
   <% end %>
-</ul>
+</table>
+<% end %>

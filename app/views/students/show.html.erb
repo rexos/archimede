@@ -5,6 +5,21 @@
 <div class="row">
   <div class="four columns">
     <h3>Dati studente</h3>
+    <br />
+    <ul>
+      <li>Nome : <strong><%= current_user.name.capitalize %></strong></li>
+      <li>Cognome : <strong><%= current_user.last_name.capitalize %></strong></li>
+      <li>Email : <strong><%= current_user.email %></strong></li>
+      <li>Luogo : <strong><%= current_user.address.city.capitalize %></strong></li>
+      <li>
+	<button class="btn primary medium switch" gumby-trigger="#stud_settings">
+	  <a>
+	    <i class="icon-tools"></i>
+	    Modifica Dati
+	  </a>
+	</button>
+      </li>
+    </ul>
   </div>
 
   <div class="eight columns center">
@@ -23,3 +38,4 @@
     </div>
   </div>
 </div>
+<%= render :partial => "stud_settings_modal" %>

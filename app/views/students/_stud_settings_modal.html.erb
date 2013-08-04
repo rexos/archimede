@@ -1,0 +1,27 @@
+<div class="modal" id="stud_settings">
+  <div class="content">
+    <a class="close switch" gumby-trigger="|#stud_settings"><i class="icon-cancel"></i></a>
+    <div class="row">
+      <div class="ten columns centered center-text">
+        <h2>Modifica Dati <%= current_user.name.capitalize %></h2>
+	<%= form_for :student, :url => { :controller => :students, :action => :update } do |f| %>
+	<ul class="six columns">
+	  <li class="field">
+	    <%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
+	  </li>
+	  <li class="field">
+	    <%= f.text_field :last_name, :placeholder => "Cognome", :class => "text input" %>
+	  <li class="field">
+	    <%= f.email_field :email, :placeholder => "Email", :class => "text input" %>
+	  </li>
+	  <button class="btn primary medium">
+	    <a>Salva</a>
+	  </button>
+	</ul>
+	<% end %>
+	<div style="clear:both"></div>
+        <p class="btn primary medium"><a href="#" class="switch" gumby-trigger="|#stud_settings"><i class="icon-cancel"></i>Chiudi</a></p>
+      </div>
+    </div>
+  </div>
+</div>
