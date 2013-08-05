@@ -28,14 +28,14 @@ class StudentsController < ApplicationController
     words = params[:search][:text].split(' ')
     @matching = @teachers = []
     for w in words
-      @teachers = Teacher.find( :all, :conditions => ["name LIKE ?", "%#{w}%"] ) # find by name
-      Teacher.find( :all, :conditions => ["last_name LIKE ?", "%#{w}%"] ).each do |t| #find by last name
+      @teachers = Teacher.find( :all, :conditions => ["name LIKE ? AND active = ?", "%#{w}%", true] ) # find by name
+      Teacher.find( :all, :conditions => ["last_name LIKE ? AND active = ?", "%#{w}%", true] ).each do |t| #find by last name
         @teachers << t unless @teachers.include? t
       end
       Address.find( :all, :conditions => ["city LIKE ?", "%#{w}%"] ).each do |a| #find by address
-        @teachers << a.teacher unless @teachers.include? a.teacher
+        @teachers << a.teacher unless @teachers.include? a.teacher and not a.teacher.active
       end
-      @by_subjects = Teacher.all
+      @by_subjects = Teacher.find( :all, :conditions => ["active = ?", true] )
       @by_subjects.each do |t|  #find by subjects
         if t.subjects
           t.subjects.each do |s|

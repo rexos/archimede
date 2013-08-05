@@ -4,6 +4,21 @@
 
 <div class="row">
   <div class="five columns">
+    <% if current_user.active %>
+    <div class="alert success center">
+    <% else %>
+    <div class="alert warning center">
+    <% end %>
+      <h3>
+	Stato Account <br />
+	<% if current_user.active %>
+	ATTIVO <h5>Fino al : </h5>
+	<h3><%= current_user.deadline %></h3>
+	<% else %>
+	NON ATTIVO  <h5>Il suo profilo non sarà visualizzabile da parte di terzi fino all'attivazione da parte dell' amministratore</h5>
+	<% end %>
+      </h3>
+    </div>
   </div>
   <div class="seven columns">
 

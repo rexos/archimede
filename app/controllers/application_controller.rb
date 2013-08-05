@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
+  before_filter :set_http_return, :except => :visit
 
   helper_method :current_user
 
@@ -22,6 +23,10 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     redirect_to root_url unless current_user
+  end
+
+  def set_http_return
+    session[:return] = request.url
   end
 
 end

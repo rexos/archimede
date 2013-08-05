@@ -56,7 +56,7 @@ class TeachersController < ApplicationController
       cookies.permanent[:token] = @teacher.token
       redirect_to controller: :teachers, action: :complete_signup
     else
-      render :text => "User not correctly created"
+      render :text => "Teacher not correctly created"
     end
   end
 
@@ -67,6 +67,7 @@ class TeachersController < ApplicationController
   def activate
     @teacher = Teacher.find( params[:teacher_id] )
     @teacher.update_attributes( :active => true )
+    @teacher.update_attributes( :deadline => ( @teacher.updated_at + 1.year ) )
     render :text => "#{@teacher.name.capitalize} #{@teacher.last_name.capitalize} è stato attivato correttamente"
   end
 
@@ -82,6 +83,7 @@ class TeachersController < ApplicationController
 
   def visit
     @teacher = Teacher.find( params[:teacher_id] )
+    redirect_to session[:return] unless @teacher.active
   end
 
   private
