@@ -27,14 +27,17 @@
 <div class="navbar" gumby-fixed="top" id="nav3">
     <div class="row">
       <a class="toggle" gumby-trigger="#nav3 > .row > ul" href="#"><i class="icon-menu"></i></a>
-      <h2 class="four columns logo">
+      
+      <%= link_to :controller => :welcome, :action => :index do %>
+      <h1 id="logo-title" class="four columns logo">
         Archimede
-      </h2>
-      <ul class="eight columns">
-        <li><%= link_to :Home, :controller => :welcome, :action => :index %></li>
+      </h1>
+      <% end %>
+      <ul class="eight columns pull_right">
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
         <li><a href="#">Cerca lezioni</a></li>
         <li><%= link_to :Registrati, :controller => :teachers, :action => :signup %></li>
-        <li><a href="#">FAQ</a></li>
+        <li><a href=<%= "#{request.protocol}#{request.host_with_port}/static_pages/faq" %>>FAQ</a></li>
       </ul>
     </div>
   </div>

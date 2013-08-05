@@ -29,4 +29,5 @@ Archimede::Application.routes.draw do
 
   #static_pages
   get "static_pages/privacy"
+  get "static_pages/faq"
 end
