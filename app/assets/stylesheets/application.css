@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require gumby
+ *= require_self
+ *= require_tree .
+ */
+
+.center {
+	text-align: center;
+}
+
+.row-full {
+	width: 100%;
+	min-height: 60px;
+	display: block;
+	padding-top: 20px;
+	padding-bottom: 20px
+}
+
+.go_top {
+	position: fixed;
+	bottom: 2%;
+	right: 3%;
+}
+
+/* --------- FULL-ROW --------- */
+
+.menu-full {
+	background-color: #eee;
+}
+
+/* --------- OVERRIDE --------- */
+
+.btn {
+	cursor: pointer;
+}
+
+.drawer {
+	background-color: white;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+/* --------- STICKY FOOTER --------- */
+
+.wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -80px;
+}
+
+.footer, .push {
+	height: 50px;
+}
+
+/* fix checkbox and radio position when checked */
+.field .radio.checked i, 
+.field .checkbox.checked i {
+	line-height: 25px;
+	top: 1px;
+}
+
+input:focus,
+textarea:focus { 
+    outline: none;
+    border-color: #3085d6;
+    box-shadow: 0 0 5px #3085d6;
+    background: #000;
+}
