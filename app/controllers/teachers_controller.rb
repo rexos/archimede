@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class TeachersController < ApplicationController
+  before_filter :logged_in?, :only => :index
 
   def signup
   end
@@ -72,10 +73,16 @@ class TeachersController < ApplicationController
   def destroy
     @teacher = Teacher.find( params[:teacher_id] )
     if @teacher.destroy
-      render :text => "Teacher Destroyed"
+      flash[:notice] = "Docente #{@teacher.name.capitalize} #{@teacher.last_name.capitalize} Cancellato"
+      redirect_to :action => :index
     else
-      render :text => "Teacher Not Destroyed"
+      render :text => "Error Teacher Not Destroyed"
     end
+  end
+
+  def visit
+    @teacher = Teacher.find( params[:teacher_id] )
+    render :text => @teacher.email + " " + @teacher.name + " " + @teacher.last_name
   end
 
   private

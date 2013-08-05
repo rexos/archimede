@@ -20,6 +20,14 @@
 					<a>Entra</a>
 				</button>
 				</li>
+				<% if flash[:login_error] %>
+				<li>
+				  <div class="alert danger center">
+				    <%= flash[:login_error] %>
+				    <% flash.discard(:login_error) %>
+				    <% end %>
+				  </div>
+				</li>
 			</ul> 
 		</fieldset> 
 	</div> 

@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
         render :text => @user.name.capitalize
       end
     else
+      flash[:login_error] = "Email o Password Non Corretti"
       render :action => :login
     end
   end

@@ -1,5 +1,10 @@
 <div class="row"><h2>Lista docenti</h2></div>
-
+<% if flash[:notice] %>
+<div class="row alert success center">
+  <h4><%= flash[:notice] %></h4>
+  <% flash.discard( :notice ) %>
+</div>
+<% end %>
 <div class="row">
 <table class="striped rounded">
   <thead><tr>

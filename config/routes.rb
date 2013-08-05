@@ -20,6 +20,7 @@ Archimede::Application.routes.draw do
   get "students/show" => "students#show"
   post "students/search_teacher" => "students#search_teacher"
   post "students/update" => "students#update"
+  get "teachers/visit" => "teachers#visit"
 
   #sessions' routes
   get "login" => "sessions#login"

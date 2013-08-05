@@ -7,6 +7,7 @@
       <th>Luogo</th>
       <th>Email</th>
       <th>Materie</th>
+      <th>Pagina</th>
     </tr>
   </thead>
   <% @matching.each do |t| %>
@@ -21,6 +22,12 @@
 	<li><%= s.name %></li>
 	<% end %>
       </ul>
+    </td>
+    <td>
+      <%= link_to :controller => :teachers, :action => :visit, :teacher_id => t.id do %>
+      Visita
+      <i class="icon-forward"></i>
+      <% end %>
     </td>
   </tr>
   <% end %>

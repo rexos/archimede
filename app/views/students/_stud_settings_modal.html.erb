@@ -7,20 +7,22 @@
 	<%= form_for :student, :url => { :controller => :students, :action => :update } do |f| %>
 	<ul class="six columns">
 	  <li class="field">
-	    <%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
+	    <%= f.text_field :name, :placeholder => "Nome", :class => "text input", :value => current_user.name %>
 	  </li>
 	  <li class="field">
-	    <%= f.text_field :last_name, :placeholder => "Cognome", :class => "text input" %>
+	    <%= f.text_field :last_name, :placeholder => "Cognome", :class => "text input", :value => current_user.last_name %>
 	  <li class="field">
-	    <%= f.email_field :email, :placeholder => "Email", :class => "text input" %>
+	    <%= f.email_field :email, :placeholder => "Email", :class => "text input", :value => current_user.email %>
 	  </li>
 	  <button class="btn primary medium">
-	    <a>Salva</a>
+	    <a>
+	      <i class="icon-check"></i>
+	      Salva
+	    </a>
 	  </button>
+	  <p class="btn primary medium"><a href="#" class="switch" gumby-trigger="|#stud_settings"><i class="icon-cancel"></i>Chiudi</a></p>
 	</ul>
 	<% end %>
-	<div style="clear:both"></div>
-        <p class="btn primary medium"><a href="#" class="switch" gumby-trigger="|#stud_settings"><i class="icon-cancel"></i>Chiudi</a></p>
       </div>
     </div>
   </div>

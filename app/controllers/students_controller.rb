@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_filter :logged_in?, :only => :index
 
   def create
     @address = Address.new( :street => params[:student][:street], :cap => params[:student][:cap], :country => params[:student][:country], :number => params[:student][:number] )
@@ -35,7 +36,7 @@ class StudentsController < ApplicationController
         @teachers << a.teacher unless @teachers.include? a.teacher
       end
       @by_subjects = Teacher.all
-      @by_subjects.each do |t|
+      @by_subjects.each do |t|  #find by subjects
         if t.subjects
           t.subjects.each do |s|
             if s.name.include? w
