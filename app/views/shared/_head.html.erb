@@ -22,21 +22,24 @@
     <%= javascript_include_tag "modernizr" %>
     <%= csrf_meta_tags %>
   <body>
-    <div class="wrapper">
+    <div class="wrap">
 
-      <div class="row" style="text-align: right">
-      <% if current_user %>
-      <i class="icon-user"></i>
-      Benvenuto, 
-      <% if current_user.is_a? Student %>
-      <%= link_to :controller => :students, :action => :show do %>
-      <%= current_user.name.capitalize %>
-      <% end %> <!-- end link_to ( Student ) -->
-      <% else %>
-      <%= link_to :controller => :teachers, :action => :show do %>
-      <%= current_user.name.capitalize %>
-      <% end %> <!-- end link_to ( Teacher ) -->
-      <% end %> <!-- end second if -->
-      | <%= link_to :Esci, :controller => :sessions, :action => :destroy %>
-      <% end %> <!-- end first if -->
-      </div>
+<div class="navbar" gumby-fixed="top" id="nav3">
+    <div class="row">
+      <a class="toggle" gumby-trigger="#nav3 > .row > ul" href="#"><i class="icon-menu"></i></a>
+      <h2 class="four columns logo">
+        Archimede
+      </h2>
+      <ul class="eight columns">
+        <li><%= link_to :Home, :controller => :welcome, :action => :index %></li>
+        <li><a href="#">Cerca lezioni</a></li>
+        <li><%= link_to :Registrati, :controller => :teachers, :action => :signup %></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+      
+<%= render partial: "shared/menu_student" if current_user.is_a? Student %>
+<%= render partial: "shared/menu_teacher" if current_user.is_a? Teacher %>
+
+

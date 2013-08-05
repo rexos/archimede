@@ -13,7 +13,6 @@
  *= require_tree .
  */
 
-
 .center {
 	text-align: center;
 }
@@ -22,10 +21,8 @@
 	width: 100%;
 	min-height: 60px;
 	display: block;
-}
-
-.p20 {
-	padding: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px
 }
 
 .go_top {
@@ -34,6 +31,11 @@
 	right: 3%;
 }
 
+/* --------- FULL-ROW --------- */
+
+.menu-full {
+	background-color: #eee;
+}
 
 /* --------- OVERRIDE --------- */
 
@@ -48,13 +50,17 @@
 	box-shadow: none;
 }
 
+.navbar {
+	margin-bottom: 0px;
+}
+
 /* --------- STICKY FOOTER --------- */
 
-.wrapper {
+.wrap {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -60px;
+	margin: 0 auto -80px;
 }
 
 .footer, .push {
