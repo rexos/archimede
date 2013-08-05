@@ -26,6 +26,17 @@
 
       <div class="row" style="text-align: right">
       <% if current_user %>
-      Benvenuto, <%= current_user.name.capitalize %> | <%= link_to :Esci, :controller => :sessions, :action => :destroy %>
-      <% end %>
+      <i class="icon-user"></i>
+      Benvenuto, 
+      <% if current_user.is_a? Student %>
+      <%= link_to :controller => :students, :action => :show do %>
+      <%= current_user.name.capitalize %>
+      <% end %> <!-- end link_to ( Student ) -->
+      <% else %>
+      <%= link_to :controller => :teachers, :action => :show do %>
+      <%= current_user.name.capitalize %>
+      <% end %> <!-- end link_to ( Teacher ) -->
+      <% end %> <!-- end second if -->
+      | <%= link_to :Esci, :controller => :sessions, :action => :destroy %>
+      <% end %> <!-- end first if -->
       </div>

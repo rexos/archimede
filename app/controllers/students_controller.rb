@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_filter :logged_in?, :only => :index
+  before_filter :logged_in?, :except => :create
 
   def create
     @address = Address.new( :street => params[:student][:street], :cap => params[:student][:cap], :country => params[:student][:country], :number => params[:student][:number] )

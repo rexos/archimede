@@ -1,0 +1,14 @@
+<div class="row">
+  <h2>Docente : <%= @teacher.name.capitalize %> <%= @teacher.last_name.capitalize %></h2>
+</div>
+<div class="row">
+  <div class="four columns">
+    <h3>Contatti</h3>
+    <br />
+    <ul>
+      <li>Email : <strong><%= @teacher.email %></strong></li>
+      <li>Telefono : <strong><%= @teacher.phone %></strong></li>
+      <li>Skype: <strong><%= @teacher.skype %></strong></li>
+    </ul>
+  </div>
+</div>

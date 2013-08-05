@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
-  before_filter :logged_in?, :only => :show
 
   helper_method :current_user
 

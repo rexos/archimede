@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       if @user.is_a? Student
         redirect_to :controller => :students, :action => :show
       else
-        render :text => @user.name.capitalize
+        redirect_to :controller => :teachers, :action => :show
       end
     else
       flash[:login_error] = "Email o Password Non Corretti"

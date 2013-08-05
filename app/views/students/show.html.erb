@@ -10,7 +10,7 @@
       <li>Nome : <strong><%= current_user.name.capitalize %></strong></li>
       <li>Cognome : <strong><%= current_user.last_name.capitalize %></strong></li>
       <li>Email : <strong><%= current_user.email %></strong></li>
-      <li>Luogo : <strong><%= current_user.address.city.capitalize %></strong></li>
+      <li>Luogo : <strong><%= current_user.address.city.capitalize %>, <%= current_user.address.province.upcase  %> <%= current_user.address.country.capitalize %></strong></li>
       <li>
 	<button class="btn primary medium switch" gumby-trigger="#stud_settings" id="settings_btn">
 	  <a>

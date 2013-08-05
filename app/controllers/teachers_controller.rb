@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class TeachersController < ApplicationController
-  before_filter :logged_in?, :only => :index
+  before_filter :logged_in?, :except => [ :signup, :complete, :complete_signup, :payment, :create ]
 
   def signup
   end
@@ -82,7 +82,6 @@ class TeachersController < ApplicationController
 
   def visit
     @teacher = Teacher.find( params[:teacher_id] )
-    render :text => @teacher.email + " " + @teacher.name + " " + @teacher.last_name
   end
 
   private
