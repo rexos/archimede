@@ -7,36 +7,36 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Delete all
-Teacher.delete_all
-Student.delete_all
+#Teacher.delete_all
+#Student.delete_all
 Subject.delete_all
 
 # Add a teacher
-Teacher.create(
-:name => "Giovanni",
-:last_name => "Pedrotti",
-:password => "qwerty00",
-:password_confirmation => 'qwerty00',
-:email => "teacher@teacher.it",
-:phone => "3389878066",
-:skype => "pedro_bullo",
-:skype_bool => true,
-:cost => "20",
-:range => 30,
-:availability_days => "lunedi, martedi, mercoledi",
-:info => "Sono bello e marachello",
-:rating_bool => true,
-:time_bank_bool => true,
-:bill_bool => true)
+#Teacher.create(
+#:name => "Giovanni",
+#:last_name => "Pedrotti",
+#:password => "qwerty00",
+#:password_confirmation => 'qwerty00',
+#:email => "teacher@teacher.it",
+#:phone => "3389878066",
+#:skype => "pedro_bullo",
+#:skype_bool => true,
+#:cost => "20",
+#:range => 30,
+#:availability_days => "lunedi, martedi, mercoledi",
+#:info => "Sono bello e marachello",
+#:rating_bool => true,
+#:time_bank_bool => true,
+#:bill_bool => true)
 
 # Add a student
-Student.create(
-:name => "Michele",
-:last_name => "Rossi",
-:password => "qwerty00",
-:password_confirmation => "qwerty00",
-:email => "student@student.it",
-)
+#Student.create(
+#:name => "Michele",
+#:last_name => "Rossi",
+#:password => "qwerty00",
+#:password_confirmation => "qwerty00",
+#:email => "student@student.it",
+#)
 
 # Add subjects
 Subject.create(name: 'Italiano')
