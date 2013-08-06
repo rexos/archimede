@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 class TeachersController < ApplicationController
   before_filter :logged_in?, :except => [ :signup, :complete, :complete_signup, :payment, :create ]
+  before_filter :set_http_return, :except => :visit
+  before_filter :is_teacher?, :except => [ :signup, :complete, :complete_signup, :payment, :create, :visit ]
 
   def signup
     if current_user.is_a? Student

@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
-  before_filter :set_http_return, :except => :visit
 
   helper_method :current_user
+  helper_method :is_student?
+  helper_method :is_teacher?
 
   private
 
@@ -27,6 +28,14 @@ class ApplicationController < ActionController::Base
 
   def set_http_return
     session[:return] = request.url
+  end
+
+  def is_student?
+    redirect_to session[:return] unless current_user.is_a? Student
+  end
+
+  def is_teacher?
+    redirect_to session[:return] unless current_user.is_a? Teacher
   end
 
 end
