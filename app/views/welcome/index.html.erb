@@ -1,16 +1,51 @@
 <div class="row">
-	<h1>Benvenuto</h1>
-	<div class="xlarge btn primary">
-		<a href="signup">Registrati</a>
+	<div class="six columns">
+		<p class="center">
+			<div class="medium btn danger">
+			<%= link_to :Docenti, :controller => :teachers, :action => :index %>
+		</div>
+		<div class="medium btn success">
+			<%= link_to :Studenti, :controller => :students, :action => :index %>
+		</div>
+		</p>
 	</div>
-	<div class="xlarge btn default">
-		<a href="login">Entra</a>
+	<div class="six columns">
+		<h1>Benvenuto</h1><p>
+		Bacon ipsum dolor sit amet meatloaf chicken t-bone tri-tip fatback frankfurter. Shankle brisket chicken swine tongue sausage pastrami meatball ham pork chop filet mignon jowl short loin. Rump shankle kielbasa venison tongue fatback, capicola bresaola chicken sausage meatloaf.</p>
+		<h3>Inizia subito</h3>
+		<div class="xlarge btn primary">
+			<a href="signup">Registrati</a>
+		</div>
+		<div class="xlarge btn default">
+			<a href="login">Entra</a>
+		</div>
+		<br /><br />
 	</div>
-	<br /><br />
-	<div class="medium btn danger">
-	  <%= link_to :Docenti, :controller => :teachers, :action => :index %>
-	</div>
-	<div class="medium btn success">
-	  <%= link_to :Studenti, :controller => :students, :action => :index %>
+</div>
+
+<div class="row-full home-2">
+	<div class="row">
+		<div class="four columns center">
+			<h3>Veloci ed efficaci ricerche</h3>
+			<span class="circ-wrap shape">
+				<i class="icon-search"></i>
+			</span>
+			<p>Effettuare ricerche non è mai stato così facile! Con Archimede potrai cercare una materia scolastica, una zona geografica, o il nome di un professore con un solo click. 
+			</p>
+		</div>
+		<div class="four columns center">
+			<h3>Lezioni anche via skype</h3>
+			<span class="circ-wrap shape">
+				<i class="icon-skype"></i>
+			</span>
+			<p>Nel portale Archimede è possibile contattare docenti disposti ad effettuare delle videolezioni con la popolare applicazione Skype™.</p>
+		</div>
+		<div class="four columns center">
+			<h3>Facile pagamento paypal</h3>
+			<span class="circ-wrap shape">
+				<i class="icon-paypal"></i>
+			</span>
+			<p>Dopo una facile iscrizione il docente potrà attivare l'account effettuando un sicuro pagmento attraverso il proprio account PayPal™.</p>
+		</div>
 	</div>
 </div>

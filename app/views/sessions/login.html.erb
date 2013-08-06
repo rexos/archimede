@@ -1,6 +1,6 @@
 	<%= form_for :session, url: { :controller => :sessions, :action => :create } do |f| %>
 	<div class="row">
-		<fieldset class="six columns">
+		<fieldset class="six columns centered">
 			<legend><h2>Login</h2></legend>
 			<ul>
 				<li class="field">
@@ -19,6 +19,7 @@
 				<button class="medium primary btn">
 					<a>Entra</a>
 				</button>
+				oppure <%= link_to :registrati, :controller => :teachers, :action => :signup %>.
 				</li>
 				<% if flash[:login_error] %>
 				<li>
