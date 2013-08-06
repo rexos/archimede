@@ -40,7 +40,15 @@
 /* --------- FULL-ROW --------- */
 
 .menu-full {
-	background-color: #eee;
+	background-color: #ffffff;
+}
+
+.search-full {
+	background-color: #f0f0f0;
+}
+
+.search-full > .row > h3 {
+	color: #C4273C;
 }
 
 /* --------- OVERRIDE --------- */

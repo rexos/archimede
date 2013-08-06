@@ -1,10 +1,23 @@
-<div class="row">
-  <h2>Profilo Studente : <%= current_user.name.capitalize %></h2>
+
+<div class="row-full search-full">
+  <div class="row center">
+      <h3>Ricerca Docenti</h3>
+      <%= form_for :search, url: { :controller => :students, :action => :search_teacher }, :remote => true do |f| %>
+      <ul class="centered nine columns">
+        <li class="append field">
+        <%= f.text_field :text, :placeholder => "Testo Ricerca...", :class => "text input" %>
+        <button class="medium danger btn">
+          <a><i class="icon-search"></i>Cerca</a>
+        </button>
+        </li>
+      </ul>
+      <% end %>
+  </div>
 </div>
 
 <div class="row">
-  <div class="four columns">
-    <h3>Dati studente</h3>
+    <div class="four columns">
+    <h3>Dati personali</h3>
     <br />
     <ul>
       <li>Nome : <strong><%= current_user.name.capitalize %></strong></li>
@@ -12,30 +25,21 @@
       <li>Email : <strong><%= current_user.email %></strong></li>
       <li>Luogo : <strong><%= current_user.address.city.capitalize %>, <%= current_user.address.province.upcase  %> <%= current_user.address.country.capitalize %></strong></li>
       <li>
-	<button class="btn primary medium switch" gumby-trigger="#stud_settings" id="settings_btn">
-	  <a>
-	    <i class="icon-tools"></i>
-	    Modifica Dati
-	  </a>
-	</button>
+  <button class="btn primary medium switch" gumby-trigger="#stud_settings" id="settings_btn">
+    <a>
+      <i class="icon-tools"></i>
+      Modifica Dati
+    </a>
+  </button>
       </li>
     </ul>
   </div>
 
-  <div class="eight columns center">
-    <h3>Ricerca Docenti</h3>
-    <%= form_for :search, url: { :controller => :students, :action => :search_teacher }, :remote => true do |f| %>
-    <ul>
-        <li class="append field">
-        <%= f.text_field :text, :placeholder => "Testo Ricerca...", :class => "text input" %>
-        <button class="medium primary btn">
-          <a><i class="icon-search"></i>Cerca</a>
-        </button>
-      </li>
-    </ul>
-    <% end %>
+  <div class="eight columns center">  
     <div id="results">
     </div>
   </div>
+
 </div>
+  
 <%= render :partial => "stud_settings_modal" %>

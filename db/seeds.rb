@@ -11,32 +11,43 @@
 #Student.delete_all
 Subject.delete_all
 
+=begin
 # Add a teacher
-#Teacher.create(
-#:name => "Giovanni",
-#:last_name => "Pedrotti",
-#:password => "qwerty00",
-#:password_confirmation => 'qwerty00',
-#:email => "teacher@teacher.it",
-#:phone => "3389878066",
-#:skype => "pedro_bullo",
-#:skype_bool => true,
-#:cost => "20",
-#:range => 30,
-#:availability_days => "lunedi, martedi, mercoledi",
-#:info => "Sono bello e marachello",
-#:rating_bool => true,
-#:time_bank_bool => true,
-#:bill_bool => true)
+t1 = Teacher.create(
+:name => "Giovanni",
+:last_name => "Pedrotti",
+:password => "qwerty00",
+:password_confirmation => 'qwerty00',
+:email => "teacher@teacher.it",
+:phone => "3389878066",
+:skype => "pedro_bullo",
+:skype_bool => true,
+:cost => "20",
+:range => 30,
+:availability_days => "lunedi, martedi, mercoledi",
+:info => "Sono bello e marachello",
+:rating_bool => true,
+:time_bank_bool => true,
+:bill_bool => false)
+
+# Addresses
+a1 = Address.create(:street => "Via Bernardo Clesio", :number => 5, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
+a2 = Address.create(:street => "Via Giovanni Segantini", :number => 16, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
+a3 = Address.create(:street => "Via Antonio Rosmini", :number => 1, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
+a4 = Address.create(:street => "Via S. Croce", :number => 15, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
+a5 = Address.create(:street => "Via Sommarive", :number => 5, :cap => 38123, :city => "Povo", :province => "TN", :country => "Italia")
+
+t1.address = a1
 
 # Add a student
-#Student.create(
-#:name => "Michele",
-#:last_name => "Rossi",
-#:password => "qwerty00",
-#:password_confirmation => "qwerty00",
-#:email => "student@student.it",
-#)
+s1 = Student.create(
+:name => "Michele",
+:last_name => "Rossi",
+:password => "qwerty00",
+:password_confirmation => "qwerty00",
+:email => "student@student.it",
+)
+=end
 
 # Add subjects
 Subject.create(name: 'Italiano')
@@ -52,4 +63,3 @@ Subject.create(name: 'Lingua Inglese')
 Subject.create(name: 'Lingua Tedesca')
 Subject.create(name: 'Lingua Spagnola')
 Subject.create(name: 'Lingua Francese')
-
