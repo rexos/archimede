@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20130731162457) do
     t.string   "city"
     t.string   "province"
     t.string   "country"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "student_id"
     t.integer  "teacher_id"
     t.integer  "bill_id"
