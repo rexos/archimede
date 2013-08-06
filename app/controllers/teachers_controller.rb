@@ -3,6 +3,12 @@ class TeachersController < ApplicationController
   before_filter :logged_in?, :except => [ :signup, :complete, :complete_signup, :payment, :create ]
 
   def signup
+    if current_user.is_a? Student
+      redirect_to controller: :students, action: :show
+    elsif current_user.is_a? Teacher
+      redirect_to controller: :teachers, action: :show
+    else
+    end  
   end
 
   def complete_signup
