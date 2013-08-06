@@ -37,6 +37,12 @@
 	right: 3%;
 }
 
+.ruota180 {
+	transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+
 /* --------- FULL-ROW --------- */
 
 .menu-full {
@@ -47,7 +53,8 @@
 	background-color: #f0f0f0;
 }
 
-.search-full > .row > h3 {
+.search-full > .row > h3,
+.search-full > .row > h2 {
 	color: #C4273C;
 }
 
@@ -56,7 +63,7 @@
 .btn {	cursor: pointer; }
 
 .drawer {
-	background-color: white;
+	background-color: transparent;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;

@@ -1,7 +1,9 @@
-
 <div class="row-full search-full">
   <div class="row center">
-      <h3>Ricerca Docenti</h3>
+      <h2>Ricerca Docenti</h2>
+      <h3>Come funziona?</h3>
+      <p>È semplicissimo cercare sul portale Archimede! <a href="#"  class="toggle" gumby-trigger="#how-to-search">Scoprilo subito</a>.
+      </p>
       <%= form_for :search, url: { :controller => :students, :action => :search_teacher }, :remote => true do |f| %>
       <ul class="centered nine columns">
         <li class="append field">
@@ -12,6 +14,32 @@
         </li>
       </ul>
       <% end %>
+
+      <div class="drawer" id="how-to-search">
+        <table>
+          <tr>
+            <td><span class="primary label">Materia</span></td>
+            <td><i class="icon-quote ruota180"></i>Italiano<i class="icon-quote"></i></td>
+            <td>La ricerca mostrerà tutti i docenti di <strong>Italiano</strong></td>
+          </tr>
+          <tr>
+            <td><span class="primary label">Materia</span> + <span class="secondary label">Città</span></td>
+            <td><i class="icon-quote ruota180"></i>Italiano Cles<i class="icon-quote"></i></td>
+            <td>La ricerca mostrerà tutti i docenti di <strong>Italiano</strong> nelle vicinanze di <strong>Cles</strong></td>
+          </tr>
+          <tr>
+            <td><span class="danger label">Docente</span></td>
+            <td><i class="icon-quote ruota180"></i>Mario Rossi<i class="icon-quote"></i></td>
+            <td>La ricerca mostrerà i docenti che si chiamano <strong>Mario Rossi</strong></td>
+          </tr>
+          <tr>
+            <td><span class="secondary label">Città</span></td>
+            <td><i class="icon-quote ruota180"></i>Trento<i class="icon-quote"></i></td>
+            <td>La ricerca mostrerà i docenti che abitano a <strong>Trento</strong></td>
+          </tr>
+        </table>
+      </div>
+
   </div>
 </div>
 
