@@ -37,6 +37,12 @@
 	right: 3%;
 }
 
+.ruota180 {
+transform: rotate(180deg);
+-ms-transform: rotate(180deg);
+-webkit-transform: rotate(180deg);
+}
+
 /* --------- FULL-ROW --------- */
 
 .menu-full {
