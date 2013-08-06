@@ -27,32 +27,69 @@ class StudentsController < ApplicationController
 
   #search teacher method
   def search_teacher
-    words = params[:search][:text].split(' ')
+    words = sanitize_search_text( params[:search][:text] )
     @matching = @teachers = []
-    for w in words
-      @teachers = Teacher.find( :all, :conditions => ["name LIKE ? AND active = ?", "%#{w}%", true] ) # find by name
-      Teacher.find( :all, :conditions => ["last_name LIKE ? AND active = ?", "%#{w}%", true] ).each do |t| #find by last name
-        @teachers << t unless @teachers.include? t
-      end
-      Address.find( :all, :conditions => ["city LIKE ?", "%#{w}%"] ).each do |a| #find by address
+    if words.size > 0
+      @teachers = Teacher.find( :all, :conditions => ["( name LIKE ? OR last_name LIKE ? ) AND active = ?", "%#{words[0]}%", "%#{words[0]}%", true] )
+      Address.find( :all, :conditions => ["city LIKE ?", "%#{words[0]}%"] ).each do |a|
         @teachers << a.teacher unless @teachers.include? a.teacher and not a.teacher.active
       end
-      @by_subjects = Teacher.find( :all, :conditions => ["active = ?", true] )
-      @by_subjects.each do |t|  #find by subjects
-        if t.subjects
+      @by_subject = Teacher.find( :all, :conditions => ["active = ?", true] )
+      @by_subject.each do |t|
+        unless t.subjects.empty?
           t.subjects.each do |s|
-            if s.name.include? w
-            @teachers << t unless @teachers.include? t
+            if s.name.include? words[0]
+              @teachers << t unless @teachers.include? t
             end
           end
         end
       end
-      if @teachers
-        @teachers.each do |t|
-          @matching << t unless @matching.include? t
+      @matching = @teachers
+      i = 1
+      while i < words.size
+        @teachers = Teacher.find( :all, :conditions => ["( name LIKE ? OR last_name LIKE ? ) AND active = ?", "%#{words[i]}%", "%#{words[i]}%", true] )
+        Address.find( :all, :conditions => ["city LIKE ?", "%#{words[i]}%"] ).each do |a|
+          @teachers << a.teacher if a.teacher and !@teachers.include? a.teacher and a.teacher.active
         end
+        @by_subject= Teacher.find( :all, :conditions => ["active = ?", true] )
+        @by_subject.each do|t|
+          if t.subjects
+            t.subjects.each do |s|
+              if s.name.include? words[i]
+                @teachers << t unless @teachers.include? t
+              end
+            end
+          end
+        end
+        @matching = @matching & @teachers
       end
     end
+
+
+    #for w in words
+    #  @teachers = Teacher.find( :all, :conditions => ["name LIKE ? AND active = ?", "%#{w}%", true] ) # find by name
+    #  Teacher.find( :all, :conditions => ["last_name LIKE ? AND active = ?", "%#{w}%", true] ).each do |t| #find by last name
+    #    @teachers << t unless @teachers.include? t
+    #  end
+    #  Address.find( :all, :conditions => ["city LIKE ?", "%#{w}%"] ).each do |a| #find by address
+    #    @teachers << a.teacher unless @teachers.include? a.teacher and not a.teacher.active
+    #  end
+    #  @by_subjects = Teacher.find( :all, :conditions => ["active = ?", true] )
+    #  @by_subjects.each do |t|  #find by subjects
+    #    if t.subjects
+    #      t.subjects.each do |s|
+    #        if s.name.include? w
+    #        @teachers << t unless @teachers.include? t
+    #        end
+    #      end
+    #    end
+    #  end
+    #  if @teachers
+    #    @teachers.each do |t|
+    #      @matching << t unless @matching.include? t
+    #    end
+    #  end
+    #end
     respond_to do |format|
       format.js { render :action => :matching_teachers }
     end
