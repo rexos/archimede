@@ -45,8 +45,21 @@
 
 /* --------- FULL-ROW --------- */
 
-.menu-full {
-	background-color: #ffffff;
+.menu-full,
+.top-full {
+	background-color: rgb(22, 160, 133);
+	color: white;
+}
+
+.top-full > .row > h2 {
+	color: white;
+}
+
+.menu-full > .row > a {
+	color: black;
+}
+.menu-full > .row > a:hover {
+	border-bottom:1px dotted; 
 }
 
 .search-full,
@@ -54,9 +67,30 @@
 	background-color: #f0f0f0;
 }
 
+.foot-full {
+	background-color: #2f2f2f;
+}
+
+.foot-full > .row > h3 {
+	color: white;
+}
+
 /* --------- OVERRIDE --------- */
 
+a {
+	color: #ca3838;
+}
+
 .btn {	cursor: pointer; }
+
+.btn.primary {
+	background: rgba(20, 144, 120, 1);
+	border: 1px solid rgba(20, 144, 120, 1);
+}
+.btn.primary:hover {
+	background: rgb(77, 184, 163);
+	border: 1px solid rgba(20, 144, 120, 1);
+}
 
 .drawer {
 	background-color: transparent;
@@ -97,7 +131,22 @@ textarea:focus {
     background: #000;
 }
 
-/* */
+/* FOOTER */
+.foot-icon {
+	font-size: 40px;
+	margin-right: 20px;
+	-webkit-transition:color 1s ease-in;  
+    -moz-transition:color 1s ease-in;  
+    -o-transition:color 1s ease-in;  
+    transition:color 1s ease-in;  
+}
+
+.foot-icon:hover {
+	color: white;
+	border-bottom: 5px solid rgb(22, 160, 133);
+}
+
+/* SPECIAL ICON */
 .circ-wrap {
 width: 90px;
 height: 90px;

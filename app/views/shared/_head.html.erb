@@ -31,7 +31,7 @@
       
       <%= link_to :controller => :welcome, :action => :index do %>
       <h1 id="logo-title" class="four columns logo">
-        Archimede
+        <span style="color: #ca3838">Arc</span>him<span style="color: rgb(22, 160, 133)">ede</span>
       </h1>
       <% end %>
       <ul class="eight columns pull_right">
@@ -39,6 +39,7 @@
         <li><a href="#">Cerca lezioni</a></li>
         <li><%= link_to :Registrati, :controller => :teachers, :action => :signup %></li>
         <li><a href=<%= "#{request.protocol}#{request.host_with_port}/static_pages/faq" %>>FAQ</a></li>
+        <li><a href="#" class="skip" gumby-goto="#contacts" gumby-duration="2000" gumby-offset="-60">Contatti</a></li>
       </ul>
     </div>
   </div>
