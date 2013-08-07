@@ -45,22 +45,52 @@
 
 /* --------- FULL-ROW --------- */
 
-.menu-full {
-	background-color: #ffffff;
+.menu-full,
+.top-full {
+	background-color: rgb(22, 160, 133);
+	color: white;
 }
 
-.search-full {
+.top-full > .row > h2 {
+	color: white;
+}
+
+.menu-full > .row > a {
+	color: black;
+}
+.menu-full > .row > a:hover {
+	border-bottom:1px dotted; 
+}
+
+.search-full,
+.home-2 {
 	background-color: #f0f0f0;
 }
 
-.search-full > .row > h3,
-.search-full > .row > h2 {
-	color: #C4273C;
+.foot-full {
+	background-color: #2f2f2f;
+}
+
+.foot-full > .row > h3 {
+	color: white;
 }
 
 /* --------- OVERRIDE --------- */
 
+a {
+	color: #ca3838;
+}
+
 .btn {	cursor: pointer; }
+
+.btn.primary {
+	background: rgba(20, 144, 120, 1);
+	border: 1px solid rgba(20, 144, 120, 1);
+}
+.btn.primary:hover {
+	background: rgb(77, 184, 163);
+	border: 1px solid rgba(20, 144, 120, 1);
+}
 
 .drawer {
 	background-color: transparent;
@@ -99,4 +129,77 @@ textarea:focus {
     border-color: #3085d6;
     box-shadow: 0 0 5px #3085d6;
     background: #000;
+}
+
+/* FOOTER */
+.foot-icon {
+	font-size: 40px;
+	margin-right: 20px;
+	-webkit-transition:color 1s ease-in;  
+    -moz-transition:color 1s ease-in;  
+    -o-transition:color 1s ease-in;  
+    transition:color 1s ease-in;  
+}
+
+.foot-icon:hover {
+	color: white;
+	border-bottom: 5px solid rgb(22, 160, 133);
+}
+
+/* --------- SPECIAL ICON --------- */
+.circ-wrap {
+width: 90px;
+height: 90px;
+margin: 0 auto;
+line-height: 60px;
+text-align: center;
+/*border: 1px solid rgba(50,50,50,.9);*/
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+padding-top: 15px;
+margin-bottom:10px;
+display:inline-block;
+font-size:52px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+overflow:hidden;
+color:#fff;
+-webkit-box-shadow:  0 5px 0 0 rgba(20, 144, 120, 1);
+-moz-box-shadow:  0 5px 0 0 rgba(20, 144, 120, 1);
+box-shadow:  0 5px 0 0 rgba(20, 144, 120, 1);	
+}
+.shape {
+   background-color: rgb(22, 160, 133);
+   text-shadow: rgb(20, 144, 120) 1px 1px,
+    rgb(20, 144, 120) 2px 2px,
+    rgb(20, 144, 120) 3px 3px,
+    rgb(20, 144, 120) 4px 4px,
+    rgb(20, 144, 120) 5px 5px,
+    rgb(20, 144, 120) 6px 6px,
+    rgb(20, 144, 120) 7px 7px,
+    rgb(20, 144, 120) 8px 8px,
+    rgb(20, 144, 120) 9px 9px,
+    rgb(20, 144, 120) 10px 10px,
+    rgb(20, 144, 120) 11px 11px,
+    rgb(20, 144, 120) 12px 12px,
+    rgb(20, 144, 120) 13px 13px,
+    rgb(20, 145, 121) 14px 14px,
+    rgb(20, 146, 122) 15px 15px,
+    rgb(20, 147, 122) 16px 16px,
+    rgb(20, 148, 123) 17px 17px,
+    rgb(20, 149, 124) 18px 18px,
+    rgb(20, 150, 125) 19px 19px,
+    rgb(20, 151, 125) 20px 20px,
+    rgb(21, 152, 126) 21px 21px,
+    rgb(21, 152, 127) 22px 22px,
+    rgb(21, 153, 127) 23px 23px,
+    rgb(21, 154, 128) 24px 24px,
+    rgb(21, 155, 129) 25px 25px,
+    rgb(21, 156, 130) 26px 26px,
+    rgb(21, 157, 130) 27px 27px,
+    rgb(21, 158, 131) 28px 28px,
+    rgb(21, 159, 132) 29px 29px,
+    rgb(22, 160, 133) 30px 30px;
 }
