@@ -123,12 +123,19 @@ a {
 	top: 1px;
 }
 
-input:focus,
+.input,
+textarea {
+	outline: none;
+	-webkit-transition:border 1s ease-in;  
+    -moz-transition:border 1s ease-in;  
+    -o-transition:border 1s ease-in;  
+    transition:border 1s ease-in;  
+}
+
+.input:focus,
 textarea:focus { 
     outline: none;
-    border-color: #3085d6;
-    box-shadow: 0 0 5px #3085d6;
-    background: #000;
+    border: 1px solid rgb(22, 160, 133);
 }
 
 /* FOOTER */

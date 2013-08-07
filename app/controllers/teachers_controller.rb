@@ -14,6 +14,12 @@ class TeachersController < ApplicationController
   end
 
   def complete_signup
+    if current_user.is_a? Student
+      redirect_to controller: :students, action: :show
+    elsif current_user.is_a? Teacher
+      redirect_to controller: :teachers, action: :show
+    else
+    end  
   end
 
   def payment

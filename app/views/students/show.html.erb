@@ -2,12 +2,12 @@
   <div class="row center">
       <h2>Ricerca Docenti</h2>
       <h3>Come funziona?</h3>
-      <p>È semplicissimo cercare sul portale Archimede! <a href="#"  class="toggle" gumby-trigger="#how-to-search">Scoprilo subito</a>.
+      <p>È semplicissimo cercare sul portale Archimede! <a href="#"  class="toggle" gumby-trigger="#how-to-search"><span style="font-size: 20px">Scoprilo subito</span></a>.
       </p>
       <%= form_for :search, url: { :controller => :students, :action => :search_teacher }, :remote => true do |f| %>
       <ul class="centered nine columns">
         <li class="append field">
-        <%= f.text_field :text, :placeholder => "Testo Ricerca...", :class => "text input" %>
+        <%= f.text_field :text, :placeholder => "Testo ricerca, esempio: Italiano Trento", :class => "text input" %>
         <button class="medium danger btn">
           <a><i class="icon-search"></i>Cerca</a>
         </button>
@@ -46,20 +46,32 @@
 <div class="row">
     <div class="four columns">
     <h3>Dati personali</h3>
-    <br />
-    <ul>
-      <li>Nome : <strong><%= current_user.name.capitalize %></strong></li>
-      <li>Cognome : <strong><%= current_user.last_name.capitalize %></strong></li>
-      <li>Email : <strong><%= current_user.email %></strong></li>
-      <li>Luogo : <strong><%= current_user.address.city.capitalize %>, <%= current_user.address.province.upcase  %> <%= current_user.address.country.capitalize %></strong></li>
-      <li>
-  <button class="btn primary medium switch" gumby-trigger="#stud_settings" id="settings_btn">
-    <a>
-      <i class="icon-tools"></i>Modifica Dati
-    </a>
-  </button>
-      </li>
-    </ul>
+    <table>
+      <tr>
+        <td>Nome</td>     
+        <td><%= current_user.name %></td>
+      </tr>
+      <tr>
+        <td>Cognome</td>     
+        <td><%= current_user.last_name %></td>
+      </tr>
+      <tr>
+        <td>Indirizzo</td>     
+        <td><%= "#{current_user.address.street} #{current_user.address.number}"  %><br />
+            <%= "#{current_user.address.cap} #{current_user.address.city} #{current_user.address.province}" %><br />
+            <%= "#{current_user.address.country}" %>
+        </td>
+      </tr>
+      <tr>
+        <td><i class="icon-mail"></i></td>     
+        <td><%= current_user.email %></td>
+      </tr>
+    </table>
+    <button class="btn primary medium switch" gumby-trigger="#stud_settings" id="settings_btn">
+      <a>
+        <i class="icon-tools"></i>Modifica Dati
+     </a>
+    </button>
   </div>
 
   <div class="eight columns">  
