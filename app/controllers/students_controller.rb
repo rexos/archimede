@@ -25,6 +25,19 @@ class StudentsController < ApplicationController
   def show
   end
 
+  def change_password
+    if current_user.authenticate( params[:student][:old_password] )
+      params[:student].delete( :old_password )
+      if current_user.update_attributes( params[:student] )
+        render :text => "Ok password Changed"
+      else
+        render :text => "Password not changed 4 ever"
+      end
+    else
+      render :text => "Password not changed"
+    end
+  end
+
   #search teacher method
   def search_teacher
     @matching = @teachers = []
@@ -39,7 +52,7 @@ class StudentsController < ApplicationController
       Teacher.find( :all, :conditions => ["active = ?", true] ).each do |t|
         unless t.subjects.empty?
           t.subjects.each do |s|
-            @teachers << t if s.name.include? words[0] and not @teachers.include? t
+            @teachers << t if s.name.downcase.include? words[0].downcase and not @teachers.include? t
           end
         end
       end
@@ -59,7 +72,7 @@ class StudentsController < ApplicationController
         Teacher.find( :all, :conditions => ["active = ?", true] ).each do |t|
           unless t.subjects.empty?
             t.subjects.each do |s|
-              @teachers << t if s.name.include? word and not @teachers.include? t
+              @teachers << t if s.name.downcase.include? word.downcase and not @teachers.include? t
             end
           end
         end
@@ -82,7 +95,7 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @new_address = { :street => params[:student][:street], :number => params[:student][:number], :cap => params[:student][:cap], :country => params[:student][:country] } 
+    @new_address = { :street => params[:student][:street], :number => params[:student][:number], :cap => params[:student][:cap], :country => params[:student][:country], :city => params[:student][:city], :province => params[:student][:province] }
     current_user.address.update_attributes( @new_address )
 
     sanitize_params :student

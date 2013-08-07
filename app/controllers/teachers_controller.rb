@@ -10,7 +10,7 @@ class TeachersController < ApplicationController
     elsif current_user.is_a? Teacher
       redirect_to controller: :teachers, action: :show
     else
-    end  
+    end
   end
 
   def complete_signup
@@ -19,7 +19,7 @@ class TeachersController < ApplicationController
     elsif current_user.is_a? Teacher
       redirect_to controller: :teachers, action: :show
     else
-    end  
+    end
   end
 
   def payment
