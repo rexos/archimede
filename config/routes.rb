@@ -13,6 +13,7 @@ Archimede::Application.routes.draw do
   get "teachers/show" => "teachers#show"
   get "teachers/activate" => "teachers#activate"
   get "payment" => "teachers#payment"
+  post "teachers/change_password" => "teachers#change_password"
 
   #students' routes
   post "students/create" => "students#create"

@@ -1,5 +1,21 @@
 module ApplicationHelper
 
+  def change_psw
+    if current_user.authenticate( params[:student][:old_password] )
+      params[:student].delete( :old_password )
+      if current_user.update_attributes( params[:student] )
+        flash[:change_psw_notice] = "Password Aggiornata"
+        render :action => :show
+      else
+        flash[:change_psw_notice] = "Le Due Password Non Coincidono"
+        render :action => :show
+      end
+    else
+      flash[:change_psw_notice] = "Password Vecchia Errata"
+      render :action => :show
+    end
+  end
+
   def sanitize_params( hash )
     params[hash].delete( :street )
     params[hash].delete( :cap )
