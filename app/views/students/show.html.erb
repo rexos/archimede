@@ -72,6 +72,14 @@
         <i class="icon-tools"></i>Modifica Dati
      </a>
     </button>
+    <%= form_for :student, :url => { :controller => :students, :action => :change_password } do |f| %>
+    <%= f.password_field :old_password, :placeholder => "Vecchia Password", :class => "input field" %>
+    <%= f.password_field :password, :placeholder => "Nuova Password", :class => "input field" %>
+    <%= f.password_field :password_confirmation, :placeholder => "Conferma Nuova Password", :class => "input field" %>
+    <button class="btn primary small1">
+      <a><i class="icon-check"></i> Conferma</a>
+    </button>
+    <% end %>
   </div>
 
   <div class="eight columns">  
