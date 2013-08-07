@@ -27,30 +27,43 @@ class StudentsController < ApplicationController
 
   #search teacher method
   def search_teacher
-    words = params[:search][:text].split(' ')
     @matching = @teachers = []
-    for w in words
-      @teachers = Teacher.find( :all, :conditions => ["name LIKE ? AND active = ?", "%#{w}%", true] ) # find by name
-      Teacher.find( :all, :conditions => ["last_name LIKE ? AND active = ?", "%#{w}%", true] ).each do |t| #find by last name
-        @teachers << t unless @teachers.include? t
+    unless params[:search][:text].eql? ""
+      words = params[:search][:text].split(' ')
+      @teachers = Teacher.find( :all, :conditions => ["( name LIKE ?  OR last_name LIKE ? ) AND active = ?", "%#{words[0]}%", "%#{words[0]}%", true] )
+      Address.find( :all, :conditions => ["city LIKE ?", "%#{words[0]}%"] ).each do |a|
+        if a.teacher
+          @teachers << a.teacher if a.teacher.active and not @teachers.include? a.teacher
+        end
       end
-      Address.find( :all, :conditions => ["city LIKE ?", "%#{w}%"] ).each do |a| #find by address
-        @teachers << a.teacher unless @teachers.include? a.teacher and not a.teacher.active
-      end
-      @by_subjects = Teacher.find( :all, :conditions => ["active = ?", true] )
-      @by_subjects.each do |t|  #find by subjects
-        if t.subjects
+      Teacher.find( :all, :conditions => ["active = ?", true] ).each do |t|
+        unless t.subjects.empty?
           t.subjects.each do |s|
-            if s.name.include? w
-            @teachers << t unless @teachers.include? t
-            end
+            @teachers << t if s.name.include? words[0] and not @teachers.include? t
           end
         end
       end
-      if @teachers
-        @teachers.each do |t|
-          @matching << t unless @matching.include? t
+      @matching = @teachers
+      words.delete_at(0)
+      for word in words
+        @teachers = Teacher.find( :all, :conditions => ["( name LIKE ?  OR last_name LIKE ? ) AND active = ?", "%#{word}%", "%#{word}%", true] )
+        @matching = @matching & @teachers unless @teachers.empty?
+        @teachers = []
+        Address.find( :all, :conditions => ["city LIKE ?", "%#{word}%"] ).each do |a|
+          if a.teacher
+            @teachers << a.teacher if a.teacher.active and not @teachers.include? a.teacher
+          end
         end
+        @matching = @matching & @teachers unless @teachers.empty?
+        @teachers = []
+        Teacher.find( :all, :conditions => ["active = ?", true] ).each do |t|
+          unless t.subjects.empty?
+            t.subjects.each do |s|
+              @teachers << t if s.name.include? word and not @teachers.include? t
+            end
+          end
+        end
+        @matching = @matching & @teachers unless @teachers.empty?
       end
     end
     respond_to do |format|
