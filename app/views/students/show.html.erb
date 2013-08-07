@@ -72,16 +72,40 @@
         <i class="icon-tools"></i>Modifica Dati
      </a>
     </button>
-    <%= form_for :student, :url => { :controller => :students, :action => :change_password } do |f| %>
-    <%= f.password_field :old_password, :placeholder => "Vecchia Password", :class => "input field" %>
-    <%= f.password_field :password, :placeholder => "Nuova Password", :class => "input field" %>
-    <%= f.password_field :password_confirmation, :placeholder => "Conferma Nuova Password", :class => "input field" %>
-    <button class="btn primary small1">
-      <a><i class="icon-check"></i> Conferma</a>
-    </button>
-    <% end %>
-  </div>
 
+    <!-- cambio password -->
+    <button class="btn warning small">
+      <a href="#" class="toggle active" gumby-trigger="#change_psw">Cambia Password</a>
+    </button>
+    <% if flash[:change_psw_notice] %>
+    <div class="alert danger center">
+      <%= flash[:change_psw_notice] %>
+    </div>
+    <% flash.discard( :change_psw_notice ) %>
+    <% end %> <!-- end if -->
+
+    <div class="drawer" id="change_psw">
+      <ul>
+	<li class="field">
+	  <%= form_for :student, :url => { :controller => :students, :action => :change_password } do |f| %>
+	</li>
+	<li class="field">
+	  <%= f.password_field :old_password, :placeholder => "Vecchia Password", :class => "input field" %>
+	</li>
+	<li class="field">
+	  <%= f.password_field :password, :placeholder => "Nuova Password", :class => "input field" %>
+	</li>
+	<li class="field">
+	  <%= f.password_field :password_confirmation, :placeholder => "Conferma Nuova Password", :class => "input field" %>
+	</li>
+	<button class="btn default medium">
+	  <a><i class="icon-check"></i> Conferma</a>
+	</button>
+	<% end %> <!-- end form -->
+      </ul>
+    </div>
+  </div>
+    <!-- fine cambio password -->
   <div class="eight columns">  
     <div id="results">
     </div>
