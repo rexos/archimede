@@ -27,6 +27,10 @@ class TeachersController < ApplicationController
     render :text => "Payment done"
   end
 
+  def change_password
+    change_psw
+  end
+
   def complete
     @sub1 = nil
     @sub2 = nil

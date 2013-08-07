@@ -16,6 +16,39 @@
 	<% end %>
       </h3>
     </div>
+
+    <button class="btn warning small">
+      <a href="#" class="toggle active" gumby-trigger="#change_psw">Cambia Password</a>
+    </button>
+    <% if flash[:change_psw_notice] %>
+    <div class="alert danger center">
+      <%= flash[:change_psw_notice] %>
+    </div>
+    <% flash.discard( :change_psw_notice ) %>
+    <% end %> <!-- end if -->
+
+    <div class="drawer" id="change_psw">
+      <ul>
+	<li class="field">
+	  <%= form_for :student, :url => { :controller => :teachers, :action => :change_password } do |f| %>
+	</li>
+	<li class="field">
+	  <%= f.password_field :old_password, :placeholder => "Vecchia Password", :class => "input field" %>
+	</li>
+	<li class="field">
+	  <%= f.password_field :password, :placeholder => "Nuova Password", :class => "input field" %>
+	</li>
+	<li class="field">
+	  <%= f.password_field :password_confirmation, :placeholder => "Conferma Nuova Password", :class => "input field" %>
+	</li>
+	<button class="btn default medium">
+	  <a><i class="icon-check"></i> Conferma</a>
+	</button>
+	<% end %> <!-- end form -->
+      </ul>
+    </div>
+  
+
   </div>
   <div class="eight columns">
     <h3>Informazioni Personali</h3>
