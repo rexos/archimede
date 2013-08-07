@@ -5,21 +5,21 @@ class TeachersController < ApplicationController
   before_filter :is_teacher?, :except => [ :signup, :complete, :complete_signup, :payment, :create, :visit ]
 
   def signup
-    if current_user.is_a? Student
-      redirect_to controller: :students, action: :show
-    elsif current_user.is_a? Teacher
-      redirect_to controller: :teachers, action: :show
-    else
-    end  
+    #if current_user.is_a? Student
+    #  redirect_to controller: :students, action: :show
+    #elsif current_user.is_a? Teacher
+    #  redirect_to controller: :teachers, action: :show
+    #else
+    #end
   end
 
   def complete_signup
-    if current_user.is_a? Student
-      redirect_to controller: :students, action: :show
-    elsif current_user.is_a? Teacher
-      redirect_to controller: :teachers, action: :show
-    else
-    end  
+    #if current_user.is_a? Student
+    #  redirect_to controller: :students, action: :show
+    #elsif current_user.is_a? Teacher
+    #  redirect_to controller: :teachers, action: :show
+    #else
+    #end
   end
 
   def payment
@@ -44,8 +44,9 @@ class TeachersController < ApplicationController
     sanitize_from_subjects
     @teacher.update_attributes(params[:teacher])
 
-    render :text => @teacher.subjects.all.map { |s| [s.id, s.name] }
+    #render :text => @teacher.subjects.all.map { |s| [s.id, s.name] }
     #redirect_to controller: :teachers, action: :payment
+    redirect_to controller: :teachers, action: :show
   end
 
   def create

@@ -30,6 +30,9 @@ module ApplicationHelper
     params[:teacher].delete( :sub1 )
     params[:teacher].delete( :sub2 )
     params[:teacher].delete( :sub3 )
+    # delete params used only as label
+    params[:teacher].delete( :cost_label )
+    params[:teacher].delete( :range_label )
   end
 
 end
