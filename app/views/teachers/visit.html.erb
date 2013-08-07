@@ -1,14 +1,102 @@
 <div class="row">
-  <h2>Docente : <%= @teacher.name.capitalize %> <%= @teacher.last_name.capitalize %></h2>
+  <h2>Profilo docente <%= @teacher.name.capitalize %> <%= @teacher.last_name.capitalize %></h2>
 </div>
-<div class="row">
-  <div class="four columns">
-    <h3>Contatti</h3>
-    <br />
-    <ul>
-      <li>Email : <strong><%= @teacher.email %></strong></li>
-      <li>Telefono : <strong><%= @teacher.phone %></strong></li>
-      <li>Skype: <strong><%= @teacher.skype %></strong></li>
-    </ul>
+
+<div class="row-full home-2">
+  <div class="row">
+    <h3>Materie d'insegnamento</h3>
+  </div>  
+  <div class="row">
+    <% @teacher.subjects.each do |s| %>
+    <div class="four columns">
+      <div class="default alert center">
+        <h3><%= s.name %></h3>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
+
+<div class="row">
+<h3>Contatti</h3>
+<% if current_user == nil %>
+  <table>
+      <tr>
+        <td>Nome</td>     
+        <td><%= @teacher.name %></td>
+      </tr>
+      <tr>
+        <td>Cognome</td>     
+        <td><%= @teacher.last_name %></td>
+      </tr>
+  </table>
+<% else %>
+    <table>
+      <tr>
+        <td>Nome</td>     
+        <td><%= @teacher.name %></td>
+      </tr>
+      <tr>
+        <td>Cognome</td>     
+        <td><%= @teacher.last_name %></td>
+      </tr>
+      <tr>
+        <td>Indirizzo</td>     
+        <td><%= "#{@teacher.address.street} #{@teacher.address.number}"  %><br />
+            <%= "#{@teacher.address.cap} #{@teacher.address.city} #{@teacher.address.province}" %><br />
+            <%= "#{@teacher.address.country}" %>
+        </td>
+      </tr>
+      <tr>
+        <td><i class="icon-mail"></i></td>     
+        <td><%= @teacher.email %></td>
+      </tr>
+      <% if @teacher.phone != "" %>
+      <tr>
+        <td><i class="icon-phone"></i></td>     
+        <td><%= @teacher.phone %></td>
+      </tr>
+      <% end %>
+      <% if @teacher.skype_bool == true %>
+      <tr>
+        <td><i class="icon-skype"></i></td>     
+        <td><%= @teacher.skype %></td>
+      </tr>
+      <% end %>
+    </table>
+    <h3>Informazioni per studenti</h3>
+    <table>
+      <tr>
+        <td>Descrizione e info</td>     
+        <td><%= @teacher.info %></td>
+      </tr>
+      <tr>
+        <td>Disponibilità</td>     
+        <td><%= @teacher.availability_days %></td>
+      </tr>
+      <tr>
+        <td>Costo</td>     
+        <td><%= @teacher.cost %> &euro;/h</td>
+      </tr>
+      <tr>
+        <td>Raggio</td>     
+        <td><%= @teacher.range %> km</td>
+      </tr>
+      <% if @teacher.rating_bool == true %>
+      <tr>
+        <td>Rating</td>     
+        <td><%= @teacher.rating %></td>
+      </tr>
+      <% end %>
+      <tr>
+        <td>Banca del tempo</td>     
+        <td><% if @teacher.time_bank_bool == true %>
+              si
+            <% else %>
+              no
+            <% end %>
+        </td>
+      </tr>
+    </table>
+<% end %>
+</div>    
