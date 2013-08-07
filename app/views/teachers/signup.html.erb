@@ -34,7 +34,7 @@
               </li>
 	      
 	      <li class="field">
-		<%= f.text_field :street, :placeholder => "Via", :class => "wide text input" %>
+		<%= f.text_field :street, :placeholder => "Via o Piazza", :class => "wide text input" %>
 		<%= f.text_field :number, :placeholder => "N.", :class => "narrow text input" %>
 	      </li>
 	      <li class="field">
@@ -152,13 +152,13 @@
             <p>
               <% if @teacher and @teacher.errors.any? %>
               <div id="error_explanation" class="alert danger">
-		<h3><%= pluralize(@teacher.errors.count, "error") %> prohibited
-		  this user from being saved:</h3>
-		<ul>
-		  <% @teacher.errors.full_messages.each do |msg| %>
-		  <li><%= msg %></li>
-		  <% end %>
-		</ul>
+		          <h3><%= pluralize(@teacher.errors.count, "error") %> prohibited
+		            this user from being saved:</h3>
+		            <ul>
+		              <% @teacher.errors.full_messages.each do |msg| %>
+		              <li><%= msg %></li>
+		               <% end %>
+		            </ul>
               </div>
               <% end %>
             </p>

@@ -12,7 +12,7 @@
 	  <li class="field">
 	    <%= f.text_field :last_name, :placeholder => "Cognome", :class => "text input", :value => current_user.last_name %>
 	  <li class="field">
-	    <%= f.email_field :email, :placeholder => "Email", :class => "text input", :value => current_user.email %>
+	    <%= f.email_field :email, :placeholder => "Email", :class => "text input", :value => current_user.email, :readonly => true %>
 	  </li>
 	  <button class="btn primary medium">
 	    <a>

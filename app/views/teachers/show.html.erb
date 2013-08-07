@@ -1,9 +1,6 @@
 <div class="row">
-  <h2>Profilo Docente : <%= current_user.name.capitalize %></h2>
-</div>
-
-<div class="row">
-  <div class="five columns">
+  <div class="four columns">
+    <h3>&nbsp;</h3>
     <% if current_user.active %>
     <div class="alert success center">
     <% else %>
@@ -20,15 +17,96 @@
       </h3>
     </div>
   </div>
-  <div class="seven columns">
-
-    <% current_user.attributes.each do |a| %> <br />
-      <strong><%= a[0] %></strong>: <%= a[1] %>
+  <div class="eight columns">
+    <h3>Informazioni Personali</h3>
+    <table>
+      <tr>
+        <td>Nome</td>     
+        <td><%= current_user.name %></td>
+      </tr>
+      <tr>
+        <td>Cognome</td>     
+        <td><%= current_user.last_name %></td>
+      </tr>
+      <tr>
+        <td>Indirizzo</td>     
+        <td><%= "#{current_user.address.street} #{current_user.address.number}"  %><br />
+            <%= "#{current_user.address.cap} #{current_user.address.city} #{current_user.address.province}" %><br />
+            <%= "#{current_user.address.country}" %>
+        </td>
+      </tr>
+      <tr>
+        <td><i class="icon-mail"></i></td>     
+        <td><%= current_user.email %></td>
+      </tr>
+      <tr>
+        <td><i class="icon-phone"></i></td>     
+        <td><%= current_user.phone %></td>
+      </tr>
+      <% if current_user.skype_bool == true %>
+      <tr>
+        <td><i class="icon-skype"></i></td>     
+        <td><%= current_user.skype %></td>
+      </tr>
+      <% end %>
+    </table>
+    <h3>Informazioni per studenti</h3>
+    <table>
+      <tr>
+        <td>Descrizione e info</td>     
+        <td><%= current_user.info %></td>
+      </tr>
+      <tr>
+        <td>Costo</td>     
+        <td><%= current_user.cost %> &euro;/h</td>
+      </tr>
+      <tr>
+        <td>Raggio</td>     
+        <td><%= current_user.range %> km</td>
+      </tr>
+      <tr>
+        <td>Disponibilità</td>     
+        <td><%= current_user.availability_days %></td>
+      </tr>
+      <tr>
+        <td>Rating</td>     
+        <td><% if current_user.rating_bool == true %>
+              <%= current_user.rating %>
+            <% else %>
+              no
+            <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>Banca del tempo</td>     
+        <td><% if current_user.time_bank_bool == false %>
+              si
+            <% else %>
+              no  
+            <% end %>
+        </td>
+      </tr>
+    </table>
+    <% if current_user.bill_bool == true %>
+    <h3>Dati fattura</h3>
     <% end %>
-
 
   </div>
 </div>
 
+<div class="row-full home-2">
+  <div class="row">
+    <h2>Materie d'insegnamento</h2>
+  </div>  
+  <div class="row">
+    <% current_user.subjects.each do |s| %>
+    <div class="four columns">
+      <div class="default alert center">
+        <h3><%= s.name %></h3>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 
 
