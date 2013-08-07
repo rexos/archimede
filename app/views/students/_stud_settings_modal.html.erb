@@ -3,7 +3,7 @@
     <a class="close switch" gumby-trigger="|#stud_settings"><i class="icon-cancel"></i></a>
     <div class="row">
       <div class="ten columns centered center-text">
-        <h2>Modifica Dati <%= current_user.name.capitalize %></h2>
+        <h2>Modifica dati <%= current_user.name.capitalize %></h2>
 	<%= form_for :student, :url => { :controller => :students, :action => :update } do |f| %>
 
 	<ul class="eight columns">

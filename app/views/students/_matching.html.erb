@@ -1,8 +1,8 @@
 <% unless @matching.empty? %>
 <h3>
   <%= @matching.count == 1 ? "1 risultato" : "#{@matching.count} risultati" %>
-</h3>
-<table class="striped rounded">
+</h3><br />
+<table class="striped">
   <thead>
     <tr>
       <th>Nome</th>
@@ -18,7 +18,9 @@
     <td><%= t.name.capitalize %></td>
     <td><%= t.last_name.capitalize %></td>
     <td><%= t.address.city %></td>
+    <% if current_user != nil %>
     <td><%= t.email %></td>
+    <% end %>
     <td>
       <ul>
 	<% t.subjects.each do |s| %>
@@ -28,8 +30,7 @@
     </td>
     <td>
       <%= link_to :controller => :teachers, :action => :visit, :teacher_id => t.id do %>
-      Visita
-      <i class="icon-forward"></i>
+      <i class="icon-forward" style="font-size: 30px"></i><strong>Visita</strong>
       <% end %>
     </td>
   </tr>

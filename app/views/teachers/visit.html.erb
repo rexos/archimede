@@ -1,7 +1,3 @@
-<div class="row">
-  <h2>Profilo docente <%= @teacher.name.capitalize %> <%= @teacher.last_name.capitalize %></h2>
-</div>
-
 <div class="row-full home-2">
   <div class="row">
     <h3>Materie d'insegnamento</h3>
@@ -34,11 +30,11 @@
     <table>
       <tr>
         <td>Nome</td>     
-        <td><%= @teacher.name %></td>
+        <td><h4><%= @teacher.name %></h4></td>
       </tr>
       <tr>
         <td>Cognome</td>     
-        <td><%= @teacher.last_name %></td>
+        <td><h4><%= @teacher.last_name %></h4></td>
       </tr>
       <tr>
         <td>Indirizzo</td>     
@@ -49,12 +45,12 @@
       </tr>
       <tr>
         <td><i class="icon-mail"></i></td>     
-        <td><%= @teacher.email %></td>
+        <td><h4><%= @teacher.email %></h4></td>
       </tr>
       <% if @teacher.phone != "" %>
       <tr>
         <td><i class="icon-phone"></i></td>     
-        <td><%= @teacher.phone %></td>
+        <td><h4><%= @teacher.phone %></h4></td>
       </tr>
       <% end %>
       <% if @teacher.skype_bool == true %>

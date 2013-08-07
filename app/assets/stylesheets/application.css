@@ -19,6 +19,10 @@
 	font-size: 40px;
 }
 
+.edit {
+	text-align:right;
+}
+
 .center {
 	text-align: center;
 }
@@ -81,7 +85,10 @@ a {
 	color: #ca3838;
 }
 
-.btn {	cursor: pointer; }
+.btn {	
+	cursor: pointer;
+	margin-bottom: 10px;
+ }
 
 .btn.primary {
 	background: rgba(20, 144, 120, 1);
@@ -101,6 +108,15 @@ a {
 
 .navbar {
 	margin-bottom: 0px;
+}
+
+table.striped tr:nth-of-type(even), table table tr.stripe, table table tr.striped {
+	background-color: #f0f0f0;
+}
+
+table thead {
+background-color: #ca3838;
+color: #fff;
 }
 
 /* --------- STICKY FOOTER --------- */

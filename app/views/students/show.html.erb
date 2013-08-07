@@ -46,6 +46,18 @@
 <div class="row">
     <div class="four columns">
     <h3>Dati personali</h3>
+
+    <% if flash[:change_psw_notice] %>
+    <div class="alert danger center">
+      <%= flash[:change_psw_notice] %>
+    </div>
+    <% flash.discard( :change_psw_notice ) %>
+    <% end %> <!-- end if -->
+
+
+    <div class="edit">
+      <a style="cursor: pointer"class="switch" gumby-trigger="#stud_settings" id="settings_btn"><i class="icon-tools"></i>Modifica</a>
+    </div>
     <table>
       <tr>
         <td>Nome</td>     
@@ -67,22 +79,9 @@
         <td><%= current_user.email %></td>
       </tr>
     </table>
-    <button class="btn primary medium switch" gumby-trigger="#stud_settings" id="settings_btn">
-      <a>
-        <i class="icon-tools"></i>Modifica Dati
-     </a>
-    </button>
 
     <!-- cambio password -->
-    <button class="btn warning small">
-      <a href="#" class="toggle active" gumby-trigger="#change_psw">Cambia Password</a>
-    </button>
-    <% if flash[:change_psw_notice] %>
-    <div class="alert danger center">
-      <%= flash[:change_psw_notice] %>
-    </div>
-    <% flash.discard( :change_psw_notice ) %>
-    <% end %> <!-- end if -->
+    <a href="#" class="toggle active" gumby-trigger="#change_psw"><i class="icon-lock"></i>Cambia password</a>
 
     <div class="drawer" id="change_psw">
       <ul>
@@ -90,16 +89,16 @@
 	  <%= form_for :student, :url => { :controller => :students, :action => :change_password } do |f| %>
 	</li>
 	<li class="field">
-	  <%= f.password_field :old_password, :placeholder => "Vecchia Password", :class => "input field" %>
+	  <%= f.password_field :old_password, :placeholder => "Vecchia password", :class => "input field" %>
 	</li>
 	<li class="field">
-	  <%= f.password_field :password, :placeholder => "Nuova Password", :class => "input field" %>
+	  <%= f.password_field :password, :placeholder => "Nuova password", :class => "input field" %>
 	</li>
 	<li class="field">
-	  <%= f.password_field :password_confirmation, :placeholder => "Conferma Nuova Password", :class => "input field" %>
+	  <%= f.password_field :password_confirmation, :placeholder => "Conferma nuova password", :class => "input field" %>
 	</li>
-	<button class="btn default medium">
-	  <a><i class="icon-check"></i> Conferma</a>
+	<button class="btn primary medium">
+	  <a><i class="icon-check"></i>Conferma</a>
 	</button>
 	<% end %> <!-- end form -->
       </ul>
