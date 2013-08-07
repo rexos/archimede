@@ -29,12 +29,15 @@ class StudentsController < ApplicationController
     if current_user.authenticate( params[:student][:old_password] )
       params[:student].delete( :old_password )
       if current_user.update_attributes( params[:student] )
-        render :text => "Ok password Changed"
+        flash[:change_psw_notice] = "Password Aggiornata"
+        render :action => :show
       else
-        render :text => "Password not changed 4 ever"
+        flash[:change_psw_notice] = "Le Due Password Non Coincidono"
+        render :action => :show
       end
     else
-      render :text => "Password not changed"
+      flash[:change_psw_notice] = "Password Vecchia Errata"
+      render :action => :show
     end
   end
 
