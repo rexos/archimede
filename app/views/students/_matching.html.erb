@@ -1,4 +1,7 @@
 <% unless @matching.empty? %>
+<h3>
+  <%= @matching.count == 1 ? "1 risultato" : "#{@matching.count} risultati" %>
+</h3>
 <table class="striped rounded">
   <thead>
     <tr>
