@@ -5,6 +5,45 @@
       <div class="ten columns centered center-text"> 
           <h2>Modifica dati personai</h2>
 
+          <%= form_for :teacher, :url => { :controller => :teachers, :action => :update_data } do |f| %>
+
+  <ul class="eight columns">
+              <li class="field">
+    <%= f.text_field :name, :placeholder => "Nome", :class => "text input", :value => current_user.name %>
+              </li>
+              <li class="field">
+    <%= f.text_field :last_name, :placeholder => "Cognome", :class => "text input", :value => current_user.last_name %>
+              </li>
+              <li class="field">
+    <%= f.text_field :street, :placeholder => "Via o Piazza", :class => "wide text input", :value => current_user.address.street %>
+    <%= f.text_field :number, :placeholder => "N.", :class => "narrow text input", :value => current_user.address.number %>
+        </li>
+        <li class="field">
+    <%= f.text_field :cap, :placeholder => "CAP", :class => "narrow text input", :value => current_user.address.cap %>
+    <%= f.text_field :city, :placeholder => "Città", :class => "wide text input", :value => current_user.address.city %>
+        </li>
+        <li class="field">
+          <%= f.text_field :province, :placeholder => "Prov.", :value => "TN", :class => "narrow text input", :value => current_user.address.province %>
+          <%= f.text_field :country, :placeholder => "Nazione", :value => "Italia", :class => "wide text input", :value => current_user.address.country %>
+        </li>
+        <li class="field">
+    <%= f.email_field :email, :placeholder => "Email", :class => "text input", :value => current_user.email, :readonly => true %>
+              </li>
+              <li class="field">
+    <%= f.telephone_field :phone, :placeholder => "Telefono", :class => "text input", :value => current_user.phone %>
+              </li>
+              <li class="field">
+    <%= f.text_field :skype, :placeholder => "Skype", :class => "text input", :value => current_user.skype %>
+              </li>
+    <button class="btn primary medium">
+      <a>
+        <i class="icon-check"></i>
+        Salva
+      </a>
+    </button>
+    <p class="btn primary medium"><a href="#" class="switch" gumby-trigger="|#t_data_settings"><i class="icon-cancel"></i>Chiudi</a></p>
+  </ul>
+  <% end %>
 
        </div>
     </div>

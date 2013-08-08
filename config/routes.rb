@@ -11,9 +11,13 @@ Archimede::Application.routes.draw do
   get "teachers/index" => "teachers#index"
   get "teachers/destroy" => "teachers#destroy"
   get "teachers/show" => "teachers#show"
+  post "teachers/update_data" => "teachers#update_data"
+  post "teachers/update_info" => "teachers#update_info"
+  post "teachers/update_bill" => "teachers#update_bill"
   get "teachers/activate" => "teachers#activate"
   get "payment" => "teachers#payment"
   post "teachers/change_password" => "teachers#change_password"
+
 
   #students' routes
   post "students/create" => "students#create"

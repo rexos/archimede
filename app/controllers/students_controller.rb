@@ -85,12 +85,13 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @new_address = { :street => params[:student][:street], :number => params[:student][:number], :cap => params[:student][:cap], :country => params[:student][:country], :city => params[:student][:city], :province => params[:student][:province] }
-    current_user.address.update_attributes( @new_address )
-
-    sanitize_params :student
-    current_user.update_attributes( params[:student] )
-    redirect_to :action => :show
+    if current_user.is_a? Student
+      @new_address = { :street => params[:student][:street], :number => params[:student][:number], :cap => params[:student][:cap], :country => params[:student][:country], :city => params[:student][:city], :province => params[:student][:province] }
+      current_user.address.update_attributes( @new_address )
+      sanitize_params :student
+      current_user.update_attributes( params[:student] )
+    end
+      redirect_to :action => :show
   end
 
 end

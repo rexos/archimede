@@ -5,6 +5,43 @@
       <div class="ten columns centered center-text"> 
           <h2>Modifica informazioni</h2>
 
+          <%= form_for :teacher, :url => { :controller => :teachers, :action => :update_info } do |f| %>
+    <ul class="eight columns">
+        <li class="field">
+            <%= f.text_field :cost, :placeholder => "Prezzo", :class => "wide text input", :value => current_user.cost %>
+            <%= f.text_field :cost_label, :placeholder => "€/h", :value => "€/h", :class => "narrow text input", :readonly => true %>
+        </li>
+        <li class="field">
+            <%= f.text_field :range, :placeholder => "Range", :class => "wide text input", :value => current_user.range %>
+            <%= f.text_field :range_label, :placeholder => "Km", :value => "Km", :class => "narrow text input", :readonly => true %>
+        </li>
+        <li class="field">
+            <%= f.text_area :info, :placeholder => "Informazioni aggiuntive", :class => "textarea input", :rows => 3,:value => current_user.info %>
+        </li>
+        <li class="field">
+            <%= f.text_area :availability_days, :placeholder => "Giorni disponibili", :class => "textarea input", :rows => 3,:value => current_user.availability_days %>
+        </li>
+        <li class="field">
+          <label class="checkbox" for="check1">
+            <%= f.check_box :time_bank_bool %>
+            <span></span> Banca del tempo
+          </label>
+        </li>
+              <li class="field">
+    <label class="checkbox" for="check1">
+      <%= f.check_box :rating_bool %>
+      <span></span> Consenti il rating
+    </label>
+              </li>
+        <button class="btn primary medium">
+      <a>
+        <i class="icon-check"></i>
+        Salva
+      </a>
+    </button>
+    <p class="btn primary medium"><a href="#" class="switch" gumby-trigger="|#t_info_settings"><i class="icon-cancel"></i>Chiudi</a></p>
+  </ul>
+  <% end %>
 
        </div>
     </div>
