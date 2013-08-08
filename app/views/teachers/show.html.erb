@@ -1,6 +1,7 @@
 <div class="row">
   <div class="four columns">
     <h3>&nbsp;</h3>
+
     <% if current_user.active %>
     <div class="alert success center">
     <% else %>
@@ -17,10 +18,8 @@
       </h3>
     </div>
 
-    <button class="btn warning small">
-      <a href="#" class="toggle active" gumby-trigger="#change_psw">Cambia Password</a>
-    </button>
-    <% if flash[:change_psw_notice] %>
+    <a href="#" class="toggle active" gumby-trigger="#change_psw"><i class="icon-lock"></i>Cambia password</a>
+     <% if flash[:change_psw_notice] %>
     <div class="alert danger center">
       <%= flash[:change_psw_notice] %>
     </div>
@@ -41,7 +40,7 @@
 	<li class="field">
 	  <%= f.password_field :password_confirmation, :placeholder => "Conferma Nuova Password", :class => "input field" %>
 	</li>
-	<button class="btn default medium">
+	<button class="btn primary medium">
 	  <a><i class="icon-check"></i> Conferma</a>
 	</button>
 	<% end %> <!-- end form -->
@@ -51,9 +50,9 @@
 
   </div>
   <div class="eight columns">
-    <h3>Informazioni personali</h3>
+    <h3>Dati personali</h3>
     <div class="edit">
-      <a href="#"><i class="icon-tools"></i>Modifica</a>
+      <a style="cursor: pointer"class="switch" gumby-trigger="#t_data_settings" id=""><i class="icon-tools"></i>Modifica</a>
     </div>
 
     <table>
@@ -89,7 +88,7 @@
     </table>
     <h3>Informazioni per studenti</h3>
     <div class="edit">
-      <a href="#"><i class="icon-tools"></i>Modifica</a>
+      <a style="cursor: pointer"class="switch" gumby-trigger="#t_info_settings" id=""><i class="icon-tools"></i>Modifica</a>
     </div>
 
     <table>
@@ -130,6 +129,36 @@
     </table>
     <% if current_user.bill_bool == true %>
     <h3>Dati fattura</h3>
+    <div class="edit">
+      <a style="cursor: pointer"class="switch" gumby-trigger="#t_bill_settings" id=""><i class="icon-tools"></i>Modifica</a>
+    </div>
+
+    <table>
+      <tr>
+        <td>Ragione sociale</td>     
+        <td>Quante bill? <%= current_user.bills.count %></td>
+      </tr>
+      <tr>
+        <td>Nome</td>     
+        <td></td>
+      </tr>
+      <tr>
+        <td>Cognome</td>     
+        <td></td>
+      </tr>
+      <tr>
+        <td>Partita IVA</td>     
+        <td></td>
+      </tr>
+      <tr>
+        <td>Codice fiscale</td>     
+        <td></td>
+      </tr>
+      <tr>
+        <td>Indirizzo</td>     
+        <td></td>
+      </tr>
+     </table> 
     <% end %>
 
   </div>
@@ -150,4 +179,7 @@
   </div>
 </div>
 
+<%= render :partial => "teacher_data_settings_modal" %>
+<%= render :partial => "teacher_info_settings_modal" %>
+<%= render :partial => "teacher_bill_settings_modal" %>
 
