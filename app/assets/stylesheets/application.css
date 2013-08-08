@@ -115,8 +115,13 @@ table.striped tr:nth-of-type(even), table table tr.stripe, table table tr.stripe
 }
 
 table thead {
-background-color: #ca3838;
-color: #fff;
+	background-color: #ca3838;
+	color: #fff;
+}
+
+.modal > .content {
+	max-height: 90%;
+	top: 10%;
 }
 
 /* --------- STICKY FOOTER --------- */
