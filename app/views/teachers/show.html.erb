@@ -172,6 +172,9 @@
 <div class="row-full home-2">
   <div class="row">
     <h2>Materie d'insegnamento</h2>
+    <div class="edit">
+      <a style="cursor: pointer"class="switch" gumby-trigger="#t_subjects_settings" id=""><i class="icon-tools"></i>Modifica</a>
+    </div>
   </div>  
   <div class="row">
     <% current_user.subjects.each do |s| %>
@@ -187,4 +190,6 @@
 <%= render :partial => "teacher_data_settings_modal" %>
 <%= render :partial => "teacher_info_settings_modal" %>
 <%= render :partial => "teacher_bill_settings_modal" %>
+<%= render :partial => "teacher_subjects_settings_modal" %>
+
 
