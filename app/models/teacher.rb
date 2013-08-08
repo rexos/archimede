@@ -8,18 +8,19 @@
 #  email             :string(255)
 #  phone             :string(255)
 #  skype             :string(255)
-#  skype_bool        :boolean
+#  skype_bool        :boolean          default(FALSE)
 #  cost              :string(255)
 #  range             :integer
 #  availability_days :string(255)
 #  info              :string(255)
-#  rating_bool       :boolean
+#  rating_bool       :boolean          default(FALSE)
 #  rating            :integer
-#  time_bank_bool    :boolean
-#  bill_bool         :boolean
+#  time_bank_bool    :boolean          default(FALSE)
+#  bill_bool         :boolean          default(FALSE)
 #  deadline          :date
-#  active            :boolean
+#  active            :boolean          default(FALSE)
 #  password_digest   :string(255)
+#  token             :string(255)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
@@ -39,6 +40,7 @@ class Teacher < ActiveRecord::Base
 
   #regular expressions
   EMAIL_REGEX = /\b[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i
+  PSW_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9]{2,}).{6,}$/i
 
   #validations
   validates :name, :presence => true
@@ -47,7 +49,7 @@ class Teacher < ActiveRecord::Base
   validates_inclusion_of :bill_bool, :in => [ true, false ]
   validates_inclusion_of :rating_bool, :in => [ true, false ]
   validates :email, :presence => true, :uniqueness => true, :format => { :with => EMAIL_REGEX  }
-  validates :password, :presence => true, :length => { :minimum => 6 }, :on => :create
+  validates :password, :presence => true, :format => { :with => PSW_REGEX }, :on => :create
   validates :password_confirmation, :presence => true, :on => :create
 
   #private methods

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     elsif current_user.is_a? Teacher
       redirect_to controller: :teachers, action: :show
     else
-    end 
+    end
   end
 
   def create
@@ -32,6 +32,20 @@ class SessionsController < ApplicationController
     cookies.delete(:token)
     session.delete(:user_id)
     redirect_to root_url
+  end
+
+
+  def restore_password
+    @user = Teacher.find_by_email( params[:restore][:email_address] )
+    @user = Student.find_by_email( params[:restore][:email_address] ) unless @user
+    if @user
+      new_pass = (0...8).map{(65+rand(26)).chr}.join
+      @user.update_attributes( :password => new_pass, :password_confirmation => new_pass )
+      ArchimedeMailer.restore_password( @user, new_pass ).deliver
+      render :text => new_pass
+    else
+      render :text => "Indirizzo E-Mail Errato"
+    end
   end
 
 end
