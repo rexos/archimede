@@ -17,6 +17,9 @@
 		<%= f.email_field :email, :placeholder => "Email", :class => "text input", :value => current_user.email, :readonly => true %>
               </li>
               <li class="field">
+    <%= f.telephone_field :phone, :placeholder => "Telefono", :class => "text input", :value => current_user.phone %>
+              </li>
+              <li class="field">
     <%= f.text_field :street, :placeholder => "Via o Piazza", :class => "wide text input", :value => current_user.address.street %>
     <%= f.text_field :number, :placeholder => "N.", :class => "narrow text input", :value => current_user.address.number %>
         </li>
