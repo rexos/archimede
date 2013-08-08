@@ -5,7 +5,32 @@
       <div class="ten columns centered center-text"> 
           <h2>Modifica materie</h2>
 
-
+<%= form_for :teacher, :url => { :controller => :teachers, :action => :update_subjects } do |f| %>
+    <ul class="eight columns">
+          <li class="field">
+                    <div class="picker">
+                      <%= f.select :sub1, options_for_select(Subject.all.map { |s| [s.name, s.id] }) %>
+                    </div>
+        </li>
+        <li class="field">
+                    <div class="picker">
+                      <%= f.select :sub2, options_for_select(Subject.all.map { |s| [s.name, s.id] }.insert(0, "")) %>
+                    </div>
+        </li>
+        <li class="field">
+                    <div class="picker">
+                      <%= f.select :sub3, options_for_select(Subject.all.map { |s| [s.name, s.id] }.insert(0, "")) %>
+                    </div>
+        </li>
+<button class="btn primary medium">
+      <a>
+        <i class="icon-check"></i>
+        Salva
+      </a>
+    </button>
+    <p class="btn primary medium"><a href="#" class="switch" gumby-trigger="|#t_info_subjects"><i class="icon-cancel"></i>Chiudi</a></p>
+  </ul>
+  <% end %>
        </div>
     </div>
   </div>

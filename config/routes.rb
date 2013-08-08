@@ -14,6 +14,7 @@ Archimede::Application.routes.draw do
   post "teachers/update_data" => "teachers#update_data"
   post "teachers/update_info" => "teachers#update_info"
   post "teachers/update_bill" => "teachers#update_bill"
+  post "teachers/update_subjects" => "teachers#update_subjects"
   get "teachers/activate" => "teachers#activate"
   get "payment" => "teachers#payment"
   post "teachers/change_password" => "teachers#change_password"
