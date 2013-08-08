@@ -15,7 +15,7 @@
 
 class Student < ActiveRecord::Base
   has_secure_password
-  attr_accessible :email, :last_name, :name, :password_digest, :phone, :password, :password_confirmation, :token
+  attr_accessible :email, :last_name, :name, :password_digest, :phone, :password, :password_confirmation, :token, :admin
 
   #relationships
   has_one :address, :dependent => :destroy

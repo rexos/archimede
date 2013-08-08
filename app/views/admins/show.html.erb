@@ -1,0 +1,12 @@
+<div class="row">
+  <h2>Amministratore : <%= current_user.name.capitalize %></h2>
+
+  <div class="medium btn primary">
+    <%= link_to :Docenti, :controller => :teachers, :action => :index %>
+  </div>
+  <div class="medium btn default">
+    <%= link_to :Studenti, :controller => :students, :action => :index %>
+  </div>
+			
+
+</div>

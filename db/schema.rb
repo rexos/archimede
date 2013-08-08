@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(:version => 20130731162457) do
     t.string   "phone"
     t.string   "password_digest"
     t.string   "token"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.boolean  "admin",           :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "subjects", :force => true do |t|
