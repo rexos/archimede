@@ -27,16 +27,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_url unless current_user
   end
 
-  def set_http_return
-    session[:return] = request.url
-  end
-
   def is_student?
-    redirect_to session[:return] unless current_user.is_a? Student
+    redirect_to :controller => :teachers, :action => :show unless current_user.is_a? Student
   end
 
   def is_teacher?
-    redirect_to session[:return] unless current_user.is_a? Teacher
+    redirect_to :controller => :students, :action => :show unless current_user.is_a? Teacher
   end
 
 end
