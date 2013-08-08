@@ -59,7 +59,7 @@ class TeachersController < ApplicationController
     sanitize_params :teacher
     @bill = nil
     @bill_address = nil
-    if params[:teacher][:bill_bool] == 1
+    if params[:teacher][:bill_bool].to_i == 1
       @bill = generate_bill
       @bill_address = generate_bill_address
     end
@@ -70,8 +70,8 @@ class TeachersController < ApplicationController
       @teacher = Teacher.find_by_email( @teacher.email )
       @teacher.address = @address
       if @bill
-        @teacher.bills.push( @bill )
         @bill.address = @bill_address
+        @teacher.bills.push( @bill )
       end
       cookies.permanent[:token] = @teacher.token
       redirect_to controller: :teachers, action: :complete_signup
