@@ -18,7 +18,11 @@ class SessionsController < ApplicationController
         cookies.permanent[:token] = @user.token
       end
       if @user.is_a? Student
-        redirect_to :controller => :students, :action => :show
+        if @user.admin
+          redirect_to :controller => :admins, :action => :show
+        else
+          redirect_to :controller => :students, :action => :show
+        end
       else
         redirect_to :controller => :teachers, :action => :show
       end

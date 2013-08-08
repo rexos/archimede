@@ -7,6 +7,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :phone
       t.string :password_digest
       t.string :token
+      t.boolean :admin, :default => :false
 
       t.timestamps
     end

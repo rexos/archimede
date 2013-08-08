@@ -2,6 +2,9 @@ Archimede::Application.routes.draw do
 
   root :to => 'welcome#index'
 
+  #admin's routes
+  get "admins/show" => "admins#show"
+
   #teachers' routes
   get "signup" => "teachers#signup"
   get "complete_signup" => "teachers#complete_signup"
