@@ -4,7 +4,48 @@
     <div class="row">
       <div class="ten columns centered center-text"> 
           <h2>Modifica dati fattura</h2>
+          <% bill = current_user.bills.last %>
 
+          <%= form_for :teacher, :url => { :controller => :teachers, :action => :update_bill } do |f| %>
+    <ul class="eight columns">
+          
+          <li class="field">
+    <%= f.text_field :business_name, :placeholder => "Ragione sociale", :class => "text input", :value => bill.business_name  %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_name, :placeholder => "Nome", :class => "text input", :value => bill.name %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_last_name, :placeholder => "Cognome", :class => "text input", :value => bill.last_name %>
+        </li>
+        <li class="field">
+    <%= f.text_field :iva, :placeholder => "Partita IVA", :class => "text input", :value => bill.iva %>
+        </li>
+        <li class="field">
+    <%= f.text_field :cf, :placeholder => "Codice Fiscale", :class => "text input", :value => bill.cf %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_street, :placeholder => "Via", :class => "wide text input", :value => bill.address.street  %>
+    <%= f.text_field :bill_number, :placeholder => "N.", :class => "narrow text input", :value => bill.address.number  %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_cap, :placeholder => "CAP", :class => "narrow text input", :value => bill.address.cap  %>
+    <%= f.text_field :bill_city, :placeholder => "Città", :class => "wide text input", :value => bill.address.city %>
+        </li>
+        <li class="field">
+    <%= f.text_field :bill_province, :placeholder => "Prov.", :class => "narrow text input", :value => bill.address.province %>
+    <%= f.text_field :bill_country, :placeholder => "Nazione", :class => "wide text input", :value => bill.address.country %>
+        </li>
+
+        <button class="btn primary medium">
+      <a>
+        <i class="icon-check"></i>
+        Salva
+      </a>
+    </button>
+    <p class="btn primary medium"><a href="#" class="switch" gumby-trigger="|#t_bill_settings"><i class="icon-cancel"></i>Chiudi</a></p>
+  </ul>
+  <% end %>
 
        </div>
     </div>

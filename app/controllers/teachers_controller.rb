@@ -126,7 +126,7 @@ class TeachersController < ApplicationController
   end
 
   def update_bill
-
+      redirect_to :action => :show
   end
 
   private
