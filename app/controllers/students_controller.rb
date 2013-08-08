@@ -1,7 +1,6 @@
 class StudentsController < ApplicationController
   before_filter :logged_in?, :except => :create
   before_filter :is_student?, :except => :create
-  before_filter :set_http_return, :except => [ :search_teacher ]
 
   def create
     @address = Address.new( :street => params[:student][:street], :cap => params[:student][:cap], :country => params[:student][:country], :number => params[:student][:number] )

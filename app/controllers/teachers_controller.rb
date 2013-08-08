@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 class TeachersController < ApplicationController
   before_filter :logged_in?, :except => [ :signup, :complete, :complete_signup, :payment, :create ]
-  before_filter :set_http_return, :except => :visit
   before_filter :is_teacher?, :except => [ :signup, :complete, :complete_signup, :payment, :create, :visit ]
 
   def signup
@@ -104,7 +103,7 @@ class TeachersController < ApplicationController
 
   def visit
     @teacher = Teacher.find( params[:teacher_id] )
-    redirect_to session[:return] unless @teacher.active
+    redirect_to :controller => (current_user.class.to_s + "s").downcase.to_sym, :action => :show unless @teacher.active
   end
 
   private
