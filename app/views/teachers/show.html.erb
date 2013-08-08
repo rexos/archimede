@@ -189,7 +189,9 @@
 
 <%= render :partial => "teacher_data_settings_modal" %>
 <%= render :partial => "teacher_info_settings_modal" %>
-<%= render :partial => "teacher_bill_settings_modal" %>
 <%= render :partial => "teacher_subjects_settings_modal" %>
+<% if current_user.bill_bool == true %>
+  <%= render :partial => "teacher_bill_settings_modal" %>
+<% end %>
 
 
