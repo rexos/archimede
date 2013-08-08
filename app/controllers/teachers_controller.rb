@@ -106,13 +106,27 @@ class TeachersController < ApplicationController
     redirect_to :controller => (current_user.class.to_s + "s").downcase.to_sym, :action => :show unless @teacher.active
   end
 
-  def update
-    @teacher = Teacher.find_by_email( params[:teacher][:email] )
-    @new_address = { :street => params[:teacher][:street], :number => params[:teacher][:number], :cap => params[:teacher][:cap], :country => params[:teacher][:country], :city => params[:teacher][:city], :province => params[:teacher][:province] }
-    @teacher.address.update_attributes( @new_address )
-    sanitize_params :teacher
-    @teacher.update_attributes( params[:teacher] )
-    redirect_to :action => :show
+  def update_data
+    if current_user.is_a? Teacher
+      @new_address = { :street => params[:teacher][:street], :number => params[:teacher][:number], :cap => params[:teacher][:cap], :country => params[:teacher][:country], :city => params[:teacher][:city], :province => params[:teacher][:province] }
+      current_user.address.update_attributes( @new_address )
+      sanitize_params :teacher
+      current_user.update_attributes( params[:teacher] )
+    end
+      redirect_to :action => :show
+  end
+
+  def update_info
+    if current_user.is_a? Teacher
+      params[:teacher].delete( :cost_label )
+      params[:teacher].delete( :range_label )
+      current_user.update_attributes( params[:teacher] )
+    end
+      redirect_to :action => :show
+  end
+
+  def update_bill
+
   end
 
   private
