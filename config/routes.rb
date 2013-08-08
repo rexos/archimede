@@ -29,6 +29,7 @@ Archimede::Application.routes.draw do
   get "login" => "sessions#login"
   post "sessions/create" => "sessions#create"
   get "logout" => "sessions#destroy"
+  post "restore_password" => "sessions#restore_password"
 
   #static_pages
   get "static_pages/privacy"

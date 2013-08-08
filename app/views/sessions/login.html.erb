@@ -1,4 +1,4 @@
-	<%= form_for :session, url: { :controller => :sessions, :action => :create } do |f| %>
+<%= form_for :session, url: { :controller => :sessions, :action => :create } do |f| %>
 	<div class="row">
 		<fieldset class="six columns centered">
 			<legend><h2>Login</h2></legend>
@@ -29,7 +29,32 @@
 				    <% end %>
 				  </div>
 				</li>
-			</ul> 
+			</ul>
+
 		</fieldset> 
 	</div> 
 	<% end %>
+	<div class="row">
+	  <ul>
+	    <li>
+	      <a href="#" class="toggle active" gumby-trigger="#restore_password">
+		Password Dimenticata?
+	      </a>
+	      <div class="drawer center" id="restore_password">
+		Inserisci l'indirizzo e-mail collegato al tuo account
+		<%= form_for :restore, :url => { :controller => :sessions, :action => :restore_password } do |f| %>
+		<ul>
+		  <li class="field">
+		    <%= f.email_field :email_address, :placeholder => "Indirizzo Email", :class => "input field" %>
+		  </li>
+		  <li>
+		    <button class="btn primary small">
+		      <a>Invia</a>
+		    </button>
+		  </li>
+		</ul>
+		<% end %>
+	      </div>
+	    </li>
+	  </ul>
+	</div>
