@@ -7,8 +7,16 @@ class ApplicationController < ActionController::Base
   helper_method :is_student?
   helper_method :is_teacher?
   helper_method :is_admin?
+  helper_method :deactivate
 
   private
+
+  def deactivate
+    @teachers = Teacher.find( :all, :conditions => ["deadline <= ?", Date.today] )
+    @teachers.each do |t|
+      t.update_attributes( :active => false )
+    end
+  end
 
   def current_user
     if session[:user_id]

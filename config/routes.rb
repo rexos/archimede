@@ -7,6 +7,7 @@ Archimede::Application.routes.draw do
   get "admins/destroy_notification" => "admins#destroy_notification"
   get "admins/teachers_index" => "admins#teachers_index"
   get "admins/students_index" => "admins#students_index"
+  get "admins/activate" => "admins#activate"
 
   #teachers' routes
   get "signup" => "teachers#signup"
@@ -20,7 +21,6 @@ Archimede::Application.routes.draw do
   post "teachers/update_info" => "teachers#update_info"
   post "teachers/update_bill" => "teachers#update_bill"
   post "teachers/update_subjects" => "teachers#update_subjects"
-  get "teachers/activate" => "teachers#activate"
   get "payment" => "teachers#payment"
   post "teachers/change_password" => "teachers#change_password"
 

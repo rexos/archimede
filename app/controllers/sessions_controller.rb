@@ -1,8 +1,13 @@
 class SessionsController < ApplicationController
 
   def login
+    deactivate
     if current_user.is_a? Student
-      redirect_to controller: :students, action: :show
+      if current_user.admin
+        redirect_to controller: :admins, action: :show
+      else
+        redirect_to controller: :students, action: :show
+      end
     elsif current_user.is_a? Teacher
       redirect_to controller: :teachers, action: :show
     else

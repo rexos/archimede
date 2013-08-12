@@ -70,13 +70,6 @@ class TeachersController < ApplicationController
     end
   end
 
-  def activate
-    @teacher = Teacher.find( params[:teacher_id] )
-    @teacher.update_attributes( :active => true )
-    @teacher.update_attributes( :deadline => ( @teacher.updated_at + 1.year ) )
-    render :text => "#{@teacher.name.capitalize} #{@teacher.last_name.capitalize} è stato attivato correttamente"
-  end
-
   def destroy
     @teacher = Teacher.find( params[:teacher_id] )
     if @teacher.destroy
