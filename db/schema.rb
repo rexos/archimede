@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731162457) do
+ActiveRecord::Schema.define(:version => 20130809153717) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(:version => 20130731162457) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "teacher_id"
+    t.string   "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "notifications", ["teacher_id"], :name => "index_notifications_on_teacher_id"
 
   create_table "skills", :force => true do |t|
     t.integer  "teacher_id"

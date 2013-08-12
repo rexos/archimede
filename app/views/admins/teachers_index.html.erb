@@ -10,6 +10,8 @@
   <thead><tr>
   <th>Nome</th>
   <th>Cognome</th>
+  <th>Email</th>
+  <th>Telefono</th>
   <th>Stato</th>
   <th>&nbsp;</th>
   <th>&nbsp;</th>
@@ -19,28 +21,31 @@
   <tr>
     <td><%= t.name %></td>
     <td><%= t.last_name %></td>
-    <td><% if t.active %>
-    ATTIVO
-    <% else %>
-    NON ATTIVO
-    <% end %>
-  </td>
-  <td>
-    <div class="btn primary medium">
-      <%= link_to ({:controller => :teachers, :action => :activate, :teacher_id => t.id}) do %>
+    <td><%= t.email %></td>
+    <td><%= t.phone %></td>
+    <td>
+      <% if t.active %>
+      ATTIVO
+      <% else %>
+      NON ATTIVO
+      <% end %>
+    </td>
+    <td>
+      <div class="btn primary medium">
+	<%= link_to ({:controller => :teachers, :action => :activate, :teacher_id => t.id}) do %>
         <i class="icon-check"></i>Attiva
         <% end %>
-    </div>
-  </td>
-    <td>
-    <div class="btn medium danger">
-      
-      <%= link_to ({:controller => :teachers, :action => :destroy, :teacher_id => t.id}) do %>
-        <i class="icon-cancel"></i>Cancella
-      <% end %>
-    </div>
+      </div>
     </td>
-      
+    <td>
+      <div class="btn medium danger">
+	
+	<%= link_to ({:controller => :teachers, :action => :destroy, :teacher_id => t.id}) do %>
+        <i class="icon-cancel"></i>Cancella
+	<% end %>
+      </div>
+    </td>
+    
   </tr>
   <% end %>
 </table>

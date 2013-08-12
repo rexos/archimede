@@ -45,7 +45,7 @@
     </div>
   </div>
       
-<%= render partial: "shared/menu_student" if current_user.is_a? Student %>
+<%= render partial: "shared/menu_student" if current_user.is_a? Student and not current_user.admin %>
 <%= render partial: "shared/menu_teacher" if current_user.is_a? Teacher %>
-
+<%= render partial: "shared/head_admin" if current_user.is_a? Student and current_user.admin %>
 

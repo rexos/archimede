@@ -31,6 +31,7 @@ class Teacher < ActiveRecord::Base
 
   #relationships
   has_one :address, :dependent => :destroy
+  has_one :notification, :dependent => :destroy
   has_many :bills, :dependent => :destroy
   has_many :skills, :dependent => :destroy
   has_many :subjects, through: :skills

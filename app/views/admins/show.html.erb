@@ -1,11 +1,43 @@
 <div class="row">
   <h2>Amministratore : <%= current_user.name.capitalize %></h2>
-
-  <div class="medium btn primary">
-    <%= link_to :Docenti, :controller => :teachers, :action => :index %>
+  <div class="four columns">
+    <div class="medium btn primary">
+      <%= link_to :Docenti, :action => :teachers_index %>
+    </div>
+    <div class="medium btn default">
+      <%= link_to :Studenti, :action => :students_index %>
+    </div>
   </div>
-  <div class="medium btn default">
-    <%= link_to :Studenti, :controller => :students, :action => :index %>
+  <div class="six columns">
+    <table class="rounded striped">
+      <caption>
+	Notifiche Iscrizioni 
+	<% notes = Notification.all %>
+	<% unless notes.empty? %>
+	<div class="badge primary">
+	  <%= notes.size %>
+	</div>
+	<% end %>	
+      </caption>
+      <thead>
+	<tr>
+	  <th>Nome</th>
+	  <th>Notifica</th>
+	  <th></th>
+	</tr>
+      </thead>
+      <% notes.each do |n| %>
+      <tr>
+	<td><%= n.teacher.name.capitalize %></td>
+	<td><%= n.body %></td>
+	<td>
+	  <%= link_to :controller => :admins, :action => :destroy_notification, :notification_id => n.id do %>
+	  <strong>Elimina <i class="icon-cancel"></i></strong>
+	  <% end %>
+	</td>
+      </tr>
+      <% end %>
+    </table>
   </div>
 			
 

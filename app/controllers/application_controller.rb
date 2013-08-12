@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :is_student?
   helper_method :is_teacher?
+  helper_method :is_admin?
 
   private
 
@@ -32,7 +33,15 @@ class ApplicationController < ActionController::Base
   end
 
   def is_teacher?
-    redirect_to :controller => :students, :action => :show unless current_user.is_a? Teacher
+    if current_user.is_a? Student and current_user.admin
+      redirect_to :controller => :admins, :action => :show
+    else
+      redirect_to :controller => :students, :action => :show unless current_user.is_a? Teacher
+    end
+  end
+
+  def is_admin?
+    redirect_to :controller => ( current_user.class.to_s + "s" ).downcase.to_sym, :action => :show if current_user.is_a? Teacher or not current_user.admin
   end
 
 end

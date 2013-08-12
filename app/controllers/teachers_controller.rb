@@ -36,7 +36,7 @@ class TeachersController < ApplicationController
 
     sanitize_from_subjects
     @teacher.update_attributes(params[:teacher])
-
+    @teacher.notification = Notification.new( :body => "Iscrizione effettuata il #{@teacher.created_at.to_s[0...10]} alle #{@teacher.created_at.to_s[11..18]}" )
     #render :text => @teacher.subjects.all.map { |s| [s.id, s.name] }
     #redirect_to controller: :teachers, action: :payment
     redirect_to controller: :teachers, action: :show
@@ -68,10 +68,6 @@ class TeachersController < ApplicationController
     else
       render :text => "Teacher not correctly created"
     end
-  end
-
-  def index
-    @teachers = Teacher.all
   end
 
   def activate

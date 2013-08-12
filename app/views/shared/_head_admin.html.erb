@@ -1,0 +1,10 @@
+<div class ="row-full menu-full">
+  <div class="row" style="text-align: right">
+  <i class="icon-user"></i> Benvenuto,
+    <%= link_to :controller => :admins, :action => :show do %>
+      <%= current_user.name.capitalize %>
+    <% end %>
+    |
+    <%= link_to :Esci, :controller => :sessions, :action => :destroy %>
+</div>
+</div>
