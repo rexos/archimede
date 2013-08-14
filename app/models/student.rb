@@ -9,6 +9,7 @@
 #  phone           :string(255)
 #  password_digest :string(255)
 #  token           :string(255)
+#  admin           :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -19,6 +20,7 @@ class Student < ActiveRecord::Base
 
   #relationships
   has_one :address, :dependent => :destroy
+  has_many :ratings
 
   before_create :generate_token
   after_create :update_id

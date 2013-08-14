@@ -1,15 +1,17 @@
 # == Schema Information
 #
-# Table name: notifications
+# Table name: ratings
 #
 #  id         :integer          not null, primary key
+#  value      :integer          default(2)
+#  student_id :integer
 #  teacher_id :integer
-#  body       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Notification < ActiveRecord::Base
-  attr_accessible :body
+class Rating < ActiveRecord::Base
+  belongs_to :student
   belongs_to :teacher
+  attr_accessible :value
 end

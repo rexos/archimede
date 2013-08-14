@@ -20,7 +20,11 @@
 
     <a href="#" class="toggle active" gumby-trigger="#change_psw"><i class="icon-lock"></i>Cambia password</a>
      <% if flash[:change_psw_notice] %>
-    <div class="alert danger center">
+     <% if flash[:change_psw_notice].include? "Aggiornata" %>
+     <div class="alert success center">
+       <% else %>
+       <div class="alert danger center">
+       <% end %>
       <%= flash[:change_psw_notice] %>
     </div>
     <% flash.discard( :change_psw_notice ) %>

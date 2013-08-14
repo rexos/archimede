@@ -82,6 +82,7 @@ class TeachersController < ApplicationController
 
   def visit
     @teacher = Teacher.find( params[:teacher_id] )
+    session[:visited] = @teacher.id #session variable due to rating handling
     redirect_to :controller => (current_user.class.to_s + "s").downcase.to_sym, :action => :show unless @teacher.active
   end
 

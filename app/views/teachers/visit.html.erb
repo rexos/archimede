@@ -14,6 +14,10 @@
 </div>
 
 <div class="row">
+  <% if @teacher.rating_bool %>
+  <h3>Rating</h3>
+  <div id="star"></div>
+  <% end %>
 <h3>Contatti</h3>
 <% if current_user == nil %>
   <table>

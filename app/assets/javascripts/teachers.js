@@ -8,3 +8,7 @@ $('#replicate_data').click( function(){
 	$('#teacher_bill_province').val( $('#teacher_province').val() );
 	$('#teacher_bill_cap').val( $('#teacher_cap').val() );
 } );
+$('#star').raty({
+	    half     : true,
+	    size     : 24,
+});

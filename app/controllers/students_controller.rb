@@ -25,6 +25,15 @@ class StudentsController < ApplicationController
     change_psw
   end
 
+
+  def rate_teacher
+    @teacher = Teacher.find( session[:visited] )
+    if @teacher and @teacher.rating_bool
+      @teacher.ratings << current_user.ratings.create( :value => params[:rating_value] )
+    end
+    redirect_to :controller => :teachers, :action => :visit, :teacher_id => @teacher.id
+  end
+
   #search teacher method
   def search_teacher
     @matching = @teachers = []
