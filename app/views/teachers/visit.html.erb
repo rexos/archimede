@@ -15,8 +15,8 @@
 
 <div class="row">
   <% if @teacher.rating_bool %>
-  <h3>Rating</h3>
-  <div id="star"></div>
+  <h3>Rating : <%= @teacher.ratings.average( :value ).to_s[0..2] %></h3>
+  <div id="star" data-score="<%= @teacher.ratings.average( :value ) %>"></div>
   <% end %>
 <h3>Contatti</h3>
 <% if current_user == nil %>

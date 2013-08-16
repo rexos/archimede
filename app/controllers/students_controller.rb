@@ -30,8 +30,14 @@ class StudentsController < ApplicationController
     @teacher = Teacher.find( session[:visited] )
     if @teacher and @teacher.rating_bool
       @teacher.ratings << current_user.ratings.create( :value => params[:rating_value] )
+      respond_to do |format|
+        format.js { render :success => true, :nothing => true }
+      end
+    else
+      respond_to do |format|
+        format.js { render :success => false, :nothing => true }
+      end
     end
-    redirect_to :controller => :teachers, :action => :visit, :teacher_id => @teacher.id
   end
 
   #search teacher method

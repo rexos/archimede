@@ -9,6 +9,18 @@ $('#replicate_data').click( function(){
 	$('#teacher_bill_cap').val( $('#teacher_cap').val() );
 } );
 $('#star').raty({
-	    half     : true,
-	    size     : 24,
+	half     : true,
+	    score: function() {
+	    return $(this).attr('data-score');
+	},
+	    click: function(score, evt) {
+	    $.ajax({
+		    type: "POST",
+			url: "/students/rate_teacher",
+			data: { rating_value: score }
+		}).done(function( msg ) {
+			alert("rating salvato");
+		    });
+	},
 });
+
