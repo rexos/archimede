@@ -8,7 +8,7 @@
       <th>Nome</th>
       <th>Cognome</th>
       <th>Luogo</th>
-      <th>Email</th>
+      <th>Rating</th>
       <th>Materie</th>
       <th>Pagina</th>
     </tr>
@@ -18,9 +18,10 @@
     <td><%= t.name.capitalize %></td>
     <td><%= t.last_name.capitalize %></td>
     <td><%= t.address.city %></td>
-    <% if current_user != nil %>
-    <td><%= t.email %></td>
-    <% end %>
+    <td class="center">
+      <div class="rating-show" data-score="<%= t.ratings.average( :value ) %>" style="margin:0 auto"></div>
+      <a>N° voti : <%= t.ratings.count %></a>
+    </td>
     <td>
       <ul>
 	<% t.subjects.each do |s| %>
@@ -37,3 +38,13 @@
   <% end %>
 </table>
 <% end %>
+<script>
+  $('div.rating-show').raty({
+  half     : true,
+  readOnly : true,
+  hints: ['Cattivo', 'Scarso', 'Normale', 'Buono', 'Grandioso'],
+  score: function() {
+  return $(this).attr('data-score');
+  }
+  });
+</script>

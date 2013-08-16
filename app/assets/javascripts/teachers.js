@@ -8,8 +8,22 @@ $('#replicate_data').click( function(){
 	$('#teacher_bill_province').val( $('#teacher_province').val() );
 	$('#teacher_bill_cap').val( $('#teacher_cap').val() );
 } );
+
+$('div.rating-show').raty({
+	half     : true,
+	    readOnly : true,
+	    hints: ['Cattivo', 'Scarso', 'Normale', 'Buono', 'Grandioso'],
+	    score: function() {
+	    return $(this).attr('data-score');
+	}
+    });
+
 $('#star').raty({
 	half     : true,
+	    size     : 24,
+	    hints: ['Cattivo', 'Scarso', 'Normale', 'Buono', 'Grandioso'],
+	    target : '#hint',
+	    targetText : '--',
 	    score: function() {
 	    return $(this).attr('data-score');
 	},

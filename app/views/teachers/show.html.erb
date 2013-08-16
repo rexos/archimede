@@ -10,14 +10,19 @@
       <h3>
 	Stato Account <br />
 	<% if current_user.active %>
-	ATTIVO <h5>Fino al : </h5>
+	<strong>ATTIVO</strong> <h5>Fino al : </h5>
 	<h3><%= current_user.deadline %></h3>
 	<% else %>
-	NON ATTIVO  <h5>Il suo profilo non sarà visualizzabile da parte di terzi fino all'attivazione da parte dell' amministratore</h5>
+	<strong>NON ATTIVO</strong>  <h5>Il suo profilo non sarà visualizzabile da parte di terzi fino all'attivazione da parte dell' amministratore</h5>
 	<% end %>
       </h3>
     </div>
-
+    <div class="alert default center">
+    <h3>Il Mio Rating</h3>
+    <div class="rating-show" data-score="<%= current_user.ratings.average(:value) %>" style="margin: 0 auto"></div>
+    <h4><%= current_user.ratings.average(:value).to_s[0..2] %> - <%= ["Cattivo","Scarso","Normale","Buono","Grandioso"][current_user.ratings.average(:value).ceil - 1] %></h4>
+    N° voti : <%= current_user.ratings.count %>
+    </div>
     <a href="#" class="toggle active" gumby-trigger="#change_psw"><i class="icon-lock"></i>Cambia password</a>
      <% if flash[:change_psw_notice] %>
      <% if flash[:change_psw_notice].include? "Aggiornata" %>

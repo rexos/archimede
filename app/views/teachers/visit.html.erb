@@ -13,11 +13,14 @@
   </div>
 </div>
 
-<div class="row">
   <% if @teacher.rating_bool %>
-  <h3>Rating : <%= @teacher.ratings.average( :value ).to_s[0..2] %></h3>
-  <div id="star" data-score="<%= @teacher.ratings.average( :value ) %>"></div>
+  <div class="row">
+    <h3>Rating : <%= @teacher.ratings.average( :value ).to_s[0..2] + "  " + ["Cattivo","Scarso","Normale","Buono","Grandioso"][@teacher.ratings.average( :value ).ceil - 1] unless @teacher.ratings.empty? %></h3>
+    <div id="star" class="eight columns" data-score="<%= @teacher.ratings.average( :value ) %>"></div>
+    <div id="hint" class="default alert center eight columns" style="font-size:24px"></div>
+  </div>
   <% end %>
+<div class="row">
 <h3>Contatti</h3>
 <% if current_user == nil %>
   <table>
