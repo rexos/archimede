@@ -86,6 +86,7 @@ class TeachersController < ApplicationController
     addresses << @teacher.address
     addresses << current_user.address
     @json = addresses.to_gmaps4rails
+    @range_circle = '[{"lng": "'+@teacher.address.longitude.to_s+'", "lat": "'+@teacher.address.latitude.to_s+'", "radius": '+(@teacher.range * 1000).to_s+'}]'
     session[:visited] = @teacher.id #session variable due to rating handling
     redirect_to :controller => (current_user.class.to_s + "s").downcase.to_sym, :action => :show unless @teacher.active
   end
