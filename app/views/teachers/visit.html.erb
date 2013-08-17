@@ -103,3 +103,7 @@
     </table>
 <% end %>
 </div>    
+<div class="row center">
+  <h3>Mappa</h3>
+  <%= gmaps4rails(@teacher.address.to_gmaps4rails) %>
+</div>

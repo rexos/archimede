@@ -12,6 +12,7 @@
       t.integer :student_id
       t.integer :teacher_id
       t.integer :bill_id
+      t.boolean :gmaps
 
       t.timestamps
     end

@@ -17,14 +17,16 @@
 	<% end %>
       </h3>
     </div>
+    <% if current_user.rating_bool and not current_user.ratings.empty? %>
     <div class="alert default center">
-    <h3>Il Mio Rating</h3>
-    <div class="rating-show" data-score="<%= current_user.ratings.average(:value) %>" style="margin: 0 auto"></div>
-    <h4><%= current_user.ratings.average(:value).to_s[0..2] %> - <%= ["Cattivo","Scarso","Normale","Buono","Grandioso"][current_user.ratings.average(:value).ceil - 1] %></h4>
-    N° voti : <%= current_user.ratings.count %>
+      <h3>Il Mio Rating</h3>
+      <div class="rating-show" data-score="<%= current_user.ratings.average(:value) %>" style="margin: 0 auto"></div>
+      <h4><%= current_user.ratings.average(:value).to_s[0..2] %> - <%= ["Cattivo","Scarso","Normale","Buono","Grandioso"][current_user.ratings.average(:value).ceil - 1] %></h4>
+      N° voti : <%= current_user.ratings.count %>
     </div>
+    <% end %>
     <a href="#" class="toggle active" gumby-trigger="#change_psw"><i class="icon-lock"></i>Cambia password</a>
-     <% if flash[:change_psw_notice] %>
+    <% if flash[:change_psw_notice] %>
      <% if flash[:change_psw_notice].include? "Aggiornata" %>
      <div class="alert success center">
        <% else %>
