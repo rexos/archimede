@@ -105,5 +105,7 @@
 </div>    
 <div class="row center">
   <h3>Mappa</h3>
-  <%= gmaps4rails(@teacher.address.to_gmaps4rails) %>
+  <%= gmaps( :markers => { :data => @json },
+  :direction => { :data => { :from => current_user.address.gmaps4rails_address, :to => @teacher.address.gmaps4rails_address } }
+  ) %>
 </div>

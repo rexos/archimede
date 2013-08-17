@@ -82,6 +82,10 @@ class TeachersController < ApplicationController
 
   def visit
     @teacher = Teacher.find( params[:teacher_id] )
+    addresses = []
+    addresses << @teacher.address
+    addresses << current_user.address
+    @json = addresses.to_gmaps4rails
     session[:visited] = @teacher.id #session variable due to rating handling
     redirect_to :controller => (current_user.class.to_s + "s").downcase.to_sym, :action => :show unless @teacher.active
   end
