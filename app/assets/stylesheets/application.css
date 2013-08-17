@@ -14,7 +14,7 @@
  */
 
 #logo-title {
-	color: white;
+	color: #ca3838;
 	font-weight: bold;
 	font-size: 40px;
 }
@@ -97,6 +97,20 @@
 
 a {
 	color: #ca3838;
+}
+
+.navbar {
+	background-color: #fff;
+}
+
+.navbar ul { 
+	background-color: #fff;
+}
+
+.navbar ul li > a {
+	color:rgb(22, 160, 133);
+	font-weight: bold;
+	text-shadow: none;
 }
 
 .btn {	
