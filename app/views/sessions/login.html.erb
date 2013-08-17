@@ -3,6 +3,14 @@
 		<fieldset class="six columns centered">
 			<legend><h2>Login</h2></legend>
 			<ul>
+				<% if flash[:login_error] %>
+				<li>
+				  <div class="alert danger center">
+				    <%= flash[:login_error] %>
+				    <% flash.discard(:login_error) %>
+				  </div>
+				</li>
+				<% end %>
 				<li class="field">
 					<%= f.email_field :email, :placeholder => "Email", :class => "wide text input", :id => "email" %>
 				</li>
@@ -16,45 +24,33 @@
 					</label>
 				</li>
 				<li>
-				<button class="medium primary btn">
-					<a>Entra</a>
-				</button>
-				oppure <%= link_to :registrati, :controller => :teachers, :action => :signup %>.
+					<button class="medium primary btn">
+						<a>Entra</a>
+					</button>
+					oppure <%= link_to :registrati, :controller => :teachers, :action => :signup %>.
 				</li>
-				<% if flash[:login_error] %>
 				<li>
-				  <div class="alert danger center">
-				    <%= flash[:login_error] %>
-				    <% flash.discard(:login_error) %>
-				    <% end %>
-				  </div>
+					<hr />
+				</li>
+				<li>
+					<a href="#" class="toggle active" gumby-trigger="#restore_password">Password dimenticata?</a>
+					<div class="drawer center" id="restore_password">
+						Inserisci l'indirizzo e-mail collegato al tuo account, riceverai una password temporanea per accedere nuovamente al portale:
+						<%= form_for :restore, :url => { :controller => :sessions, :action => :restore_password } do |f| %>
+						<ul>
+							<li class="field">
+								<%= f.email_field :email_address, :placeholder => "Indirizzo Email", :class => "input field" %>
+							</li>
+							<li>
+								<button class="medium primary btn">
+									<a>Invia</a>
+								</button>
+							</li>
+						</ul>
+						<% end %>
+					</div>
 				</li>
 			</ul>
-
 		</fieldset> 
 	</div> 
 	<% end %>
-	<div class="row">
-	  <ul>
-	    <li>
-	      <a href="#" class="toggle active" gumby-trigger="#restore_password">
-		Password Dimenticata?
-	      </a>
-	      <div class="drawer center" id="restore_password">
-		Inserisci l'indirizzo e-mail collegato al tuo account
-		<%= form_for :restore, :url => { :controller => :sessions, :action => :restore_password } do |f| %>
-		<ul>
-		  <li class="field">
-		    <%= f.email_field :email_address, :placeholder => "Indirizzo Email", :class => "input field" %>
-		  </li>
-		  <li>
-		    <button class="btn primary small">
-		      <a>Invia</a>
-		    </button>
-		  </li>
-		</ul>
-		<% end %>
-	      </div>
-	    </li>
-	  </ul>
-	</div>
