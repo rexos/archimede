@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #Delete all
-#Teacher.delete_all
-#Student.delete_all
+Teacher.delete_all
+Student.delete_all
 Subject.delete_all
 
 # Add subjects
@@ -26,7 +26,7 @@ Subject.create(name: 'Lingua Tedesca')
 Subject.create(name: 'Lingua Spagnola')
 Subject.create(name: 'Lingua Francese')
 
-=begin
+
 # Add a teacher
 t1 = Teacher.create(
 :name => "Giovanni",
@@ -47,15 +47,15 @@ t1 = Teacher.create(
 )
 
 # Addresses
-a1 = Address.create(:street => "Via Bernardo Clesio", :number => 5, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
-a2 = Address.create(:street => "Via Giovanni Segantini", :number => 16, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
-a3 = Address.create(:street => "Via Antonio Rosmini", :number => 1, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
-a4 = Address.create(:street => "Via S. Croce", :number => 15, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
-a5 = Address.create(:street => "Via Sommarive", :number => 5, :cap => 38123, :city => "Povo", :province => "TN", :country => "Italia")
+
+
+
+#a4 = Address.create(:street => "Via S. Croce", :number => 15, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
+#a5 = Address.create(:street => "Via Sommarive", :number => 5, :cap => 38123, :city => "Povo", :province => "TN", :country => "Italia")
 
 # Add subjects and address to teacher
 t1.subjects = Subject.all.sample(3)
-t1.address = a1
+t1.address = Address.create(:street => "Via Bernardo Clesio", :number => 5, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
 
 # Add a student
 s1 = Student.create(
@@ -66,7 +66,7 @@ s1 = Student.create(
 :email => "student@student.it",
 )
 
-s1.address = a1
+s1.address = Address.create(:street => "Via Giovanni Segantini", :number => 16, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
 
 # Add admin
 admin = Student.create(
@@ -77,4 +77,5 @@ admin = Student.create(
 :email => "admin@admin.it",
 :admin => true
 )
-=end
+
+admin = Address.create(:street => "Via Antonio Rosmini", :number => 1, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
