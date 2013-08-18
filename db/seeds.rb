@@ -78,4 +78,4 @@ admin = Student.create(
 :admin => true
 )
 
-admin = Address.create(:street => "Via Antonio Rosmini", :number => 1, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
+admin.address = Address.create(:street => "Via Antonio Rosmini", :number => 1, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
