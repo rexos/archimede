@@ -22,8 +22,8 @@ class TeachersController < ApplicationController
   end
 
   def payment
-    ArchimedeMailer.confirm_mail( Student.find_by_name( "Alex" ) ).deliver
-    render :text => "Payment done"
+    #ArchimedeMailer.confirm_mail( Student.find_by_name( "Alex" ) ).deliver
+    #render :text => "Payment done"
   end
 
   def change_password

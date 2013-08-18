@@ -1,22 +1,23 @@
 <div class="row">
   <div class="four columns">
-    <h3>&nbsp;</h3>
+    <h3>Stato Account</h3><br />
 
     <% if current_user.active %>
     <div class="alert success center">
     <% else %>
     <div class="alert warning center">
     <% end %>
-      <h3>
-	Stato Account <br />
-	<% if current_user.active %>
-	<strong>ATTIVO</strong> <h5>Fino al : </h5>
-	<h3><%= current_user.deadline %></h3>
-	<% else %>
-	<strong>NON ATTIVO</strong>  <h5>Il suo profilo non sarà visualizzabile da parte di terzi fino all'attivazione da parte dell' amministratore</h5>
-	<% end %>
-      </h3>
+      
+    	<% if current_user.active %>
+    	<h3>ATTIVO</h3>
+      <h5>Fino al:</h5>
+    	<h3><%= current_user.deadline %></h3>
+    	<% else %>
+    	<h3>NON ATTIVO</h3>
+      <h5>Il suo profilo non sarà visualizzabile da parte di terzi fino all'attivazione da parte dell' amministratore</h5>
+    	<% end %>  
     </div>
+
     <% if current_user.rating_bool and not current_user.ratings.empty? %>
     <div class="alert default center">
       <h3>Il Mio Rating</h3>
