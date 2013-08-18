@@ -14,7 +14,7 @@ Archimede::Application.routes.draw do
   get "complete_signup" => "teachers#complete_signup"
   post "create" => "teachers#create"
   post "complete" => "teachers#complete"
-  get "payment" => "teachers#payment"
+  get "teachers/payment" => "teachers#payment"
   get "teachers/destroy" => "teachers#destroy"
   get "teachers/show" => "teachers#show"
   post "teachers/update_data" => "teachers#update_data"
