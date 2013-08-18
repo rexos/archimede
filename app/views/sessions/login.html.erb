@@ -29,15 +29,12 @@
 					</button>
 					oppure <%= link_to :registrati, :controller => :teachers, :action => :signup %>.
 				</li>
+				<% end %><!-- END LOGIN FORM -->
 				<li>
 					<hr />
 				</li>
+				<!-- RECOVERY PASS -->
 				<li>
-				</li>
-			</ul>
-		</fieldset> 
-	</div> 
-	<% end %>
 					<a href="#" class="toggle active" gumby-trigger="#restore_password">Password dimenticata?</a>
 					<div class="drawer center" id="restore_password">
 						Inserisci l'indirizzo e-mail collegato al tuo account, riceverai una password temporanea per accedere nuovamente al portale:
@@ -54,3 +51,8 @@
 						</ul>
 						<% end %>
 					</div>
+				</li>
+				<!-- END RECOVERY PASS -->
+			</ul>
+		</fieldset> 
+	</div>
