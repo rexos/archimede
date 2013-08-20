@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #Delete all
-Teacher.delete_all
-Student.delete_all
+#Teacher.delete_all
+#Student.delete_all
 Subject.delete_all
 
 # Add subjects
@@ -26,7 +26,7 @@ Subject.create(name: 'Lingua Tedesca')
 Subject.create(name: 'Lingua Spagnola')
 Subject.create(name: 'Lingua Francese')
 
-
+=begin
 # Add a teacher
 t1 = Teacher.create(
 :name => "Giovanni",
@@ -67,7 +67,7 @@ s1 = Student.create(
 )
 
 s1.address = Address.create(:street => "Via Giovanni Segantini", :number => 16, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
-
+=end
 # Add admin
 admin = Student.create(
 :name => "Dio",
@@ -78,4 +78,4 @@ admin = Student.create(
 :admin => true
 )
 
-admin.address = Address.create(:street => "Via Antonio Rosmini", :number => 1, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
+#admin.address = Address.create(:street => "Via Antonio Rosmini", :number => 1, :cap => 38122, :city => "Trento", :province => "TN", :country => "Italia")
