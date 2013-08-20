@@ -23,7 +23,6 @@ class Student < ActiveRecord::Base
   has_many :ratings
 
   before_create :generate_token
-  after_create :update_id
 
   #regular expressions
   EMAIL_REGEX = /\b[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i
@@ -39,16 +38,6 @@ class Student < ActiveRecord::Base
   private
 
   def generate_token
-    self.token = SecureRandom.urlsafe_base64
+    self.token = SecureRandom.urlsafe_base64 + "s"
   end
-
-  def update_id
-    if self.id.odd?
-      old = self.id
-      new = old + 1
-      sql = "update students set id=#{new} where id=#{old}"
-      ActiveRecord::Base.connection.execute(sql)
-    end
-  end
-
 end

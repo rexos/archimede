@@ -20,13 +20,13 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if session[:user_id]
-      @current_user = Teacher.find( session[:user_id] ) if session[:user_id].to_i.odd?
-      @current_user = Student.find( session[:user_id] ) if session[:user_id].to_i.even?
+      @current_user = Teacher.find( session[:user_id] ) if session[:role].eql? "Teacher"
+      @current_user = Student.find( session[:user_id] ) if session[:role].eql? "Student"
       @current_user
     else
       if cookies[:token]
-        @current_user = Teacher.find_by_token( cookies[:token] )
-        @current_user = Student.find_by_token( cookies[:token] ) if @current_user.nil?
+        @current_user = Teacher.find_by_token( cookies[:token] ) if cookies[:token][-1] == "t"
+        @current_user = Student.find_by_token( cookies[:token] ) if cookies[:token][-1] == "s"
         @current_user
       end
     end

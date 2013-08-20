@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
     @user = Student.find_by_email( params[:session][:email] ) unless @user
     if @user and @user.authenticate( params[:session][:password] )
       session[:user_id] = @user.id
+      session[:role] = @user.class.to_s
       if params[:session][:remember].to_i == 1
         cookies.permanent[:token] = @user.token
       end
