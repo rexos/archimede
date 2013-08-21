@@ -11,12 +11,12 @@ class StudentsController < ApplicationController
     if @student.save
       @student = Student.find_by_email( @student.email )
       @student.address = @address
-      render :text => "Ok Student correctly saved"
+      #render :text => "Ok Student correctly saved"
+      redirect_to :action => :show
     else
       render :text => "Something went wrong"
     end
   end
-
 
   def show
   end

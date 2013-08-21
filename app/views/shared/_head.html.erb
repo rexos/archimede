@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     
     <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag "gmaps4rails" %>
+    <%= stylesheet_link_tag "gmaps4rails" %>
     <%= javascript_include_tag "modernizr" %>
     <%= csrf_meta_tags %>
 
@@ -32,14 +32,16 @@
       
       <%= link_to :controller => :welcome, :action => :index do %>
       <h1 id="logo-title" class="four columns logo">
-        <!-- <span style="color: #ca3838">Arc</span>him<span style="color: rgb(22, 160, 133)">ede</span> -->
         Archimede
       </h1>
       <% end %>
       <ul class="eight columns pull_right">
-        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-        <li><a href="#">Cerca lezioni</a></li>
-        <li><%= link_to :Registrati, :controller => :teachers, :action => :signup %></li>
+        <% if current_user.is_a? Student %>
+        <li><%= link_to "Cerca lezioni", :controller => :students, :action => :show %></li>
+        <% end %>
+        <% if current_user.nil? %>
+          <li><%= link_to :Login, :controller => :sessions, :action => :login %></li>
+        <% end %>
         <li><a href=<%= "#{request.protocol}#{request.host_with_port}/static_pages/faq" %>>FAQ</a></li>
         <li><a href="#" class="skip" gumby-goto="#contacts" gumby-duration="2000" gumby-offset="-60">Contatti</a></li>
       </ul>
