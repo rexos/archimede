@@ -127,24 +127,46 @@ class TeachersController < ApplicationController
 
   def generate_file
       user = current_user
-      Prawn::Document.new do 
-        text "Ricevuta N." + "#{user.id}", :align => :right, :size => 14
-        move_down 10
-        text "Data " + (user.deadline - 1.year).to_s, :align => :right
-        move_down 10
-        data = [
-            ["Ricevuta da","Archimede.it"],
-            ["€","150,00"],
-            ["Per","Pagamento annuale iscizione portale Archimede"],
-          ]
-        table(data, :column_widths => [100, 400]) do
-          column(0).font_style = :bold
-          column(0).align = :right
-        end
 
-        move_down 20
-        text "Archimede bla bla 94940343094", :align => :center
-      end.render 
+      if user.bill_bool #fattura  
+        Prawn::Document.new do 
+          text "Fattura N." + "#{user.id}", :align => :right, :size => 14
+          move_down 10
+          text "Data " + (user.deadline - 1.year).to_s, :align => :right
+          move_down 10
+          data = [
+              ["Ricevuta da","Archimede.it"],
+              ["€","150,00"],
+              ["Per","Pagamento annuale iscizione portale Archimede"],
+            ]
+          table(data, :width => bounds.width) do
+            column(0).font_style = :bold
+            column(0).align = :right
+          end
+
+          move_down 20
+          text "Archimede bla bla 94940343094", :align => :center
+        end.render
+      else #ricevuta
+        Prawn::Document.new do 
+          text "Ricevuta N." + "#{user.id}", :align => :right, :size => 14
+          move_down 10
+          text "Data " + (user.deadline - 1.year).to_s, :align => :right
+          move_down 10
+          data = [
+              ["Ricevuta da","Archimede.it"],
+              ["€","150,00"],
+              ["Per","Pagamento annuale iscizione portale Archimede"],
+            ]
+          table(data,  :width => bounds.width) do
+            column(0).font_style = :bold
+            column(0).align = :right
+          end
+
+          move_down 20
+          text "Archimede bla bla 94940343094", :align => :center
+        end.render
+      end   
   end
 
   private
@@ -181,7 +203,8 @@ class TeachersController < ApplicationController
     @subjects
   end
 
-  
+  def generate_invoice
+  end
 
 
 end
