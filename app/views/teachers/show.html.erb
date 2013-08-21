@@ -1,6 +1,6 @@
 <div class="row">
   <div class="four columns">
-    <h3>Stato Account</h3><br />
+    <h3>Stato account</h3><br />
 
     <% if current_user.active %>
     <div class="alert success center">
@@ -9,12 +9,18 @@
     <% end %>
       
     	<% if current_user.active %>
-    	<h3>ATTIVO</h3>
+    	<h3><strong>ATTIVO</strong></h3>
       <h5>Fino al:</h5>
     	<h3><%= current_user.deadline %></h3>
     	<% else %>
-    	<h3>NON ATTIVO</h3>
+    	<h3><strong>NON ATTIVO</strong></h3>
       <h5>Il suo profilo non sarà visualizzabile da parte di terzi fino all'attivazione da parte dell' amministratore</h5>
+      <h6>Effettua il pagamento per attivare l'account.</h6>
+      <p>
+        <%= link_to action: :payment do %>
+          <div class="btn danger large">ATTIVA</div>
+        <% end %>
+        </p>
     	<% end %>  
     </div>
 
