@@ -14,4 +14,6 @@ class Rating < ActiveRecord::Base
   belongs_to :student
   belongs_to :teacher
   attr_accessible :value
+
+  validates_uniqueness_of :student_id, :scope => :teacher_id
 end

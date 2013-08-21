@@ -13,13 +13,6 @@
   </div>
 </div>
 
-  <% if @teacher.rating_bool %>
-  <div class="row">
-    <h3>Rating : <%= @teacher.ratings.average( :value ).to_s[0..2] + "  " + ["Cattivo","Scarso","Normale","Buono","Grandioso"][@teacher.ratings.average( :value ).ceil - 1] unless @teacher.ratings.empty? %></h3>
-    <div id="star" class="eight columns" data-score="<%= @teacher.ratings.average( :value ) %>"></div>
-    <div id="hint" class="default alert center eight columns" style="font-size:24px"></div>
-  </div>
-  <% end %>
 <div class="row">
 <h3>Contatti</h3>
 <% if current_user == nil %>
@@ -65,6 +58,19 @@
         <td><i class="icon-skype"></i></td>     
         <td><%= @teacher.skype %></td>
       </tr>
+        <% if @teacher.rating_bool == true %>
+      <tr>
+        <td>Rating</td>     
+        <td><p><h4>
+            <%= (@teacher.ratings.average( :value )*2).to_s[0..2] + "/10  - " + ["Cattivo","Scarso","Normale","Buono","Grandioso"][@teacher.ratings.average( :value ).ceil - 1] unless @teacher.ratings.empty? %>
+            </h4></p>
+            <p class="center">
+              <div id="star" class="eight columns" data-score="<%= @teacher.ratings.average( :value ) %>"></div>
+            </p>
+              <div id="hint" class="default alert center eight columns" style="font-size:24px"></div>
+        </td>
+      </tr>
+        <% end %>
       <% end %>
     </table>
     <h3>Informazioni</h3>
@@ -85,12 +91,6 @@
         <td>Raggio</td>     
         <td><%= @teacher.range %> km</td>
       </tr>
-      <% if @teacher.rating_bool == true %>
-      <tr>
-        <td>Rating</td>     
-        <td><%= @teacher.rating %></td>
-      </tr>
-      <% end %>
       <tr>
         <td>Banca del tempo</td>     
         <td><% if @teacher.time_bank_bool == true %>
