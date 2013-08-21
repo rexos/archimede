@@ -24,6 +24,7 @@ Archimede::Application.routes.draw do
   get "payment" => "teachers#payment"
   post "teachers/change_password" => "teachers#change_password"
 
+  get "teachers/generate_pdf" => "teachers#generate_pdf"
 
   #students' routes
   post "students/create" => "students#create"

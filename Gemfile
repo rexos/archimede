@@ -12,6 +12,7 @@ gem 'modernizr-rails'
 gem 'gumby', '0.0.5'
 gem 'jquery-raty-rails'
 gem 'gmaps4rails'
+gem 'prawn'
 
 # Gems used only for assets and not required
 # in production environments by default.

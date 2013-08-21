@@ -121,6 +121,16 @@ class TeachersController < ApplicationController
     redirect_to :action => :show
   end
 
+  def generate_pdf
+    send_data(generate_file, :filename => "report.pdf", :type => "application/pdf", disposition: "inline")
+  end
+
+  def generate_file
+      Prawn::Document.new do |pdf|
+        pdf.text "Ricevuta"
+      end.render  
+  end
+
   private
 
   def generate_bill_address
@@ -154,5 +164,8 @@ class TeachersController < ApplicationController
     @subjects.uniq!
     @subjects
   end
+
+  
+
 
 end
