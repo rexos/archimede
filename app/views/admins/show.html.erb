@@ -1,23 +1,27 @@
 <div class="row">
-  <h2>Amministratore : <%= current_user.name.capitalize %></h2>
-  <div class="four columns">
-    <div class="medium btn primary">
+    <h2>Pannello di amministrazione di <%= current_user.name.capitalize %></h2>
+</div>
+<div class="row">  
+  <div class="six columns">
+    <h3>Utenti iscritti</h3>
+    <div class="large btn primary">
       <%= link_to :Docenti, :action => :teachers_index %>
     </div>
-    <div class="medium btn default">
+    <div class="large btn default">
       <%= link_to :Studenti, :action => :students_index %>
     </div>
   </div>
+
   <div class="six columns">
     <table class="rounded striped">
       <caption>
-	Notifiche Iscrizioni 
-	<% notes = Notification.all %>
-	<% unless notes.empty? %>
-	<div class="badge primary">
-	  <%= notes.size %>
-	</div>
-	<% end %>	
+        	Notifiche Iscrizioni 
+        	<% notes = Notification.all %>
+        	<% unless notes.empty? %>
+        	<div class="badge primary">
+        	  <%= notes.size %>
+        	</div>
+        	<% end %>	
       </caption>
       <thead>
 	<tr>
