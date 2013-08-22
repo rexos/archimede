@@ -128,7 +128,7 @@ class TeachersController < ApplicationController
   def generate_file
       Prawn::Document.new do |pdf|
         pdf.text "Ricevuta"
-      end.render  
+      end.render
   end
 
   private

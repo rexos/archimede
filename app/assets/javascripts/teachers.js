@@ -32,9 +32,7 @@ $('#star').raty({
 		    type: "POST",
 			url: "/students/rate_teacher",
 			data: { rating_value: score }
-		}).done(function( msg ) {
-			alert("rating salvato");
-		    });
+		})
 	},
 });
 
