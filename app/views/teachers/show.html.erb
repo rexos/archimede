@@ -12,9 +12,11 @@
     	<h3><strong>ATTIVO</strong></h3>
       <h5>Fino al:</h5>
     	<h3><%= current_user.deadline %></h3>
-
-      <%= link_to "Scarica ricevuta", controller: :teachers, :action => :generate_pdf %>
-    	
+    	      <% if current_user.bill_bool %>
+              <%= link_to "Scarica fattura", controller: :teachers, :action => :generate_pdf %>
+            <% else %>
+              <%= link_to "Scarica ricevuta", controller: :teachers, :action => :generate_pdf %>
+            <% end %>
       <% else %>
     	<h3><strong>NON ATTIVO</strong></h3>
       <h5>Il suo profilo non sarà visualizzabile da parte di terzi fino all'attivazione da parte dell' amministratore</h5>
