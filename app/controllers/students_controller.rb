@@ -8,6 +8,7 @@ class StudentsController < ApplicationController
     @address.province = params[:student][:province]
     sanitize_params :student
     @student = Student.new( params[:student] )
+    
     if @student.save
       @student = Student.find_by_email( @student.email )
       @student.address = @address
@@ -15,7 +16,11 @@ class StudentsController < ApplicationController
       redirect_to :action => :show
     else
       render :text => "Something went wrong"
+      #respond_to do |format|
+      #  format.js { render :action => 'error_registered.js.erb' }
+      #end
     end
+
   end
 
   def show

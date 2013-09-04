@@ -8,7 +8,7 @@
       <div class="tab-content active">
 	
         <div class="row">
-          <div class="six columns">
+          <div id="info-reg" class="six columns">
             <h2>&nbsp;</h2>
             <%= form_for :teacher, :url => { :controller => :teachers, :action => :create } do |f| %>
             <ul class="eight columns">
@@ -120,7 +120,7 @@
             <% end %>
           </div>
           
-          <div class="six columns">
+          <div id="info-reg" class="six columns">
             <h2>Registrazione docente</h2>
             <p>
               La registrazione prevede tre semplici passi da completare:
