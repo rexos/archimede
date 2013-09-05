@@ -1,15 +1,19 @@
 <div class="row">
-    <h2>Pannello di amministrazione di <%= current_user.name.capitalize %></h2>
+    <h3>Pannello di amministrazione</h3>
 </div>
 <div class="row">  
   <div class="six columns">
-    <h3>Utenti iscritti</h3>
-    <div class="large btn primary">
-      <%= link_to :Docenti, :action => :teachers_index %>
-    </div>
-    <div class="large btn default">
-      <%= link_to :Studenti, :action => :students_index %>
-    </div>
+    <p>
+      Visulizza la lista degli utenti iscirtti alla piattaforma
+      <div class="large btn primary">
+        <%= link_to :Docenti, :action => :teachers_index %>
+      </div>
+      <div class="large btn default">
+        <%= link_to :Studenti, :action => :students_index %>
+      </div><br />
+        oppure effettua una <%= link_to :ricerca, :controller => :students, :action => :show %>.
+      </p>
+
   </div>
 
   <div class="six columns">

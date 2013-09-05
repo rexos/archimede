@@ -68,7 +68,7 @@ s1.address = Address.create(:street => "Via Giovanni Segantini", :number => 16, 
 
 # Add admin
 admin = Student.create(
-:name => "Dio",
+:name => "Admin",
 :last_name => "God",
 :password => "qwerty00",
 :password_confirmation => "qwerty00",

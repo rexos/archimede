@@ -3,6 +3,30 @@
             <h2>&nbsp;</h2>
             <%= form_for :student, :url => { :controller => :students, :action => :create } do |f| %>
             <ul class="eight columns">
+
+                <% if flash[:signup_error] %>
+                  <li class="field">
+                  <div class="alert danger center">
+                  <%= flash[:signup_error] %>
+                  <% flash.discard(:signup_error) %>
+                  </div>
+                  </li>
+                <% end%>
+
+                  <!-- ERRORS 
+                  <% if @student and @student.errors.any? %>
+                  <div id="error_explanation" class="alert danger">
+                    <h3><%= pluralize(@student.errors.count, "error") %> prohibited
+                this user from being saved:</h3>
+                    <ul>
+                <% @student.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+                    </ul>
+                  </div>
+                  <% end %>
+               -->
+
               <li class="field">
 		<%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
               </li>
@@ -50,19 +74,7 @@
             <p>
               Il portale Archimede tratta tutti i dati personali degli utenti/visitatori dei servizi offerti, nel pieno rispetto di quanto previsto dalla normativa nazionale italiana in materia di privacy e del D. Lgs. 196/2003. Per ulteriori informazioni leggi la <a href="static_pages/privacy">normativa sulla privacy</a>.
             </p>  
-            <p>
-              <% if @student and @student.errors.any? %>
-              <div id="error_explanation" class="alert danger">
-		<h3><%= pluralize(@student.errors.count, "error") %> prohibited
-		  this user from being saved:</h3>
-		<ul>
-		  <% @student.errors.full_messages.each do |msg| %>
-		  <li><%= msg %></li>
-		  <% end %>
-		</ul>
-              </div>
-              <% end %>
-            </p>
+            
           </div>
         </div>
 	

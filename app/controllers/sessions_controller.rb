@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
         redirect_to :controller => :teachers, :action => :show
       end
     else
-      flash[:login_error] = "Email o Password Non Corretti"
+      flash[:login_error] = "Email o password non corretti"
       render :action => :login
     end
   end
@@ -52,9 +52,9 @@ class SessionsController < ApplicationController
       new_pass = (0...8).map{(65+rand(26)).chr}.join
       @user.update_attributes( :password => new_pass, :password_confirmation => new_pass )
       ArchimedeMailer.restore_password( @user, new_pass ).deliver
-      render :text => new_pass
+      render :text => "La nuova password è stata mandata all'indirizzo email"
     else
-      render :text => "Indirizzo E-Mail Errato"
+      render :text => "Indirizzo email errato"
     end
   end
 

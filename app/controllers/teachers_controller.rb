@@ -66,7 +66,15 @@ class TeachersController < ApplicationController
       cookies.permanent[:token] = @teacher.token
       redirect_to controller: :teachers, action: :complete_signup
     else
-      render :text => "Teacher not correctly created"
+      #render :text => "Teacher not correctly created"
+      #render :action => :signup
+      err = "Errori: "
+      @teacher.errors.full_messages.each do |msg|
+        err.concat(msg + ", ")
+      end
+      flash[:signup_error] = err
+
+      redirect_to :action => :signup
     end
   end
 

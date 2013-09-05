@@ -1,19 +1,46 @@
 <div class="row">
   <div class="twelve columns">
     <section class="tabs">
+
       <ul class="tab-nav">
-        <li class="active"><a href="#">Docente</a></li>
-        <li><a href="#">Studente</a></li>
+          <li class="active"><a href="#">Docente</a></li>
+          <li><a href="#">Studente</a></li>
       </ul>
+      
       <div class="tab-content active">
 	
         <div class="row">
-          <div id="info-reg" class="six columns">
+          <div class="six columns">
             <h2>&nbsp;</h2>
             <%= form_for :teacher, :url => { :controller => :teachers, :action => :create } do |f| %>
             <ul class="eight columns">
+              
+              <% if flash[:signup_error] %>
+                <li class="field">
+                <div class="alert danger center">
+                <%= flash[:signup_error] %>
+                <% flash.discard(:signup_error) %>
+                </div>
+                </li>
+              <% end%>
+
+              <!-- ERRORS
               <li class="field">
-            
+                  <% if @teacher and @teacher.errors.any? %>
+                  <div id="error_explanation" class="alert danger">
+                    <h3><%= pluralize(@teacher.errors.count, "error") %> prohibited
+                this user from being saved:</h3>
+                    <ul>
+                <% @teacher.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+                    </ul>
+                  </div>
+                  <% end %>
+                </li>
+              -->
+
+              <li class="field">
 		<%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
               </li>
               <li class="field">
@@ -120,7 +147,7 @@
             <% end %>
           </div>
           
-          <div id="info-reg" class="six columns">
+          <div class="six columns">
             <h2>Registrazione docente</h2>
             <p>
               La registrazione prevede tre semplici passi da completare:

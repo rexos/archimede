@@ -15,10 +15,18 @@ class StudentsController < ApplicationController
       #render :text => "Ok Student correctly saved"
       redirect_to :action => :show
     else
-      render :text => "Something went wrong"
+      #render :text => "Student not created"
       #respond_to do |format|
       #  format.js { render :action => 'error_registered.js.erb' }
       #end
+       
+      err = "Errori: "
+      @student.errors.full_messages.each do |msg|
+        err.concat(msg + ", ")
+      end
+      flash[:signup_error] = err
+
+      redirect_to :controller => :teachers, :action => :signup
     end
 
   end
