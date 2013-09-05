@@ -13,6 +13,7 @@ class StudentsController < ApplicationController
       @student = Student.find_by_email( @student.email )
       @student.address = @address
       #render :text => "Ok Student correctly saved"
+      session[:user_id] = @student.id
       redirect_to :action => :show
     else
       #render :text => "Student not created"
