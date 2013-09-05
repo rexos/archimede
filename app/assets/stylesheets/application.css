@@ -101,6 +101,7 @@ a {
 
 .navbar {
 	background-color: #fff;
+	min-height: 80px;
 }
 
 .navbar ul { 
@@ -258,4 +259,13 @@ box-shadow:  0 5px 0 0 rgba(20, 144, 120, 1);
     rgb(21, 158, 131) 28px 28px,
     rgb(21, 159, 132) 29px 29px,
     rgb(22, 160, 133) 30px 30px;
+}
+
+
+.tabs .tab-nav > li > a.stud-tab {
+	color: #ca3838;
+}
+
+.tabs .tab-nav > li > a.teach-tab {
+	color: rgb(22, 160, 133);
 }

@@ -3,15 +3,15 @@
     <section class="tabs">
 
       <ul class="tab-nav">
-          <li class="active"><a href="#">Docente</a></li>
-          <li><a href="#">Studente</a></li>
+          <li class="active"><a class="teach-tab" href="#">Docente</a></li>
+          <li><a class="stud-tab" href="#">Studente</a></li>
       </ul>
       
       <div class="tab-content active">
 	
         <div class="row">
           <div class="six columns">
-            <h2>&nbsp;</h2>
+            <h2><i class="icon-up-circled"></i><span style="font-size: 20px">seleziona il tipo di account</span></h2>
             <%= form_for :teacher, :url => { :controller => :teachers, :action => :create } do |f| %>
             <ul class="eight columns">
               
