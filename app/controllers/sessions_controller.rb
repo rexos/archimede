@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
       new_pass = (0...8).map{(65+rand(26)).chr}.join
       @user.update_attributes( :password => new_pass, :password_confirmation => new_pass )
       ArchimedeMailer.restore_password( @user, new_pass ).deliver
-      render :text => "La nuova password è stata mandata all'indirizzo email"
+      render :text => "La nuova password e' stata mandata all'indirizzo email"
     else
       render :text => "Indirizzo email errato"
     end
