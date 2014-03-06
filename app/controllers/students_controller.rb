@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
-  before_filter :logged_in?, :except => :create
-  before_filter :is_student?, :except => :create
+  before_filter :logged_in?, :except => [:create, :search_teacher]
+  before_filter :is_student?, :except => [:create, :search_teacher]
 
   def create
     @address = Address.new( :street => params[:student][:street], :cap => params[:student][:cap], :country => params[:student][:country], :number => params[:student][:number] )
@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
     @address.province = params[:student][:province]
     sanitize_params :student
     @student = Student.new( params[:student] )
-    
+
     if @student.save
       @student = Student.find_by_email( @student.email )
       @student.address = @address
@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
       #respond_to do |format|
       #  format.js { render :action => 'error_registered.js.erb' }
       #end
-       
+
       err = "Errori: "
       @student.errors.full_messages.each do |msg|
         err.concat(msg + ", ")
@@ -56,6 +56,9 @@ class StudentsController < ApplicationController
 
   #search teacher method
   def search_teacher
+    if current_user and current_user.is_a? Teacher
+      redirect_to :controller => :teachers, :action => :show
+    end
     @matching = @teachers = []
     unless params[:search][:text].eql? ""
       words = params[:search][:text].split(' ')

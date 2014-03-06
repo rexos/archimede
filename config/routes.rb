@@ -2,6 +2,8 @@ Archimede::Application.routes.draw do
 
   root :to => 'welcome#index'
 
+  get "lookup" => "welcome#lookup"
+
   #admin's routes
   get "admins/show" => "admins#show"
   get "admins/destroy_notification" => "admins#destroy_notification"

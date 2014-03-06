@@ -1,0 +1,12 @@
+<%= form_for :search, url: { :controller => :students, :action => :search_teacher }, :remote => true do |f| %>
+<ul class="centered twelve columns">
+  <li class="append field">
+    <%= f.text_field :text, :placeholder => "Testo ricerca, esempio: Italiano Trento", :class => "wide text input" %>
+    <button class="medium danger btn">
+      <a><i class="icon-search"></i>Cerca</a>
+    </button>
+  </li>
+</ul>
+<% end %>
+<div id="results">
+</div>
