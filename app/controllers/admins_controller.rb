@@ -8,9 +8,9 @@ class AdminsController < ApplicationController
     @teacher.update_attributes( :active => true )
     @teacher.update_attributes( :deadline => ( @teacher.updated_at + 1.year ) )
     @teacher.notification.destroy if @teacher.notification
-    render :text => "#{@teacher.name.capitalize} #{@teacher.last_name.capitalize} è stato attivato correttamente"
+    redirect_to :action => :show
+      #render :text => "#{@teacher.name.capitalize} #{@teacher.last_name.capitalize} è stato attivato correttamente"
   end
-
 
   def teachers_index
     @teachers = Teacher.all

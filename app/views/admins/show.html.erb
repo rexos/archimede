@@ -2,51 +2,57 @@
     <h3>Pannello di amministrazione</h3>
 </div>
 <div class="row">  
-  <div class="six columns">
-    <p>
-      Visulizza la lista degli utenti iscirtti alla piattaforma
-      <div class="large btn primary">
-        <%= link_to :Docenti, :action => :teachers_index %>
-      </div>
-      <div class="large btn default">
-        <%= link_to :Studenti, :action => :students_index %>
-      </div><br />
-        oppure effettua una <%= link_to :ricerca, :controller => :students, :action => :show %>.
-      </p>
-
-  </div>
-
-  <div class="six columns">
-    <table class="rounded striped">
-      <caption>
-        	Notifiche Iscrizioni 
-        	<% notes = Notification.all %>
-        	<% unless notes.empty? %>
-        	<div class="badge primary">
-        	  <%= notes.size %>
-        	</div>
-        	<% end %>	
-      </caption>
-      <thead>
-	<tr>
-	  <th>Nome</th>
-	  <th>Notifica</th>
-	  <th></th>
-	</tr>
-      </thead>
-      <% notes.each do |n| %>
-      <tr>
-	<td><%= n.teacher.name.capitalize %></td>
-	<td><%= n.body %></td>
-	<td>
-	  <%= link_to :controller => :admins, :action => :destroy_notification, :notification_id => n.id do %>
-	  <strong>Elimina <i class="icon-cancel"></i></strong>
-	  <% end %>
-	</td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-			
-
+    <div class="six columns">
+        <!--<p>
+Visulizza la lista degli utenti iscirtti alla piattaforma
+<div class="large btn primary">
+<%= link_to :Docenti, :action => :teachers_index %>
+</div>
+<div class="large btn default">
+<%= link_to :Studenti, :action => :students_index %>
+</div><br />
+oppure effettua una <%= link_to :ricerca, :controller => :students, :action => :show %>.
+</p>
+-->
+        <ul>
+            <li>Lista degli <%= link_to :studenti, :action => :students_index %></li>
+            <li>Lista dei <%= link_to :docenti, :action => :teachers_index %></li>
+            <li>Fatture e ricevute</li>
+            <li>Aggiungi azienda</li>
+        </ul>
+    </div>
+    
+    <div class="six columns">
+        <table class="rounded striped">
+            <caption>
+                Notifiche Iscrizioni 
+                <% notes = Notification.all %>
+                <% unless notes.empty? %>
+                <div class="badge primary">
+                    <%= notes.size %>
+                </div>
+                <% end %>	
+            </caption>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Notifica</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <% notes.each do |n| %>
+            <tr>
+                <td><%= n.teacher.name.capitalize %></td>
+                <td><%= n.body %></td>
+                <td>
+                    <%= link_to :controller => :admins, :action => :destroy_notification, :notification_id => n.id do %>
+                    <strong>Elimina <i class="icon-cancel"></i></strong>
+                    <% end %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
+    
+    
 </div>

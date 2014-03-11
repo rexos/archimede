@@ -1,28 +1,32 @@
 
 <div class="row"><h2>Lista studenti</h2></div>
 <div class="row">
-<table class="striped rounded">
-  <thead><tr>
-  <th>Nome</th>
-  <th>Cognome</th>
-  <th>&nbsp;</th>
-</tr>
-</thead>
-  <% @students.each do |s| %>
-  <tr>
-    <td><%= s.name %></td>
-    <td><%= s.last_name %></td>
-    
-    <td>
-    <div class="btn medium danger">
-      
-      <%= link_to ({:controller => :students, :action => :destroy, :student_id => s.id}) do %>
-        <i class="icon-cancel"></i>Cancella
-      <% end %>
-    </div>
-    </td>
-      
-  </tr>
-  <% end %>
-</table>
+    <table class="striped rounded">
+        <thead><tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <% @students.each do |s| %>
+        <tr>
+            <td><%= s.name %></td>
+            <td><%= s.last_name %></td>
+            <td><%= s.email %></td>
+            <td><%= s.phone %></td>
+            
+            <td>
+                <div class="btn medium danger">
+                    
+                    <%= link_to ({:controller => :students, :action => :destroy, :student_id => s.id}) do %>
+                    <i class="icon-cancel"></i>Cancella
+                    <% end %>
+                </div>
+            </td>
+            
+        </tr>
+        <% end %>
+    </table>
 </div>
