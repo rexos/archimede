@@ -37,7 +37,11 @@ class ApplicationController < ActionController::Base
   end
 
   def is_student?
-    redirect_to :controller => :teachers, :action => :show unless current_user.is_a? Student
+    if current_user.admin
+      redirect_to :controller => :admins, :action => :show
+    else
+      redirect_to :controller => :teachers, :action => :show unless current_user.is_a? Student
+    end
   end
 
   def is_teacher?
