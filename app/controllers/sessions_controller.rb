@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       session[:role] = @user.class.to_s
       if params[:session][:remember].to_i == 1
-        cookies.permanent[:token] = @user.token
+        cookies.permanent[:token] = { :value => @user.token, :httponly => true }
       end
       if @user.is_a? Student
         if @user.admin
