@@ -1,0 +1,24 @@
+<div class="row">
+    <h3>Aggiungi un'azienda</h3>
+    <p>Pagina con form per far aggiungere all'admin una nuova azienda</p>
+    
+    <%= form_for :company, :url => { :controller => :admins, :action => :create_company } do |f| %>
+    <ul>
+        <li class="field">
+            <%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
+        </li>
+        <li class="field">
+            <%= f.text_field :owner, :placeholder => "Proprietario", :class => "text input" %>
+        </li>
+        <li class="field">
+            <%= f.text_field :phone, :placeholder => "Telefono", :class => "text input" %>
+        </li>
+        <li class="field">
+            <%= f.text_field :email, :placeholder => "Email", :class => "text input" %>
+        </li>
+        <button class="medium primary btn">
+            <a>Invia</a>
+        </button>
+    </ul>
+    <% end %>
+</div>
