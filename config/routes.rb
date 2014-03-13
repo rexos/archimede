@@ -12,6 +12,8 @@ Archimede::Application.routes.draw do
     get "admins/activate" => "admins#activate"
     get "admins/new_company" => "admins#new_company"
     post "admins/create_company" => "admins#create_company"
+    get "admins/destroy_company" => "admins#destroy_company"
+    get "admins/companies_index" => "admins#companies_index"
     
     #teachers' routes
     get "signup" => "teachers#signup"

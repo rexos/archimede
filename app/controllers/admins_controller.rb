@@ -20,6 +20,10 @@ class AdminsController < ApplicationController
         @students = Student.find( :all, :conditions => ["admin = ?", false] )\
         end
     
+    def companies_index
+        @companies = Company.all
+    end
+    
     def show
     end
     
@@ -29,12 +33,30 @@ class AdminsController < ApplicationController
     def create_company
         @company = Company.new( params[:company] )
         unless @company.valid?
-            render :text => "Errori --- #{@company.errors.full_messages}"
+            err = "Errori: "
+            @company.errors.full_messages.each do |msg|
+                err.concat(msg + ", ")
+            end
+            flash[:company_error] = err
+            redirect_to :action => :new_company
         else
             @company.save
-            render :text => "Ok --- #{@company.name} #{@company.email}"
+            redirect_to :action => :companies_index
+            #render :text => "Ok --- #{@company.name} #{@company.email}"
         end
     end
+    
+    def destroy_company
+        @company = Company.find( params[:company_id] )
+        if @company.destroy
+            flash[:company_destroy] = "Company destroyed"
+            redirect_to :action => :companies_index
+        else
+            flash[:company_destroy] = "Company not destroyed"
+            redirect_to :action => :companies_index
+        end
+    end
+    
     
     def destroy_notification
         Notification.destroy( params[:notification_id] )

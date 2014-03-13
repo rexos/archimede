@@ -1,9 +1,16 @@
 <div class="row">
     <h3>Aggiungi un'azienda</h3>
-    <p>Pagina con form per far aggiungere all'admin una nuova azienda</p>
     
     <%= form_for :company, :url => { :controller => :admins, :action => :create_company } do |f| %>
     <ul>
+        <% if flash[:company_error] %>
+        <li class="field">
+            <div class="alert danger center">
+                <%= flash[:company_error] %>
+                <% flash.discard(:company_error) %>
+            </div>
+        </li>
+        <% end%>
         <li class="field">
             <%= f.text_field :name, :placeholder => "Nome", :class => "text input" %>
         </li>

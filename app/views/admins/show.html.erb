@@ -18,7 +18,7 @@ oppure effettua una <%= link_to :ricerca, :controller => :students, :action => :
             <li>Lista degli <%= link_to :studenti, :action => :students_index %></li>
             <li>Lista dei <%= link_to :docenti, :action => :teachers_index %></li>
             <li>Lista fatture e ricevute</li>
-            <li>Lista aziende</li>
+            <li><%= link_to "Lista aziende", :action => :companies_index %></li>
             <li><%= link_to "Aggiungi azienda", :action => :new_company %></li>
         </ul>
     </div>
