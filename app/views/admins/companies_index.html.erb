@@ -1,0 +1,43 @@
+<div class="row">
+    <h3>Lista aziende</h3>
+    
+    <% if @companies.empty? %>
+        Non ci sono aziende
+    <% else %>
+    
+    
+    <% if flash[:company_destroy] %>
+    <div class="row alert success center">
+        <h4><%= flash[:company_destroy] %></h4>
+        <% flash.discard( :company_destroy ) %>
+    </div>
+    <% end %>
+    
+    <table class="striped rounded">
+        <thead><tr>
+            <th>Nome</th>
+            <th>Porprietario</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <% @companies.each do |c| %>
+        <tr>
+            <td><%= c.name %></td>
+            <td><%= c.owner %></td>
+            <td><%= c.email %></td>
+            <td><%= c.phone %></td>
+            <td>
+                <div class="btn medium danger">
+                    <%= link_to ({:controller => :admins, :action => :destroy_company, :company_id => c.id}) do %>
+                    <i class="icon-cancel"></i>Cancella
+                    <% end %>
+                </div>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    
+    <% end %>
+</div>
